@@ -99,4 +99,13 @@ section img {
   max-width: 600px;
   margin: 10px;
   width: 580px;
+  border-radius: 15px;
+}
+
+.video-container video {
+  max-width: 600px;
+  margin: 10px;
+  width: 580px;
+  border-radius: 10px;
+  /* height: 580px; */
 }
