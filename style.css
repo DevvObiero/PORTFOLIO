@@ -1,0 +1,15 @@
+@font-face {
+  font-family: ;
+  src: url(./fonts/Pangram-Black.otf);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: #fff;
+  font-family: "Nunito Semibold";
+  text-align: center;
+}
