@@ -37,3 +37,16 @@ document.addEventListener("scroll", () => {
     nav.classList.remove("scrolled"); // Remove class when back to the top
   }
 });
+
+// svg rotation on scroll
+window.addEventListener("scroll", function () {
+  const svg = document.querySelector(".coolness svg");
+  // Get the scroll position as a percentage of the page height
+  const scrollY = window.scrollY;
+  const scrollHeight =
+    document.documentElement.scrollHeight - window.innerHeight;
+
+  // Calculate the rotation degree based on scroll
+  const rotationDegree = (scrollY / scrollHeight) * 720; // Max rotation is 360 degrees
+  svg.style.transform = `rotate(${rotationDegree}deg)`; // Apply the rotation
+});
