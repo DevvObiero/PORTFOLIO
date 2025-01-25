@@ -36,7 +36,7 @@ nav {
   justify-content: center;
   background-color: rgba(243, 242, 241, 0.85);
   padding: 14px 20px;
-  border-radius: 10px;
+  border-radius: 12px;
   width: fit-content;
   margin: 0 auto;
 }
@@ -61,7 +61,7 @@ nav span {
   left: 0;
   width: 69px;
   height: 90%;
-  background-color: rgba(243, 242, 241, 0.85);
+  background-color: #fff;
   border-radius: 15px;
   transition: 0.3s ease;
   z-index: 0;
