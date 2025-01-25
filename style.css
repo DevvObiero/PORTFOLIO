@@ -190,3 +190,9 @@ footer a:hover {
 .coolness svg {
   transition: transform 0.2s ease;
 }
+
+@media screen and (max-width: 760px) {
+  .grid-container {
+    display: block;
+  }
+}
