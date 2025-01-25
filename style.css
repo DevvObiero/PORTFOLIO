@@ -34,11 +34,21 @@ nav {
   top: 40px;
   position: relative;
   justify-content: center;
-  background-color: rgba(243, 242, 241, 0.85);
-  padding: 14px 20px;
-  border-radius: 12px;
+  background-color: rgba(243, 242, 241, 0.839);
+  padding: 14px 30px;
+  border-radius: 25px;
   width: fit-content;
   margin: 0 auto;
+  position: sticky;
+}
+
+nav.scrolled {
+  /* background-color: rgba(243, 242, 241, 0.839); */
+  background-color: rgba(255, 255, 255, 0.4); /* Semi-transparent background */
+  backdrop-filter: blur(
+    10px
+  ); /* i used this because it adds the frosted glass effect */
+  -webkit-backdrop-filter: blur(10px); /* For Safari compatibility */
 }
 
 nav ul a {
@@ -53,17 +63,40 @@ nav ul {
   padding: 0;
   margin: 0;
   display: flex;
-  gap: 25px;
+  gap: 40px;
 }
 
 nav span {
   position: absolute;
-  top: 2px;
-  left: 0;
-  width: 69px;
-  height: 90%;
+  top: 4px;
+  left: 0px;
+  width: 80px;
+  height: 85%;
   background-color: #fff;
-  border-radius: 15px;
+  border-radius: 25px;
   transition: 0.3s ease;
   z-index: 0;
+}
+
+.text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+section img {
+  max-width: 600px;
+  margin: 10px;
+  width: 580px;
 }
