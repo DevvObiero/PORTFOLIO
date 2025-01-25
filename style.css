@@ -27,7 +27,6 @@
 body {
   color: #fff;
   font-family: "Pangram";
-  /* text-align: center; */
   color: black;
 }
 nav {
@@ -35,15 +34,35 @@ nav {
   top: 40px;
   position: relative;
   justify-content: center;
+  background-color: rgba(243, 242, 241, 0.85);
+  padding: 14px 20px;
+  border-radius: 10px;
+  width: fit-content;
+  margin: 0 auto;
 }
 
 nav ul a {
+  position: relative;
   text-decoration: none;
+  color: black;
+  z-index: 1;
 }
 nav ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
   display: flex;
-  gap: 10px;
+  gap: 25px;
+}
+
+nav span {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  width: 69px;
+  height: 90%;
+  background-color: rgba(243, 242, 241, 0.85);
+  border-radius: 15px;
+  transition: 0.3s ease;
+  z-index: 0;
 }
