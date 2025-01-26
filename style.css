@@ -4,6 +4,12 @@
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: "Didot";
+  src: url(./fonts/Didot.ttc) format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
 
 @font-face {
   font-family: "Pangram";
@@ -76,6 +82,57 @@ nav span {
   border-radius: 25px;
   transition: 0.3s ease;
   z-index: 0;
+}
+
+.container {
+  text-align: center;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 100vh; */
+  /* font-size: 40px; */
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: 40px;
+}
+.containerr {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 100px;
+  /* margin-bottom: -60px; */
+}
+#cont {
+  gap: 25px;
+  margin-bottom: 0px;
+}
+#cont p {
+  background-color: #f3f2f1;
+  padding: 10px;
+  border-radius: 15px;
+}
+.large-text {
+  font-size: 8rem;
+  font-weight: bold;
+  margin: 0;
+  letter-spacing: -5px;
+  position: relative;
+}
+.small-text {
+  font-size: 0.8rem;
+  font-weight: bold;
+  position: absolute;
+}
+#webdev {
+  bottom: -10px;
+  left: 0;
+}
+#portfolio {
+  bottom: -10px;
+  right: 0;
 }
 
 .text {
@@ -194,5 +251,12 @@ footer a:hover {
 @media screen and (max-width: 760px) {
   .grid-container {
     display: block;
+  }
+  .large-text {
+    font-size: 6rem;
+    font-weight: bold;
+    margin: 0;
+    letter-spacing: -5px;
+    position: relative;
   }
 }

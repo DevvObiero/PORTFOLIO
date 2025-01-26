@@ -31,7 +31,7 @@ if (navItems.length > 0) {
 // nav scroll
 document.addEventListener("scroll", () => {
   const nav = document.querySelector("nav");
-  if (window.scrollY > 140) {
+  if (window.scrollY > 400) {
     nav.classList.add("scrolled"); // Add class when scrolled more than 100px
   } else {
     nav.classList.remove("scrolled"); // Remove class when back to the top
