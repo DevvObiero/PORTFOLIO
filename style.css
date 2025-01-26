@@ -120,11 +120,35 @@ nav span {
   margin: 0;
   letter-spacing: -5px;
   position: relative;
+  animation: breathe 5s ease-in-out infinite;
+  animation: fadeIn 3s ease-in-out;
 }
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0; /* Start with invisible */
+  }
+  100% {
+    opacity: 1; /* End with fully visible */
+  }
+}
+@keyframes breathe {
+  0% {
+    transform: translateY(0); /* Starts at the normal position */
+  }
+  50% {
+    transform: translateY(-5px); /* Moves up a bit kidogo tu */
+  }
+  100% {
+    transform: translateY(0); /* Returnss to the original position */
+  }
+}
+
 .small-text {
   font-size: 0.8rem;
   font-weight: bold;
   position: absolute;
+  animation: fadeIn 6s ease-in-out;
 }
 #webdev {
   bottom: -10px;
@@ -134,6 +158,43 @@ nav span {
   bottom: -10px;
   right: 0;
 }
+/* svg draw  */
+.cls-1 {
+  fill: none;
+  stroke: #000;
+  stroke-miterlimit: 10;
+  stroke-width: 2px;
+  stroke-dasharray: 2000; /* Total length of the path */
+  stroke-dashoffset: 2000; /* Initially hide the path */
+  animation: draw 3s linear forwards; /* Draw animation */
+}
+
+/* Define the animation */
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0; /* Reveal the path */
+  }
+}
+
+.custom-svg {
+  width: 100%; /* Adjust size to be responsive */
+  max-width: 800px; /* Set a maximum width */
+  height: auto; /* Maintain aspect ratio */
+  display: block;
+  position: absolute;
+  margin: 0 auto;
+}
+
+.custom-svg .cls-1 {
+  fill: none; /* Transparent fill */
+  stroke: #0a0a09; /* Define stroke color */
+  stroke-width: 4px; /* Adjust stroke thickness */
+  stroke-dasharray: 4000; /* For animation, set path length */
+  stroke-dashoffset: 4000; /* Initially hidden */
+  transition: stroke-dashoffset 2s ease-in-out; /* Animation timing */
+}
+
+/* svg draw  */
 
 .text {
   display: flex;
@@ -148,6 +209,28 @@ nav span {
   animation: fadeIn 2s ease-in-out;
 }
 
+#hideout-container {
+  overflow: hidden; /* Create the "hideout" effect */
+  width: 300px; /* Adjust to your desired width */
+  height: 60px; /* Adjust based on your font size */
+}
+
+#reveal-text {
+  transform: translateY(100%); /* Start hidden below */
+  animation: slide-up 2s ease-out forwards; /* Animation to bring it up */
+  /* font-size: 2rem; */
+  font-weight: bold;
+  text-align: center;
+}
+
+@keyframes slide-up {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
 .text2 {
   display: block;
   justify-content: center;

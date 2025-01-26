@@ -50,3 +50,21 @@ window.addEventListener("scroll", function () {
   const rotationDegree = (scrollY / scrollHeight) * 720; // Max rotation is 360 degrees
   svg.style.transform = `rotate(${rotationDegree}deg)`; // Apply the rotation
 });
+
+// svg
+// Get the SVG path element
+const path = document.querySelector(".cls-1");
+
+// Function to check if element is in viewport
+function isInViewport(element) {
+  const rect = element.getBoundingClientRect();
+  return rect.top <= window.innerHeight && rect.bottom >= 0;
+}
+
+// Event listener for scrolling
+window.addEventListener("scroll", () => {
+  if (isInViewport(path)) {
+    // Trigger animation when the SVG is in the viewport
+    path.style.strokeDashoffset = "0";
+  }
+});
