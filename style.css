@@ -234,11 +234,12 @@ nav span {
   justify-content: center;
   align-items: center;
   height: 300px;
-  font-size: 40px;
+  font-size: 70px;
   font-weight: bold;
   text-align: center;
   max-width: 480px;
   margin: 0 auto;
+  gap: 10px;
   padding-top: 100px;
 }
 .grid-container {
@@ -386,4 +387,24 @@ footer a:hover {
     opacity: 1;
     transform: translateY(0) scale(1);
   }
+}
+
+/* glow  */
+.glow-effect {
+  display: inline-flex; /* Makes letters align horizontally */
+  font-size: 2rem;
+  font-weight: bold;
+  color: black; /* Default text color */
+}
+
+.glow-effect span {
+  display: inline-block; /* Needed for hover effect */
+  margin: 0 2px; /* Adds spacing between letters */
+  transition: all 0.3s ease; /* Smooth glow transition */
+}
+
+.glow-effect span:hover {
+  color: white; /* Change text color on hover */
+  text-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white; /* Dazzling glow */
+  transform: scale(1.2); /* Optional: Slightly enlarge the letter */
 }
