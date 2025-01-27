@@ -407,3 +407,6 @@ footer a:hover {
     filter: blur(40px);
   }
 }
+.text2 i {
+  cursor: pointer;
+}
