@@ -410,3 +410,13 @@ footer a:hover {
 .text2 i {
   cursor: pointer;
 }
+
+a#autoBlur {
+  text-decoration: none; /* Remove underline */
+  color: inherit; /* Use icon color */
+  margin: 0 10px; /* Add spacing between icons */
+}
+
+a#autoBlur:hover {
+  color: burlywood; /* Change color on hover (example) */
+}
