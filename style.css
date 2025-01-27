@@ -151,6 +151,8 @@ nav span {
   position: absolute;
   animation: fadeIn 6s ease-in-out;
 }
+
+/* name tags  */
 #webdev {
   bottom: -10px;
   left: 0;
@@ -159,6 +161,9 @@ nav span {
   bottom: -10px;
   right: 0;
 }
+
+/* name tags  */
+
 /* svg draw  */
 .cls-1 {
   fill: none;
@@ -224,14 +229,6 @@ nav span {
   text-align: center;
 }
 
-@keyframes slide-up {
-  0% {
-    transform: translateY(100%);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
 .text2 {
   display: block;
   justify-content: center;
@@ -374,5 +371,19 @@ footer a:hover {
     position: relative;
   }
 }
-/* circle  */
-/* Custom Cursor Circle */
+/* scroll transitions  */
+.autoShow {
+  animation: autoShowAnimation both;
+  animation-timeline: view(70% 5%);
+  /* the view timeline nimelearn it has 2 parameters  one is used to specify when the animation should complete  while the onther shows where it should start*/
+}
+@keyframes autoShowAnimation {
+  from {
+    opacity: 0;
+    transform: translateY(200px) scale(0.3);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
