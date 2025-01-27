@@ -31,9 +31,9 @@
 }
 
 body {
-  color: #fff;
+  color: #0e0d0d;
   font-family: "Pangram";
-  color: black;
+  background-color: white;
 }
 nav {
   display: flex;
@@ -235,6 +235,7 @@ nav span {
   align-items: center;
   height: 300px;
   font-size: 70px;
+  margin-top: 150px !important;
   font-weight: bold;
   text-align: center;
   max-width: 480px;
@@ -389,22 +390,20 @@ footer a:hover {
   }
 }
 
-/* glow  */
-.glow-effect {
-  display: inline-flex; /* Makes letters align horizontally */
-  font-size: 2rem;
-  font-weight: bold;
-  color: black; /* Default text color */
+#autoBlur {
+  animation: autoBlurAnimation linear both;
+  animation-timeline: view();
 }
 
-.glow-effect span {
-  display: inline-block; /* Needed for hover effect */
-  margin: 0 2px; /* Adds spacing between letters */
-  transition: all 0.3s ease; /* Smooth glow transition */
-}
-
-.glow-effect span:hover {
-  color: white; /* Change text color on hover */
-  text-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white; /* Dazzling glow */
-  transform: scale(1.2); /* Optional: Slightly enlarge the letter */
+@keyframes autoBlurAnimation {
+  0% {
+    filter: blur(40px);
+  }
+  45%,
+  55% {
+    filter: blur(0);
+  }
+  100% {
+    filter: blur(40px);
+  }
 }
