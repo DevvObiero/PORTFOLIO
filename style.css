@@ -46,6 +46,7 @@ nav {
   width: fit-content;
   margin: 0 auto;
   position: sticky;
+  z-index: 9999;
 }
 
 nav.scrolled {
@@ -120,8 +121,8 @@ nav span {
   margin: 0;
   letter-spacing: -5px;
   position: relative;
-  animation: breathe 5s ease-in-out infinite;
-  animation: fadeIn 3s ease-in-out;
+  animation: breathe 5s ease-in-out infinite, fadeIn 3s ease-in-out;
+  /* animation: fadeIn 3s ease-in-out; */
 }
 
 @keyframes fadeIn {
@@ -260,7 +261,37 @@ section img {
   /* margin-bottom: 84px; */
   box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+.image-container {
+  position: relative;
+  max-width: 580px;
+  /* margin: 10px; */
+  margin: 0;
+  padding: 0;
+  border-radius: 15px;
+  overflow: hidden;
+}
+.image-container .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  width: 100%;
+  border-radius: 15px;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  backdrop-filter: blur(10px); /* Adds the blur effect */
+  -webkit-backdrop-filter: blur(10px); /* For Safari */
+  opacity: 0;
+  transition: opacity 0.3s ease; /* Smooth transition on hover */
+}
 
+.image-container:hover .overlay {
+  opacity: 1; /* Show overlay on hover */
+}
+
+section img:hover {
+  cursor: pointer;
+}
 .video-container video {
   max-width: 580px;
   margin: 10px;
@@ -343,3 +374,5 @@ footer a:hover {
     position: relative;
   }
 }
+/* circle  */
+/* Custom Cursor Circle */
