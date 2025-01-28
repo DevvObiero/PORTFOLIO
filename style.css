@@ -547,21 +547,23 @@ body.dark-mode .uji {
 @media (max-width: 477px) {
   .grid-container {
     display: block !important;
-    max-width: 300px;
+    max-width: 300px !important;
   }
+
+  .text2 {
+    font-size: 40px !important;
+    max-width: 500px !important;
+  }
+
   .large-text {
-    font-size: 3.5rem;
+    font-size: 3.5rem !important;
     font-weight: bold;
     margin: 0;
     letter-spacing: -5px;
     /* position: relative; */
   }
   .small-text {
-    font-size: 0.5rem;
-    font-weight: bold;
-    /* position: absolute; */
-    animation: fadeIn 6s ease-in-out;
-    /* addition */
+    font-size: 0.5rem !important;
   }
 
   .text {
@@ -569,7 +571,7 @@ body.dark-mode .uji {
     justify-content: center;
     align-items: center;
     height: 60vh;
-    font-size: 30px;
+    font-size: 30px !important;
     font-weight: bold;
     text-align: center;
     max-width: 300px;
@@ -589,10 +591,17 @@ body.dark-mode .uji {
     color: burlywood;
     /* margin-top: 400px !important; */
   }
+  .parent-container {
+    display: flex !important; /* Enable flexbox on the parent container */
+    justify-content: center !important; /* Horizontally center the child */
+    align-items: center !important; /* Vertically center the child */
+    height: 100% !important; /* Ensure the parent container takes up space */
+  }
 
   div.text5 {
     flex-direction: column; /* Stack in a column on smaller screens */
-    text-align: center; /* Center align text */
+    text-align: center !important; /* Center align text */
+    font-size: 30px !important;
   }
 
   .text4 a:hover {
