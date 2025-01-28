@@ -542,6 +542,113 @@ body.dark-mode .uji {
 }
 
 /* responsive  */
+/* mobile devices  */
+
+@media (max-width: 477px) {
+  .grid-container {
+    display: block !important;
+    max-width: 300px;
+  }
+  .large-text {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin: 0;
+    letter-spacing: -5px;
+    /* position: relative; */
+  }
+  .small-text {
+    font-size: 0.5rem;
+    font-weight: bold;
+    /* position: absolute; */
+    animation: fadeIn 6s ease-in-out;
+    /* addition */
+  }
+
+  .text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    max-width: 300px;
+    margin: 0 auto;
+    animation: fadeIn 2s ease-in-out;
+  }
+  .text3,
+  .text4 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* padding: 30px; */
+    gap: -10px !important;
+  }
+  .text4 a {
+    text-decoration: none;
+    color: burlywood;
+    /* margin-top: 400px !important; */
+  }
+
+  div.text5 {
+    flex-direction: column; /* Stack in a column on smaller screens */
+    text-align: center; /* Center align text */
+  }
+
+  .text4 a:hover {
+    cursor: pointer !important;
+    color: rgb(137, 100, 60);
+  }
+
+  .text4 ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+
+  #cont {
+    gap: 20px;
+    margin-bottom: 0px;
+  }
+  #cont p {
+    background-color: #f3f2f1;
+    padding: 10px;
+    border-radius: 15px;
+    font-size: 15px;
+  }
+
+  .custom-svg2 {
+    width: 100%; /* Adjust size to be responsive */
+    max-width: 900px; /* Set a maximum width */
+    height: auto; /* Maintain aspect ratio */
+    display: block;
+    position: absolute;
+    margin: 0 auto;
+    margin-top: 180px;
+  }
+  .second-svg2 {
+    width: 100%; /* Adjust size to be responsive */
+    max-width: 100% !important; /* Set a maximum width */
+    height: auto; /* Maintain aspect ratio */
+    display: block;
+    position: absolute;
+    margin: 0 auto;
+    margin-top: -100px;
+  }
+
+  .custom-svg .cls-1 {
+    fill: none; /* Transparent fill */
+    stroke: currentColor; /* Use currentColor to dynamically change stroke color */
+    stroke-width: 1px; /* Adjust stroke thickness */
+    stroke-dasharray: 4000; /* For animation, set path length */
+    stroke-dashoffset: 4000; /* Initially hidden */
+    transition: stroke-dashoffset 2s ease-in-out; /* Animation timing */
+  }
+}
+
 @media screen and (max-width: 799px) {
   .grid-container {
     display: block;
@@ -600,25 +707,23 @@ body.dark-mode .uji {
     transition: stroke-dashoffset 2s ease-in-out; /* Animation timing */
   }
 }
-/* mobile devices  */
 
-@media (max-width: 477px) {
+@media (max-width: 950px) {
   .grid-container {
-    display: block;
-    max-width: 350px;
+    display: grid;
+    max-width: 700px;
   }
-  .large-text {
-    font-size: 4rem;
+
+  .text5 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 2.5rem !important;
     font-weight: bold;
-    margin: 0;
-    letter-spacing: -5px;
-    /* position: relative; */
-  }
-  .small-text {
-    font-size: 0.6rem;
-    font-weight: bold;
-    /* position: absolute; */
-    animation: fadeIn 6s ease-in-out;
+    text-align: center;
+    white-space: nowrap; /* Prevents text wrapping */
+    margin-left: -150px !important;
   }
   .text {
     display: flex;
@@ -631,55 +736,6 @@ body.dark-mode .uji {
     max-width: 300px;
     margin: 0 auto;
     animation: fadeIn 2s ease-in-out;
-  }
-  .text3,
-  .text4 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* padding: 30px; */
-    gap: -10px !important;
-  }
-  .text4 a {
-    text-decoration: none;
-    color: burlywood;
-    /* margin-top: 400px !important; */
-  }
-
-  .text4 a:hover {
-    cursor: pointer !important;
-    color: rgb(137, 100, 60);
-  }
-
-  .text4 ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    gap: 20px;
-    margin-bottom: 40px;
-  }
-
-  #cont {
-    gap: 20px;
-    margin-bottom: 0px;
-  }
-  #cont p {
-    background-color: #f3f2f1;
-    padding: 10px;
-    border-radius: 15px;
-    font-size: 15px;
-  }
-  .text5 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80vh;
-    font-size: 1.3rem !important;
-    font-weight: bold;
-    text-align: center;
-    white-space: nowrap; /* Prevents text wrapping */
-    margin-left: 0px !important;
   }
   .custom-svg2 {
     width: 100%; /* Adjust size to be responsive */
@@ -697,7 +753,7 @@ body.dark-mode .uji {
     display: block;
     position: absolute;
     margin: 0 auto;
-    margin-top: -100px;
+    margin-top: -150px;
   }
 
   .custom-svg .cls-1 {
@@ -709,23 +765,83 @@ body.dark-mode .uji {
     transition: stroke-dashoffset 2s ease-in-out; /* Animation timing */
   }
 }
-
-@media (max-width: 477px) {
+@media (max-width: 2980px) {
   .grid-container {
-    display: block;
-    max-width: 300px;
+    display: grid;
+    max-width: 1500px !important;
   }
+
+  .cont {
+    gap: 50px;
+    margin-bottom: 0px;
+  }
+  .cont p {
+    /* background-color: #f3f2f1; */
+    padding: 10px;
+    border-radius: 15px;
+    font-size: 20px !important;
+  }
+
+  .text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+    animation: fadeIn 2s ease-in-out;
+  }
+  .custom-svg2 {
+    width: 100%; /* Adjust size to be responsive */
+    max-width: 900px; /* Set a maximum width */
+    height: auto; /* Maintain aspect ratio */
+    display: block;
+    position: absolute;
+    margin: 0 auto;
+    /* margin-top: -1900px !important; */
+  }
+  .second-svg2 {
+    width: 100%; /* Adjust size to be responsive */
+    max-width: 100% !important; /* Set a maximum width */
+    height: 120px; /* Maintain aspect ratio */
+    display: block;
+    position: absolute;
+    margin: 0 auto;
+    /* margin-top: -150px; */
+  }
+  .text2 {
+    font-size: 100px;
+    max-width: 500px;
+  }
+
+  .custom-svg .cls-1 {
+    fill: none; /* Transparent fill */
+    stroke: currentColor; /* Use currentColor to dynamically change stroke color */
+    stroke-width: 1px; /* Adjust stroke thickness */
+    stroke-dasharray: 4000; /* For animation, set path length */
+    stroke-dashoffset: 4000; /* Initially hidden */
+    transition: stroke-dashoffset 2s ease-in-out; /* Animation timing */
+  }
+}
+@media (min-width: 1020px) {
+  .custom-svg {
+    display: none; /* Hides the SVG on 1020px and above */
+  }
+
   .large-text {
-    font-size: 3.5rem;
+    font-size: 10rem;
     font-weight: bold;
     margin: 0;
     letter-spacing: -5px;
-    /* position: relative; */
+    position: relative;
   }
   .small-text {
-    font-size: 0.5rem;
+    font-size: 0.9rem;
     font-weight: bold;
-    /* position: absolute; */
+    position: absolute;
     animation: fadeIn 6s ease-in-out;
   }
 }
