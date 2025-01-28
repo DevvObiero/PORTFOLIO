@@ -184,7 +184,15 @@ nav span {
 
 .custom-svg {
   width: 100%; /* Adjust size to be responsive */
-  max-width: 800px; /* Set a maximum width */
+  max-width: 900px; /* Set a maximum width */
+  height: auto; /* Maintain aspect ratio */
+  display: block;
+  position: absolute;
+  margin: 0 auto;
+}
+.second-svg {
+  width: 100%; /* Adjust size to be responsive */
+  max-width: 100% !important; /* Set a maximum width */
   height: auto; /* Maintain aspect ratio */
   display: block;
   position: absolute;
@@ -193,11 +201,21 @@ nav span {
 
 .custom-svg .cls-1 {
   fill: none; /* Transparent fill */
-  stroke: #0a0a09; /* Define stroke color */
+  stroke: currentColor; /* Use currentColor to dynamically change stroke color */
   stroke-width: 4px; /* Adjust stroke thickness */
   stroke-dasharray: 4000; /* For animation, set path length */
   stroke-dashoffset: 4000; /* Initially hidden */
   transition: stroke-dashoffset 2s ease-in-out; /* Animation timing */
+}
+
+/* Dark mode */
+body.dark-mode .custom-svg {
+  color: white; /* Change stroke color to white in dark mode */
+}
+
+/* Light mode */
+body.light-mode .custom-svg {
+  color: black; /* Change stroke color to black in light mode */
 }
 
 /* svg draw  */
@@ -352,9 +370,10 @@ footer a:hover {
   padding: 10px;
   justify-content: center;
   align-items: center;
-  min-height: 100svh;
+  min-height: 100vh;
   display: flex;
   position: relative;
+  margin-bottom: -100px;
 }
 
 .coolness svg {
@@ -371,6 +390,18 @@ footer a:hover {
     margin: 0;
     letter-spacing: -5px;
     position: relative;
+  }
+
+  .text5 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-size: 2rem !important;
+    font-weight: bold;
+    text-align: center;
+    white-space: nowrap; /* Prevents text wrapping */
+    margin-left: -100px !important;
   }
 }
 /* scroll transitions  */
@@ -419,4 +450,119 @@ a#autoBlur {
 
 a#autoBlur:hover {
   color: burlywood; /* Change color on hover (example) */
+}
+
+/* //profile page  */
+
+.text5 span {
+  color: bisque;
+  padding-left: 10px;
+}
+
+.text5 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 50px;
+  margin-left: -100px !important;
+
+  font-weight: bold;
+  text-align: center;
+  white-space: nowrap; /* Prevents text wrapping */
+}
+
+#dynamicText {
+  display: inline-block; /* Ensure width control applies */
+  width: 200px; /* Fixed width for the changing text */
+  text-align: center; /* Center the dynamic text inside its span */
+  color: burlywood; /* Optional: color for dynamic text */
+  transition: opacity 0.6s ease; /* Smooth transition for fade effect */
+}
+/* Centering the h2 */
+h2 {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 100px;
+  font-size: 2rem;
+}
+
+/* Styling the p text */
+#text p {
+  font-family: Pangram, sans-serif;
+  font-size: 15px;
+  font-weight: 900;
+  line-height: 1.8; /* Increase line height for better readability */
+  text-align: justify; /* Justify text */
+  margin: 20px auto; /* Add space around the text */
+  max-width: 800px; /* Set a max width for the paragraph */
+  color: black; /* Set the text color */
+  padding: 0 40px; /* Add some padding on the sides */
+}
+/* dark mode / */
+
+#toggle-theme {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  font-size: 30px;
+}
+
+#sun-icon {
+  display: block; /* Sun icon shown by default */
+  animation: fadeIn 6s ease-in-out;
+}
+
+#moon-icon {
+  display: none; /* Hide moon icon by default */
+  color: #fff;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+
+body.dark-mode h2 {
+  color: #f0f0f0;
+}
+body.dark-mode p {
+  color: #f0f0f0 !important;
+}
+
+body.dark-mode svg {
+  fill: white; /* Change the fill color to white for all SVGs in dark mode */
+  stroke: white; /* Change the stroke color to white if needed */
+}
+
+body.dark-mode #sun-icon {
+  display: none;
+  animation: fadeIn 3s ease-in-out;
+}
+
+body.dark-mode #moon-icon {
+  display: block; /* Show moon icon in dark mode */
+  animation: fadeIn 3s ease-in-out;
+}
+
+body.dark-mode .uji {
+  color: black !important; /* Change text color to black in dark mode */
+}
+
+#toggle-theme {
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+#toggle-theme {
+  visibility: visible; /* Initially visible */
+  opacity: 1; /* Initially fully opaque */
+}
+
+#toggle-theme.hidden {
+  visibility: hidden; /* Hidden when scrolled down */
+  opacity: 0; /* Fade out */
 }
