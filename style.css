@@ -169,7 +169,7 @@ nav span {
   fill: none;
   stroke: #000;
   stroke-miterlimit: 10;
-  stroke-width: 2px;
+  stroke-width: 4px;
   stroke-dasharray: 2000; /* Total length of the path */
   stroke-dashoffset: 2000; /* Initially hide the path */
   animation: draw 3s linear forwards; /* Draw animation */
@@ -202,7 +202,7 @@ nav span {
 .custom-svg .cls-1 {
   fill: none; /* Transparent fill */
   stroke: currentColor; /* Use currentColor to dynamically change stroke color */
-  stroke-width: 4px; /* Adjust stroke thickness */
+  stroke-width: 1px; /* Adjust stroke thickness */
   stroke-dasharray: 4000; /* For animation, set path length */
   stroke-dashoffset: 4000; /* Initially hidden */
   transition: stroke-dashoffset 2s ease-in-out; /* Animation timing */
@@ -379,17 +379,24 @@ footer a:hover {
 .coolness svg {
   transition: transform 0.2s ease;
 }
-
+/* responsive  */
 @media screen and (max-width: 760px) {
   .grid-container {
     display: block;
+    max-width: 540px;
   }
   .large-text {
-    font-size: 6rem;
+    font-size: 5rem;
     font-weight: bold;
     margin: 0;
     letter-spacing: -5px;
     position: relative;
+  }
+  .small-text {
+    font-size: 0.6rem;
+    font-weight: bold;
+    position: absolute;
+    animation: fadeIn 6s ease-in-out;
   }
 
   .text5 {
