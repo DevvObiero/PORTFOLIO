@@ -79,7 +79,7 @@ window.addEventListener("scroll", () => {
 
 // profile page
 const texts = [
-  "PAUL OBIERO",
+  "    PAUL OBIERO",
   "A WEB DEVELOPER",
   "A STUDENT",
   "A TECH ENTHUSIAST"
