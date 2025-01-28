@@ -835,7 +835,7 @@ body.dark-mode .uji {
     transition: stroke-dashoffset 2s ease-in-out; /* Animation timing */
   }
 }
-@media (min-width: 1020px) {
+@media (min-width: 1900px) {
   .custom-svg {
     display: none; /* Hides the SVG on 1020px and above */
   }
