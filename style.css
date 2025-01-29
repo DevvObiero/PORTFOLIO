@@ -412,18 +412,18 @@ footer a:hover {
     filter: blur(40px);
   }
 }
-.text2 i {
-  cursor: pointer;
-}
-
+/* .text2 i:hover {
+  cursor: pointer !important;
+  color: bisque;
+} */
 a#autoBlur {
-  text-decoration: none; /* Remove underline */
-  color: inherit; /* Use icon color */
-  margin: 0 10px; /* Add spacing between icons */
+  text-decoration: none;
+  color: inherit;
+  margin: 0 10px;
 }
 
-a#autoBlur:hover {
-  color: burlywood; /* Change color on hover (example) */
+.bx:hover {
+  color: burlywood !important;
 }
 
 /* //profile page  */
@@ -820,10 +820,6 @@ body.dark-mode .uji {
     position: absolute;
     margin: 0 auto;
     /* margin-top: -150px; */
-  }
-  .text2 {
-    font-size: 100px;
-    max-width: 500px;
   }
 
   .custom-svg .cls-1 {
