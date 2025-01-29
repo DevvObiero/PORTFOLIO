@@ -18,7 +18,7 @@ Welcome to my personal portfolio! This is a sleek, minimalist design showcasing 
 
 
 ## 🌐 Live Demo
-[paulobiero.netlify.app](#) *(Replace with your actual portfolio link)*
+[paulobiero.netlify.app](#https://www.linkedin.com/in/paul-obiero-72155b32a) 
 
 ## 📂 Setup & Installation
 If you’d like to run this project locally, follow these steps:
