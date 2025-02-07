@@ -25,11 +25,21 @@ navItems.forEach((item, index) => {
 // Initialize the indicator position on page load
 function initializeNav() {
   const savedIndex = localStorage.getItem("activeNavIndex");
-  const initialIndex = savedIndex !== null ? parseInt(savedIndex) : 0;
+  let initialIndex = savedIndex !== null ? parseInt(savedIndex) : 0; // Default to Home
+
+  // Ensure the Home tab (index 0) is selected on first visit
+  if (
+    window.location.pathname === "/" ||
+    window.location.pathname.includes("index.html")
+  ) {
+    initialIndex = 0; // Set Home as default
+  }
+
   const initialItem = navItems[initialIndex];
 
   // Set the indicator and active class based on saved state
   setIndicatorPosition(initialItem);
+  navItems.forEach((li) => li.classList.remove("active"));
   initialItem.classList.add("active");
 }
 
