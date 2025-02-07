@@ -49,7 +49,7 @@ Want to personalize it? You can:
 Feel free to connect with me:
 - **LinkedIn:** [https://www.linkedin.com/in/paul-obiero-72155b32a](#linkedIn)
 - **GitHub:** [DevObiero](https://github.com/DevObiero)
-- **Email:** [email](obieropauldev@gmail.com)
+- **Email:** [obieropauldev@gmail.com](obieropauldev@gmail.com)
 
 ---
 
