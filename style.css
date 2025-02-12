@@ -859,49 +859,60 @@ body.dark-mode .uji {
 #cont i {
   font-size: 40px;
 }
-/* Apply grid layout to project.html */
-.project-grid-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 3 equal columns */
-  grid-auto-rows: minmax(200px, auto); /* Ensures proper height for items */
-  gap: 10px; /* Space between grid items */
-  padding: 20px; /* Optional: Adds spacing around the grid */
+.description {
+  max-width: 800px; /* Limits the width for better readability */
+  margin: 40px auto; /* Centers the section */
+  padding: 20px;
+  /* background-color: #f8f8f8; Light gray background */
+  border-radius: 8px; /* Rounded corners */
+  /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); Subtle shadow for depth */
 }
 
-/* Make the first image span the full width */
-.project-grid-item:first-child {
-  grid-column: span 3; /* Spans all 3 columns */
-  height: 400px; /* Adjust height for emphasis */
+.description h2 {
+  font-size: 24px;
+  color: #89643c; /* Wine red color */
+  margin-bottom: 50px;
+  margin-top: 50px;
 }
 
-/* Style all images and videos inside the grid */
-.project-grid-item img,
-.project-video-container video {
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* Ensures images fill their containers properly */
-  display: block;
-  border-radius: 10px; /* Optional: Smooth edges */
+.description p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333; /* Dark gray for good readability */
 }
 
-/* Ensure the video container also spans across if needed */
-.project-video-container {
-  grid-column: span 3; /* Spans all 3 columns */
-  height: 400px; /* Adjust height */
+.btn-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center; /* Centers the buttons horizontally */
+  gap: 15px;
 }
 
-/* Style the remaining grid items */
-
-.project-grid-item {
-  width: fit-content;
-  height: fit-content;
-  max-width: 100%;
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 6px;
+  transition: 0.3s ease-in-out;
+  text-align: center;
 }
 
-.project-grid-item img {
-  width: auto;
-  max-width: 100%;
-  height: auto;
+.github-btn {
+  background-color: #010101; /* GitHub Dark Gray */
+  color: #ffffff;
 }
 
-/* Responsive Design: Adjust for smaller screens */
+.github-btn:hover {
+  background-color: #89643c;
+}
+
+.live-btn {
+  background-color: #89643c; /* Wine Red */
+  color: #ffffff;
+}
+
+.live-btn:hover {
+  background-color: #101010;
+}
