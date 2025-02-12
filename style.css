@@ -859,3 +859,49 @@ body.dark-mode .uji {
 #cont i {
   font-size: 40px;
 }
+/* Apply grid layout to project.html */
+.project-grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 3 equal columns */
+  grid-auto-rows: minmax(200px, auto); /* Ensures proper height for items */
+  gap: 10px; /* Space between grid items */
+  padding: 20px; /* Optional: Adds spacing around the grid */
+}
+
+/* Make the first image span the full width */
+.project-grid-item:first-child {
+  grid-column: span 3; /* Spans all 3 columns */
+  height: 400px; /* Adjust height for emphasis */
+}
+
+/* Style all images and videos inside the grid */
+.project-grid-item img,
+.project-video-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Ensures images fill their containers properly */
+  display: block;
+  border-radius: 10px; /* Optional: Smooth edges */
+}
+
+/* Ensure the video container also spans across if needed */
+.project-video-container {
+  grid-column: span 3; /* Spans all 3 columns */
+  height: 400px; /* Adjust height */
+}
+
+/* Style the remaining grid items */
+
+.project-grid-item {
+  width: fit-content;
+  height: fit-content;
+  max-width: 100%;
+}
+
+.project-grid-item img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Responsive Design: Adjust for smaller screens */
