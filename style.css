@@ -850,3 +850,12 @@ body.dark-mode .uji {
     animation: fadeIn 6s ease-in-out;
   }
 }
+/* project page  */
+
+#cont {
+  /* grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); */
+  gap: 40px;
+}
+#cont i {
+  font-size: 40px;
+}
