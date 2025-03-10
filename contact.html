@@ -4,11 +4,37 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+  
+    <script src="https://kit.fontawesome.com/YOUR_FONT_AWESOME_KIT.js" crossorigin="anonymous"></script>
+   <style>
+    button {
+      background-color: antiquewhite;
+
+      border: none;
+      padding: 10px 20px;
+      font-family: 'pangram';
+      font-size: 18px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+  }
+
+  button:hover {
+      background-color: #7D5C38;
+      color: antiquewhite;
+  }
+
+  button i {
+      margin-right: 5px;
+  }
+</style>
+  </head>
     <link
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
     />
     <title>Profile</title>
+    
   </head>
   <body>
     <nav>
@@ -19,9 +45,17 @@
       </ul>
       <span></span>
     </nav>
+    
+
     <div class="text2">
+      <button class="uji" id="downloadBtn">
+        <i class="fas fa-download"></i> Download CV
+      </button>
+      <br>
+      <br>
       <h5 id="autoBlur">Let's work together.</h5>
       <h5 id="autoBlur">Get in touch.</h5>
+
       <a href="https://instagram.com/obinazo.dev" target="_blank" id="autoBlur">
         <i class="bx bxl-instagram"></i>
       </a>
@@ -64,6 +98,17 @@
         </ul>
       </div>
     </footer>
+
+    <script>
+      document.getElementById("downloadBtn").addEventListener("click", function () {
+          const link = document.createElement("a");
+          link.href = "./Paul Obiero - Full Stack Web Developer - Resume.pdf"; // Ensure this path is correct
+          link.download = "Paul_Obiero_CV.pdf"; // This is the name it will be saved as
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+      });
+  </script>
     <script src="script.js"></script>
   </body>
 </html>

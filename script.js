@@ -146,3 +146,14 @@ window.addEventListener("scroll", () => {
   }
   lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // Prevent negative values
 });
+
+// download
+
+// document.getElementById("downloadBtn").addEventListener("click", function () {
+//   const link = document.createElement("a");
+//   link.href = "./Paul Obiero - Full Stack Web Developer - Resume.pdf";
+//   link.download = "My_CV.pdf";
+//   document.body.appendChild(link);
+//   link.click();
+//   document.body.removeChild(link);
+// });
