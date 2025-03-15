@@ -269,8 +269,6 @@ body.light-mode .custom-svg {
   margin: 50px auto;
 }
 .grid-container img {
-  width: 100%; /* Ensures images fill their grid space */
-  height: auto;
   filter: grayscale(100%); /* Make images black & white */
   transition: filter 0.5s ease-in-out; /* Smooth transition */
 }
