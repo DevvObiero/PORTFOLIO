@@ -157,3 +157,37 @@ window.addEventListener("scroll", () => {
 //   link.click();
 //   document.body.removeChild(link);
 // });
+
+// movement of the cursor
+
+// window.addEventListener("mousemove", (e) => {
+//   let cursor = document.getElementById("cursor");
+//   cursor.style.top = "${e.clientY}px";
+//   cursor.style.left = "${e.clientX}px";
+// });
+
+window.addEventListener("mousemove", (e) => {
+  let cursor = document.getElementById("cursor");
+  if (!cursor) return; // Ensure the element exists
+
+  setTimeout(() => {
+    cursor.style.top = e.clientY + "px";
+    cursor.style.left = e.clientX + "px";
+  }, 60);
+});
+
+// jelly
+gsap.to(cursor, {
+  scaleX: 1.5,
+  scaleY: 0.7,
+  duration: 0.1,
+  ease: "power1.out",
+  onComplete: () => {
+    gsap.to(cursor, {
+      scaleX: 1,
+      scaleY: 1,
+      duration: 0.2,
+      ease: "elastic.out(1, 0.3)" // Bouncy restore effect
+    });
+  }
+});

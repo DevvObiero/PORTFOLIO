@@ -902,3 +902,19 @@ body.dark-mode .uji {
 .live-btn:hover {
   background-color: #101010;
 }
+
+/* cursor  */
+
+.cursor {
+  position: fixed;
+  height: 50px;
+  z-index: 111111111;
+  width: 50px;
+  border-radius: 100%;
+  background-color: #fff;
+  margin-left: -37px;
+  margin-top: -37px;
+  backdrop-filter: grayscale(1);
+  mix-blend-mode: difference;
+  pointer-events: none;
+}
