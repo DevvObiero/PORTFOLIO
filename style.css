@@ -28,16 +28,28 @@
 * {
   margin: 0;
   padding: 0;
+  /* background: url("./pattern-lines.svg"); */
 }
 
 body {
+  background: url("./pattern-lines.svg");
   color: #0e0d0d;
   font-family: "Pangram";
   background-color: white;
+  background-size: 200px 100%;
 }
+
+.svg {
+  background-image: url("./pattern-lines.svg");
+  background-color: white;
+  background-size: contain;
+  background-repeat: repeat;
+}
+
 nav {
   display: flex;
   top: 40px;
+
   position: relative;
   justify-content: center;
   background-color: rgba(243, 242, 241, 0.839);
@@ -94,6 +106,7 @@ nav span {
   /* height: 100vh; */
   /* font-size: 40px; */
   text-align: center;
+  /* background: url("./pattern-lines.svg"); */
   margin-top: 100px;
   margin-bottom: 40px;
 }
@@ -101,6 +114,7 @@ nav span {
   text-align: center;
   display: flex;
   justify-content: center;
+  /* background: url("./pattern-lines.svg"); */
   align-items: center;
   text-align: center;
   margin-top: 100px;
