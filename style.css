@@ -233,20 +233,6 @@ body.light-mode .custom-svg {
   animation: fadeIn 2s ease-in-out;
 }
 
-#hideout-container {
-  overflow: hidden; /* Create the "hideout" effect */
-  width: 300px; /* Adjust to your desired width */
-  height: 60px; /* Adjust based on your font size */
-}
-
-#reveal-text {
-  transform: translateY(100%); /* Start hidden below */
-  animation: slide-up 2s ease-out forwards; /* Animation to bring it up */
-  /* font-size: 2rem; */
-  font-weight: bold;
-  text-align: center;
-}
-
 .text2 {
   display: block;
   justify-content: center;
@@ -315,6 +301,18 @@ section img:hover {
   filter: grayscale(0%); /* Restore color on hover */
 }
 
+.autoColor {
+  animation: autoColorAnimation both;
+  animation-timeline: view(70% 5%);
+}
+@keyframes autoColorAnimation {
+  from {
+    filter: grayscale(100%);
+  }
+  to {
+    filter: grayscale(0%);
+  }
+}
 .video-container video {
   max-width: 580px;
   margin: 10px;
@@ -669,6 +667,11 @@ body.dark-mode .uji {
     display: block;
     max-width: 540px;
   }
+
+  .cursor {
+    display: none;
+  }
+
   .large-text {
     font-size: 5rem;
     font-weight: bold;
@@ -727,6 +730,14 @@ body.dark-mode .uji {
   .grid-container {
     display: grid;
     max-width: 700px;
+  }
+
+  .grid-container img,
+  .grid-container video {
+    filter: none !important; /* Remove grayscale */
+    opacity: 1 !important; /* Ensure they are visible */
+    transform: none !important; /* No transition movement */
+    animation: none !important; /* Disable animation */
   }
 
   .text5 {
@@ -932,8 +943,8 @@ body.dark-mode .uji {
   width: 50px;
   border-radius: 100%;
   background-color: #fff;
-  margin-left: -37px;
-  margin-top: -37px;
+  margin-left: -21px;
+  margin-top: -21px;
   backdrop-filter: grayscale(1);
   mix-blend-mode: difference;
   pointer-events: none;

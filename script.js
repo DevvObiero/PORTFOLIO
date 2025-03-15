@@ -146,7 +146,6 @@ window.addEventListener("scroll", () => {
   }
   lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // Prevent negative values
 });
-
 // download
 
 // document.getElementById("downloadBtn").addEventListener("click", function () {
