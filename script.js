@@ -174,3 +174,21 @@ window.addEventListener("mousemove", (e) => {
     cursor.style.left = e.clientX + "px";
   }, 60);
 });
+
+// cursor transition
+const cursor = document.querySelector(".cursor");
+const hoverElements = document.querySelectorAll(
+  ".grid-item a, .grid-item img,.custom-video "
+); // Added video elements
+
+hoverElements.forEach((element) => {
+  element.addEventListener("mouseenter", () => {
+    cursor.style.transform = "scale(1.5)"; // Increase size
+  });
+
+  element.addEventListener("mouseleave", () => {
+    cursor.style.transform = "scale(1)"; // Reset size
+  });
+});
+
+// cursor transition

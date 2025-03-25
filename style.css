@@ -38,13 +38,13 @@ body {
   background-color: white;
   background-size: 200px 100%;
 }
-
+/* 
 .svg {
   background-image: url("./pattern-lines.svg");
   background-color: white;
   background-size: contain;
   background-repeat: repeat;
-}
+} */
 
 nav {
   display: flex;
@@ -953,8 +953,8 @@ body.dark-mode .uji {
 .cursor {
   position: fixed;
   height: 50px;
-  z-index: 111111111;
   width: 50px;
+  z-index: 111111111;
   border-radius: 100%;
   background-color: #fff;
   margin-left: -21px;
@@ -962,4 +962,88 @@ body.dark-mode .uji {
   backdrop-filter: grayscale(1);
   mix-blend-mode: difference;
   pointer-events: none;
+  transition: transform 0.2s ease-in-out; /* Smooth animation */
+}
+
+#projects {
+  height: 30vh;
+}
+.text h4 {
+  font-size: 25px;
+}
+
+/* profile  */
+/* * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+} */
+
+.container-profile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90vw;
+  height: 100vh;
+  margin-left: 20px;
+  /* padding: 5vw; */
+}
+
+.main-image {
+  width: 40%; /* Takes about 3/4 of the screen */
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px; /* Optional: for a smooth look */
+}
+
+.maneno {
+  width: 40%; /* Restricts text width */
+  font-size: 1.2rem;
+  font-weight: bold;
+  line-height: 1.5;
+  color: #333;
+  text-align: left; /* Ensures left alignment */
+  /* background-color: #f5f5f5; Optional: adds subtle background */
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.maneno h2 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  color: #222;
+  word-spacing: 3px; /* Adjust spacing for the name */
+}
+
+.maneno p {
+  line-height: 1.8; /* Space between lines */
+  text-transform: lowercase;
+
+  word-spacing: 5px; /* Space between words */
+}
+
+/* flexbox for the image of me  */
+
+@media (max-width: 1024px) {
+  /* iPads and smaller */
+  .container-profile {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .main-image,
+  .maneno {
+    width: 100%;
+    max-width: 90%;
+  }
+  .uji {
+    display: block;
+    margin: 10px auto; /* Centers the button */
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+  }
 }
