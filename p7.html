@@ -8,18 +8,14 @@
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
     />
-    <link rel="icon" type="image/png" href="/favicon.ico" />
-
     <title>Portfolio</title>
   </head>
   <body>
-    <!-- <p id="dynamicText">Hello</p> -->
-
     <nav>
       <ul>
-        <li><a href="#">Home</a></li>
+        <li><a href="index.html">Home</a></li>
         <li><a href="profile.html">Profile</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
       <span></span>
     </nav>
@@ -29,7 +25,6 @@
       <i class="bx bxs-moon" id="moon-icon"></i>
       <!-- Moon icon for dark mode -->
     </button>
-
     <svg
       class="custom-svg"
       id="Modo_de_aislamiento"
@@ -47,12 +42,12 @@
 
     <div class="container">
       <div class="container">
-        <p class="large-text">PAUL</p>
-        <span class="small-text" id="webdev">FRONT-END WEB-DEVELOPER</span>
+        <p class="large-text">WOW</p>
+        <span class="small-text" id="webdev">ONLINE</span>
       </div>
       <div class="container">
-        <p class="large-text">OBIERO</p>
-        <span class="small-text" id="portfolio">PORTFOLIO 2025</span>
+        <p class="large-text">FOOD</p>
+        <span class="small-text" id="portfolio">RESTAURANT </span>
       </div>
     </div>
     <svg
@@ -75,112 +70,63 @@
     </svg>
 
     <div class="containerr" id="cont">
-      <p class="autoShow uji">Minimalist</p>
-      <p class="autoShow uji">Web-developer</p>
-      <p class="autoShow uji">Designer</p>
+      <i class="bx bxl-javascript"></i>
+      <i class="bx bxl-html5"></i>
+      <i class="bx bxl-php"></i>
+
+      <i class="bx bxl-css3"></i>
     </div>
-    <div class="text autoShow">
-      Empowering brands worldwide with exceptional front-end development.
-    </div>
-    <div id="projects" class="text autoShow"><h4>MY PROJECTS</h4></div>
+    <section class="description">
+      <h2 class="autoShow">What It Does</h2>
+      <p class="autoShow">
+        This website allows customers to browse a restaurant’s menu and place
+        orders online. It features a dynamic ordering system powered by PHP and
+        MySQL, enabling users to add items to their cart and submit orders
+        seamlessly. The site also provides an organized and visually appealing
+        menu display, making it easy for customers to explore different dishes
+        and view descriptions before ordering. By integrating backend
+        functionality, the platform streamlines the ordering process for both
+        customers and restaurant staff.
+      </p>
 
-    <section class="grid-container">
-      <div class="grid-item autoShow">
-        <!-- <div class="image-container"> -->
-        <a href="p1.html">
-          <img src="./760_1x_shots_so.png" alt="wines and spirits" />
+      <h2 class="autoShow">Why I Built It</h2>
+      <p class="autoShow">
+        I developed this project to strengthen my full-stack web development
+        skills, particularly in PHP, MySQL, and front-end technologies like
+        HTML, CSS, JavaScript, and Bootstrap. My goal was to create a functional
+        and responsive restaurant ordering system that could enhance customer
+        experience and simplify order management for restaurants. This project
+        also serves as a portfolio piece, demonstrating my ability to develop
+        interactive web applications with both front-end and back-end
+        functionality.
+      </p>
+
+      <h2 class="autoShow">Challenges Faced</h2>
+      <p class="autoShow">
+        One of the biggest challenges was managing real-time order processing
+        while ensuring the database handled customer orders efficiently. Setting
+        up secure and structured MySQL queries to store and retrieve order
+        details required careful planning. Additionally, designing a
+        user-friendly and responsive ordering interface using Bootstrap while
+        maintaining smooth interactions was a learning experience. Debugging PHP
+        form submissions and optimizing database queries also helped me gain
+        deeper insights into back-end development.
+      </p>
+      <div class="btn-container autoShow">
+        <a
+          href="https://github.com/DevvObiero/Restaurant"
+          target="_blank"
+          class="btn github-btn"
+        >
+          View on GitHub
         </a>
-
-        <div class="overlay"></div>
-        <!-- </div> -->
-        <p></p>
-      </div>
-      <div class="grid-item autoShow">
-        <a href="p2.html">
-          <img src="./747_1x_shots_so.png" alt="Cafe Website" />
+        <a
+          href="https://wowfoooood.netlify.app/"
+          target="_blank"
+          class="btn live-btn"
+        >
+          Live Demo
         </a>
-        <p></p>
-      </div>
-
-      <div class="grid-item autoShow">
-        <img
-          src="https://framerusercontent.com/images/e3moUZXfgtjYQY4ILakIMaz4n7s.jpg?scale-down-to=2048"
-          alt="image 2"
-        />
-        <p></p>
-      </div>
-      <div class="grid-item autoShow">
-        <a href="p3.html">
-          <img src="./372_1x_shots_so.png" alt="wines and spirits" />
-        </a>
-        <p></p>
-      </div>
-      <div class="grid-item autoShow">
-        <a href="p5.html">
-          <img src="./146_1x_shots_so.png" alt="image 2" />
-        </a>
-        <p></p>
-      </div>
-      <div class="grid-item autoShow">
-        <a href="p6.html">
-          <img src="/581_1x_shots_so.png" alt="image 2" />
-        </a>
-        <p></p>
-      </div>
-      <div class="video-container autoShow">
-        <video class="custom-video" autoplay loop muted poster="thumbnail.jpg">
-          <source
-            src="https://framerusercontent.com/assets/XuzMZ3Z1QQHKltPqRjzGnsWs27M.mp4"
-            type="video/mp4"
-          />
-          Your browser does not support the video tag.
-        </video>
-
-        <p></p>
-      </div>
-
-      <div class="video-container autoShow">
-        <video class="custom-video" autoplay loop muted poster="thumbnail.jpg">
-          <source
-            src="https://framerusercontent.com/assets/SGjFvgcbK7s4yKh0xwuNjriMNII.mp4"
-            type="video/mp4"
-          />
-          Your browser does not support the video tag.
-        </video>
-
-        <p></p>
-      </div>
-      <div class="grid-item autoShow">
-        <img
-          src="https://framerusercontent.com/images/aH1eUgCIIIrbJF7TUlaKAehoI.jpg?scale-down-to=1024"
-          alt="image 2"
-        />
-        <p></p>
-      </div>
-      <div class="grid-item autoShow">
-        <img
-          src="https://framerusercontent.com/images/UbS7rWmAwWxjtwM7oaWwRuGo.jpg?scale-down-to=1024"
-          alt="image 2"
-        />
-        <p></p>
-      </div>
-      <div class="grid-item autoShow">
-        <img
-          src="https://framerusercontent.com/images/hQVBeiDNGU2TfeDJALuhawlcto.jpg?scale-down-to=1024"
-          alt="image 2"
-        />
-        <p></p>
-      </div>
-      <div class="video-container autoShow">
-        <video class="custom-video" autoplay loop muted poster="thumbnail.jpg">
-          <source
-            src="https://framerusercontent.com/assets/NieGBlxBdgpz9QCHV5Aj89rWjVg.mp4"
-            type="video/mp4"
-          />
-          Your browser does not support the video tag.
-        </video>
-
-        <p></p>
       </div>
     </section>
 
@@ -193,7 +139,11 @@
       <a href="mailto:paulonyangoobiero@outlook.com" id="autoBlur">
         <i class="bx bx-envelope"></i>
       </a>
-      <a href="" target="_blank" id="autoBlur">
+      <a
+        href="www.linkedin.com/in/paul-obiero-72155b32a"
+        target="_blank"
+        id="autoBlur"
+      >
         <i class="bx bxl-linkedin"></i>
       </a>
     </div>
@@ -237,7 +187,6 @@
         </ul>
       </div>
     </footer>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
     <script src="script.js"></script>
   </body>
