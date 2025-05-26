@@ -2,7 +2,7 @@
 
 Welcome to my personal portfolio! This is a sleek, minimalist design showcasing my skills, projects, and experience in web development. Built using only **HTML, CSS, and JavaScript**, this portfolio reflects my passion for clean, elegant design and efficient code.
 
-## 🚀 Features
+##  Features
 - **Minimalist UI** – A clean and modern interface for a distraction-free experience.
 - **Fully Responsive** – Optimized for all screen sizes (desktop, tablet, mobile).
 - **Fast Performance** – Lightweight and loads quickly.
