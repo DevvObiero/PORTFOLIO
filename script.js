@@ -192,3 +192,24 @@ hoverElements.forEach((element) => {
 });
 
 // cursor transition
+// lingo
+
+const icons = document.querySelectorAll(".reveal-icon");
+
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add("show");
+        }, index * 150); // delay each icon
+        observer.unobserve(entry.target); // remove if you only want it to trigger once
+      }
+    });
+  },
+  {
+    threshold: 0.2
+  }
+);
+
+icons.forEach((icon) => observer.observe(icon));
