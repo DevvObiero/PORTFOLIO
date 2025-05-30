@@ -587,6 +587,12 @@ body.dark-mode .uji {
     max-width: 300px !important;
   }
 
+  /* ✅ Responsive font sizes */
+
+  .reveal-icon {
+    font-size: 1.4rem !important;
+  }
+
   .text2 {
     font-size: 40px !important;
     max-width: 500px !important;
@@ -1066,3 +1072,20 @@ body.dark-mode .uji {
     text-align: center;
   }
 }
+
+/* ✅ Responsive font sizes @media (max-width: 768px) {
+  .reveal-icon {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .reveal-icon {
+    font-size: 0.3rem;
+  }
+}
+@media (max-width: 360px) {
+  .reveal-icon {
+    font-size: 0.2rem;
+  }
+} */
