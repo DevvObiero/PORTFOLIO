@@ -84,6 +84,7 @@
         }
     </style>
 
+  
     <div class="blog-container">
         <div class="blog-title">My Blog</div>
         <div class="blogs">
@@ -117,5 +118,17 @@
             </div>
         </div>
     </div>
+      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelectorAll('.blog-card').forEach(function(card) {
+                const comingSoon = document.createElement('div');
+                comingSoon.textContent = 'Coming soon';
+                comingSoon.style.color = '#e67e22';
+                comingSoon.style.fontWeight = 'bold';
+                comingSoon.style.marginTop = '8px';
+                card.appendChild(comingSoon);
+            });
+        });
+    </script>
 </body>
 </html>
