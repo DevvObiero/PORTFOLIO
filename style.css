@@ -271,6 +271,8 @@ body.light-mode .custom-svg {
   gap: 30px;
   max-width: 1200px;
   margin: 50px auto;
+  align-items: center;
+  padding-left: 50px;
 }
 .grid-container img {
   filter: grayscale(100%); /* Make images black & white */
@@ -586,10 +588,18 @@ body.dark-mode .uji {
 /* mobile devices  */
 
 @media (max-width: 477px) {
-  .grid-container {
-    display: block !important;
-    max-width: 300px !important;
+   .grid-container {
+    grid-template-columns: 1fr; /* 1 column on small screens */
+    padding: 20px ;
+    margin-right: 18px;
   }
+  .grid-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px; /* optional: rounded corners */
+}
+ 
 
   /* ✅ Responsive font sizes */
 
@@ -708,7 +718,7 @@ body.dark-mode .uji {
 @media screen and (max-width: 799px) {
   .grid-container {
     display: block;
-    max-width: 540px;
+    max-width: 440px;
   }
 
   .cursor {
