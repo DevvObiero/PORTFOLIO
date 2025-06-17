@@ -24,6 +24,10 @@
   font-weight: normal;
   font-style: italic;
 }
+html{
+    scroll-behavior: smooth;
+}
+
 
 * {
   margin: 0;
