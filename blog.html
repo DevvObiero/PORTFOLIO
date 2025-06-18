@@ -1,33 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BLog Page</title>
-      <link rel="stylesheet" type="text/css" href="style.css" />
-    <link
-      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-      rel="stylesheet"
-    />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <link rel="icon" type="image/png" href="/favicon.ico" />
 
 </head>
-<body>
-     <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="profile.html">Profile</a></li>
-        <li><a href="./blog.html">Blog</a></li>
 
-        <li><a href="./contact.html">Contact</a></li>
-      </ul>
-      <span></span>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="./blog.html">Blog</a></li>
+
+            <li><a href="./contact.html">Contact</a></li>
+        </ul>
+        <span></span>
     </nav>
-     <button id="toggle-theme">
-      <i class="bx bx-sun" id="sun-icon"></i>
-      <!-- Sun icon for light mode -->
-      <i class="bx bxs-moon" id="moon-icon"></i>
-      <!-- Moon icon for dark mode -->
+    <button id="toggle-theme">
+        <i class="bx bx-sun" id="sun-icon"></i>
+        <!-- Sun icon for light mode -->
+        <i class="bx bxs-moon" id="moon-icon"></i>
+        <!-- Moon icon for dark mode -->
     </button>
     <style>
         body {
@@ -36,11 +35,15 @@
             margin: 0;
             padding: 0;
         }
+
         .blog-container {
             max-width: 900px;
             margin: 40px auto;
             padding: 0 20px;
+            margin-top: 100px;
+
         }
+
         .blog-title {
             text-align: center;
             font-size: 2.5rem;
@@ -50,39 +53,46 @@
             color: #222;
             letter-spacing: -1px;
         }
+
         .blogs {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 32px;
         }
+
         .blog-card {
             /* background: #fff; */
             border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
             padding: 28px 24px;
             transition: box-shadow 0.2s;
             display: flex;
             flex-direction: column;
             gap: 12px;
         }
+
         .blog-card:hover {
-            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
         }
+
         .blog-card h2 {
             margin: 0 0 8px 0;
             font-size: 1.3rem;
             color: #1a1a1a;
         }
+
         .blog-card .meta {
             font-size: 0.95rem;
             color: #888;
             margin-bottom: 10px;
         }
+
         .blog-card p {
             margin: 0;
             color: #444;
             line-height: 1.6;
         }
+
         @media (max-width: 700px) {
             .blogs {
                 grid-template-columns: 1fr;
@@ -90,43 +100,49 @@
         }
     </style>
 
-  
+
     <div class="blog-container">
         <div class="blog-title">My Blog</div>
         <div class="blogs">
+
             <div class="blog-card">
-                <h2>How I Started Coding</h2>
-                <div class="meta">June 1, 2024 &middot; by OB</div>
-                <p>
-                    My journey into programming began with curiosity and a simple "Hello World". Over time, I discovered the joy of building things from scratch and solving real-world problems with code.
-                </p>
-            </div>
-            <div class="blog-card">
-                <h2>Minimalist Web Design Tips</h2>
+                <h2>Best Resource to Start Learning Data Structures and Algorithms</h2>
                 <div class="meta">May 28, 2024 &middot; by OB</div>
                 <p>
-                    Clean layouts, ample whitespace, and thoughtful typography are the keys to minimalist web design. Focus on content and remove unnecessary clutter for a better user experience.
+                    I used to find DSA intimidating—until I discovered these game-changing resources. If you're just
+                    starting out or looking to strengthen your problem-solving, this post is for you.
                 </p>
             </div>
             <div class="blog-card">
-                <h2>Top 5 JavaScript Tricks</h2>
+                <h2>How to Come Up with Good Projects That Add Value</h2>
                 <div class="meta">May 20, 2024 &middot; by OB</div>
                 <p>
-                    From destructuring to arrow functions, JavaScript offers many features to write cleaner and more efficient code. Here are my top 5 tricks every developer should know.
+                    Stop building yet another Netflix clone. Here’s how to come up with project ideas that solve real
+                    problems, stand out in interviews, and truly grow your developer skills.
                 </p>
             </div>
             <div class="blog-card">
-                <h2>Why I Love Open Source</h2>
+                <h2>My Journey as a Self-Taught Developer</h2>
                 <div class="meta">May 15, 2024 &middot; by OB</div>
                 <p>
-                    Open source is all about collaboration and learning. Contributing to projects has helped me grow as a developer and connect with a vibrant community worldwide.
+                    From free YouTube tutorials to GitHub contributions, this post shares how I taught myself to code,
+                    built real projects, and started carving my own path into the tech world.
+                </p>
+            </div>
+            <div class="blog-card">
+                <h2>Coding Resources That Helped Me Streamline My Learning</h2>
+                <div class="meta">May 10, 2024 &middot; by OB</div>
+                <p>
+                    Learning to code can be overwhelming. In this post, I share the exact tools, platforms, and content
+                    that helped me stay focused, avoid burnout, and actually make progress.
                 </p>
             </div>
         </div>
     </div>
-      <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            document.querySelectorAll('.blog-card').forEach(function(card) {
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll('.blog-card').forEach(function (card) {
                 const comingSoon = document.createElement('div');
                 comingSoon.textContent = 'Coming soon';
                 comingSoon.style.color = '#e67e22';
@@ -139,4 +155,5 @@
     <script src="script.js"></script>
 
 </body>
+
 </html>
