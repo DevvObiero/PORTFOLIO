@@ -45,7 +45,8 @@ Want to personalize it? You can:
 - Customize `style.css` to tweak colors, fonts, and layout.
 - Enhance interactivity in `script.js`.
 
-## 📬 Contact Meeee
+## 📬 Contact Meeee  HIRE MEEEE
+
 Feel free to connect with me:
 - **LinkedIn:** [https://www.linkedin.com/in/paul-obiero-72155b32a](#linkedIn)
 - **GitHub:** [DevObiero](https://github.com/DevObiero)
