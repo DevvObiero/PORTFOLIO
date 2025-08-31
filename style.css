@@ -522,15 +522,11 @@ h2 {
   background-color: transparent;
   border: none;
   cursor: pointer;
-  /* position: fixed; */
-  /* top: 20px; */
-  /* right: 20px; */
-  font-size: 30px;
+  font-size: 25px;
 }
 
 #sun-icon {
-  display: block; /* Sun icon shown by default */
-  animation: fadeIn 4s ease-in-out;
+  display: block; 
 }
 
 #moon-icon {
