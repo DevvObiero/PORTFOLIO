@@ -133,19 +133,6 @@ toggleButton.addEventListener("click", () => {
   }
 });
 
-// Hide the button on scroll down, show it on scroll up
-let lastScrollTop = 0;
-window.addEventListener("scroll", () => {
-  let scrollTop = window.scrollY || document.documentElement.scrollTop;
-  if (scrollTop > lastScrollTop) {
-    // Scrolling down
-    toggleButton.style.display = "none";
-  } else {
-    // Scrolling up
-    toggleButton.style.display = "block";
-  }
-  lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // Prevent negative values
-});
 // download
 
 // document.getElementById("downloadBtn").addEventListener("click", function () {
