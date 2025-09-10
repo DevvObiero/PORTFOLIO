@@ -595,7 +595,19 @@ body.dark-mode .uji {
   display: block;
   border-radius: 8px; /* optional: rounded corners */
 }
+nav ul li a{
+    font-size: 12px;
+}
  
+nav ul{
+  gap :23px
+}
+nav span{
+  padding: 1px;
+  width: 60px;
+  
+  height: 80%;
+}
 
   /* ✅ Responsive font sizes */
 
