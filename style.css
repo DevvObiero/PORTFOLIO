@@ -26,6 +26,7 @@
 }
 html{
     scroll-behavior: smooth;
+      overflow-x: hidden;
 }
 
 
@@ -41,6 +42,7 @@ body {
   font-family: "Pangram";
   background-color: white;
   background-size: 200px 100%;
+    overflow-x: hidden;
 }
 /* 
 .svg {
