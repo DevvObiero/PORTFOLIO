@@ -609,6 +609,10 @@ nav span{
   height: 80%;
 }
 
+nav ul button i{
+font-size:  20px;
+}
+
   /* ✅ Responsive font sizes */
 
   .reveal-icon {
