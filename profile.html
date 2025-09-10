@@ -1,88 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-M0P5HQZ6VP"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-M0P5HQZ6VP');
-</script>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <link
-      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-      rel="stylesheet"
-    />
-    <title>Profile</title>
-  </head>
-  <body class="svg">
-    <style>
-      button {
-        background-color: antiquewhite;
-  
-        border: none;
-        padding: 10px 20px;
-        font-family: 'pangram';
-        font-size: 18px;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: 0.3s;
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M0P5HQZ6VP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-M0P5HQZ6VP');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <title>Profile</title>
+</head>
+
+<body class="svg">
+  <style>
+    .button {
+      background-color: antiquewhite;
+
+      border: none;
+      padding: 10px 20px;
+      font-family: 'pangram';
+      font-size: 18px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
     }
-  
+
     button:hover {
-        background-color: #7D5C38;
-        color: antiquewhite;
+      background-color: #7D5C38;
+      color: antiquewhite;
     }
-  
-    button i {
-        margin-right: 5px;
-    }
+
+    /* button i {
+      margin-right: 5px;
+    } */
   </style>
-    <div class="cursor" id="cursor"></div>
+  <div class="cursor" id="cursor"></div>
 
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="profile.html">Profile</a></li>
-        <li><a href="./blog.html">Blog</a></li>
+  <nav>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="profile.html">Profile</a></li>
+      <li><a href="./blog.html">Blog</a></li>
+      <li><a href="./resume.html">Resume</a></li>
+      <button id="toggle-theme">
+        <i class="bx bx-sun" id="sun-icon"></i>
+        <!-- Sun icon for light mode -->
+        <i class="bx bxs-moon" id="moon-icon"></i>
+        <!-- Moon icon for dark mode -->
+      </button>
 
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-      <span></span>
-    </nav>
-    <button id="toggle-theme">
-      <i class="bx bx-sun" id="sun-icon"></i>
-      <!-- Sun icon for light mode -->
-      <i class="bx bxs-moon" id="moon-icon"></i>
-      <!-- Moon icon for dark mode -->
-    </button>
+    </ul>
+    <span></span>
+  </nav>
 
-    <div class="parent-container">
-      <div class="text5 autoShow">
-        HEY ,I AM <span id="dynamicText"> PAUL OBIERO</span>
-      </div>
+
+  <div class="parent-container">
+    <div class="text5 autoShow">
+      HEY ,I AM <span id="dynamicText"> PAUL OBIERO</span>
     </div>
- 
+  </div>
+
+  </div>
+  <div class="container-profile">
+    <img src="./WhatsApp Image 2025-03-03 at 14.07.16_493ebf29 (2) (1) (1).png" alt="Paul Obiero" class="main-image">
+    <div class="maneno">
+      <h2>PAUL OBIERO</h2>
+      <p>
+        Hey there ,I BUILD MINIMALIST, CLEAN, AND STUNNING WEBSITES—DESIGNS THAT DON’T JUST LOOK GOOD BUT WORK
+        FLAWLESSLY.
+      </p>
+      <button class="uji button" id="downloadBtn">
+        <i class="fas fa-download"></i> Download CV
+      </button>
     </div>
-    <div class="container-profile">
-      <img src="./WhatsApp Image 2025-03-03 at 14.07.16_493ebf29 (2) (1) (1).png" alt="Paul Obiero" class="main-image">
-      <div class="maneno">
-        <h2>PAUL OBIERO</h2>
-        <p>
-Hey there ,I BUILD MINIMALIST, CLEAN, AND STUNNING WEBSITES—DESIGNS THAT DON’T JUST LOOK GOOD BUT WORK FLAWLESSLY.
-        </p>
-        <button class="uji" id="downloadBtn">
-          <i class="fas fa-download"></i> Download CV
-        </button>
-      </div>
-    </div>
-    
-    
-    <!-- <svg
+  </div>
+
+
+  <!-- <svg
       id="Modo_de_aislamiento"
       data-name="Modo de aislamiento"
       xmlns="http://www.w3.org/2000/svg"
@@ -100,7 +101,7 @@ Hey there ,I BUILD MINIMALIST, CLEAN, AND STUNNING WEBSITES—DESIGNS THAT DON�
         transition="stroke-dashoffset 2s ease-in-out"
       />
     </svg> -->
-    <!-- <h2 class="autoShow">ABOUT ME</h2>
+  <!-- <h2 class="autoShow">ABOUT ME</h2>
     <div class="cont" id="text">
       <p class="autoShow">
         HELLO! MY NAME IS PAUL OBIERO, A WEB DEVELOPER PASSIONATE ABOUT CRAFTING
@@ -128,62 +129,52 @@ Hey there ,I BUILD MINIMALIST, CLEAN, AND STUNNING WEBSITES—DESIGNS THAT DON�
       <br />
     </div> -->
 
-    <div class="text2">
-      <h5 id="autoBlur">Let's work together.</h5>
-      <h5 id="autoBlur">Get in touch.</h5>
-      <a href="https://instagram.com/obinazo.dev" target="_blank" id="autoBlur">
-        <i class="bx bxl-instagram"></i>
-      </a>
-      <a href="mailto:paulonyangoobiero@outlook.com" id="autoBlur">
-        <i class="bx bx-envelope"></i>
-      </a>
-      <a
-        href="https://www.linkedin.com/in/paul-obiero-72155b32a/"
-        target="_blank"
-        id="autoBlur"
-      >
-        <i class="bx bxl-linkedin"></i>
-      </a>
+  <div class="text2">
+    <h5 id="autoBlur">Let's work together.</h5>
+    <h5 id="autoBlur">Get in touch.</h5>
+    <a href="https://instagram.com/obinazo.dev" target="_blank" id="autoBlur">
+      <i class="bx bxl-instagram"></i>
+    </a>
+    <a href="mailto:paulonyangoobiero@outlook.com" id="autoBlur">
+      <i class="bx bx-envelope"></i>
+    </a>
+    <a href="https://www.linkedin.com/in/paul-obiero-72155b32a/" target="_blank" id="autoBlur">
+      <i class="bx bxl-linkedin"></i>
+    </a>
+  </div>
+  <footer>
+    <div class="coolness">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20%" height="20%" viewbox="0 0 160 160" fill="none"
+        class="osmo-icon-svg">
+        <path
+          d="M94.8284 53.8578C92.3086 56.3776 88 54.593 88 51.0294V0H72V59.9999C72 66.6273 66.6274 71.9999 60 71.9999H0V87.9999H51.0294C54.5931 87.9999 56.3777 92.3085 53.8579 94.8283L18.3431 130.343L29.6569 141.657L65.1717 106.142C67.684 103.63 71.9745 105.396 72 108.939V160L88.0001 160L88 99.9999C88 93.3725 93.3726 87.9999 100 87.9999H160V71.9999H108.939C105.407 71.9745 103.64 67.7091 106.12 65.1938L106.142 65.1716L141.657 29.6568L130.343 18.3432L94.8284 53.8578Z"
+          fill="currentColor"></path>
+      </svg>
     </div>
-    <footer>
-      <div class="coolness">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="20%"
-          height="20%"
-          viewbox="0 0 160 160"
-          fill="none"
-          class="osmo-icon-svg"
-        >
-          <path
-            d="M94.8284 53.8578C92.3086 56.3776 88 54.593 88 51.0294V0H72V59.9999C72 66.6273 66.6274 71.9999 60 71.9999H0V87.9999H51.0294C54.5931 87.9999 56.3777 92.3085 53.8579 94.8283L18.3431 130.343L29.6569 141.657L65.1717 106.142C67.684 103.63 71.9745 105.396 72 108.939V160L88.0001 160L88 99.9999C88 93.3725 93.3726 87.9999 100 87.9999H160V71.9999H108.939C105.407 71.9745 103.64 67.7091 106.12 65.1938L106.142 65.1716L141.657 29.6568L130.343 18.3432L94.8284 53.8578Z"
-            fill="currentColor"
-          ></path>
-        </svg>
-      </div>
-      <div class="text3">© Paul Obiero 2025</div>
+    <div class="text3">© Paul Obiero 2025</div>
 
-      <div class="text4">
-        <ul>
-          <li>
-            <a href="https://www.instagram.com/obinazo.dev/">Instagram</a>
-          </li>
-          <li><a href="">Linkedin</a></li>
-          <li><a href="">Mail</a></li>
-        </ul>
-      </div>
-    </footer>
-    
-    <script>
-      document.getElementById("downloadBtn").addEventListener("click", function () {
-          const link = document.createElement("a");
-          link.href = "./Paul Obiero -  Frontend - Resume (2).pdf"; // Ensure this path is correct
-          link.download = "Paul_Obiero_CV.pdf"; // This is the name it will be saved as
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-      });
+    <div class="text4">
+      <ul>
+        <li>
+          <a href="https://www.instagram.com/obinazo.dev/">Instagram</a>
+        </li>
+        <li><a href="">Linkedin</a></li>
+        <li><a href="">Mail</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("downloadBtn").addEventListener("click", function () {
+      const link = document.createElement("a");
+      link.href = "./Paul Obiero -  Frontend - Resume (2).pdf"; // Ensure this path is correct
+      link.download = "Paul_Obiero_CV.pdf"; // This is the name it will be saved as
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
   </script>
-    <script src="script.js"></script>
-  </body>
+  <script src="script.js"></script>
+</body>
+
 </html>

@@ -17,7 +17,7 @@
 
   <script src="https://kit.fontawesome.com/YOUR_FONT_AWESOME_KIT.js" crossorigin="anonymous"></script>
   <style>
-    button {
+    .button {
       background-color: antiquewhite;
 
       border: none;
@@ -47,19 +47,26 @@
 <body>
   <div class="cursor" id="cursor"></div>
 
+
   <nav>
     <ul>
-      <li><a href="index.html">Home</a></li>
+      <li><a href="#">Home</a></li>
       <li><a href="profile.html">Profile</a></li>
       <li><a href="./blog.html">Blog</a></li>
+      <li><a href="./resume.html">Resume</a></li>
+      <button id="toggle-theme">
+        <i class="bx bx-sun" id="sun-icon"></i>
+        <!-- Sun icon for light mode -->
+        <i class="bx bxs-moon" id="moon-icon"></i>
+        <!-- Moon icon for dark mode -->
+      </button>
 
-      <li><a href="contact.html">Contact</a></li>
     </ul>
     <span></span>
   </nav>
 
   <div class="text2">
-    <button class="uji" id="downloadBtn">
+    <button class="uji button" id="downloadBtn">
       <i class="fas fa-download"></i> Download CV
     </button>
     <br>
