@@ -60,7 +60,7 @@ nav {
   justify-content: center;
   background-color: rgba(243, 242, 241, 0.839);
   padding: 14px 30px;
-  border-radius: 25px;
+  border-radius: 20px;
   width: fit-content;
   margin: 0 auto;
   position: sticky;
@@ -88,7 +88,8 @@ nav ul {
   padding: 0;
   margin: 0;
   display: flex;
-  gap: 40px;
+  gap: 42px;
+  padding-left:-4px ;
 }
 
 nav span {
@@ -98,7 +99,7 @@ nav span {
   width: 80px;
   height: 85%;
   background-color: #fff;
-  border-radius: 25px;
+  border-radius: 20px;
   transition: 0.3s ease;
   z-index: 0;
 }
