@@ -441,7 +441,7 @@ footer a:hover {
   }
 }
 
-#autoBlur {
+/* #autoBlur {
   animation: autoBlurAnimation linear both;
   animation-timeline: view();
 }
@@ -457,7 +457,7 @@ footer a:hover {
   100% {
     filter: blur(40px);
   }
-}
+} */
 /* .text2 i:hover {
   cursor: pointer !important;
   color: bisque;
