@@ -54,18 +54,18 @@ body {
 
 nav {
   display: flex;
+  position: fixed;
   top: 40px;
-
-  position: relative;
+  left: 50%;
+  transform: translateX(-50%); /* keep it centered */
   justify-content: center;
   background-color: rgba(243, 242, 241, 0.839);
   padding: 14px 30px;
   border-radius: 20px;
   width: fit-content;
-  margin: 0 auto;
-  position: sticky;
   z-index: 9999;
 }
+
 
 nav.scrolled {
   /* background-color: rgba(243, 242, 241, 0.839); */
@@ -75,6 +75,13 @@ nav.scrolled {
   ); /* i used this because it adds the frosted glass effect */
   -webkit-backdrop-filter: blur(10px); /* For Safari compatibility */
 }
+
+header {
+  padding-top: 40px;
+  
+  /* pushes nav down visually */
+}
+
 
 nav ul a {
   position: relative;
