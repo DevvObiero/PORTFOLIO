@@ -594,6 +594,10 @@ body.dark-mode .uji {
 /* mobile devices  */
 
 @media (max-width: 477px) {
+  .uji {
+    font-size: 0.8rem !important;
+  }
+
    .grid-container {
     grid-template-columns: 1fr; /* 1 column on small screens */
     padding: 20px ;
