@@ -165,12 +165,12 @@ window.addEventListener("mousemove", (e) => {
 // cursor transition
 const cursor = document.querySelector(".cursor");
 const hoverElements = document.querySelectorAll(
-  ".grid-item a, .grid-item img,.custom-video "
+  ".grid-item a, nav ul li a ,.icons i,footer li a, .grid-item img,.custom-video "
 ); // Added video elements
 
 hoverElements.forEach((element) => {
   element.addEventListener("mouseenter", () => {
-    cursor.style.transform = "scale(1.5)"; // Increase size
+    cursor.style.transform = "scale(7.5)"; // Increase size
   });
 
   element.addEventListener("mouseleave", () => {

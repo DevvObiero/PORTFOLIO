@@ -1017,13 +1017,13 @@ font-size:  20px;
 
 .cursor {
   position: fixed;
-  height: 50px;
-  width: 50px;
+  height: 10px;
+  width: 10px;
   z-index: 111111111;
   border-radius: 100%;
   background-color: #fff;
-  margin-left: -21px;
-  margin-top: -21px;
+  margin-left: -10px;
+  margin-top: -11px;
   backdrop-filter: grayscale(1);
   mix-blend-mode: difference;
   pointer-events: none;
