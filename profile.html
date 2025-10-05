@@ -22,6 +22,116 @@
 <body>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+
+    body {
+      font-family: 'Manrope', sans-serif;
+      /* background-color: #ffffff; */
+
+    }
+
+    .img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 0;
+      box-shadow: none !important;
+    }
+
+    h1 {
+      font-size: 4rem;
+      font-weight: 900;
+      letter-spacing: -0.15rem;
+      line-height: 1.125;
+      text-align: center;
+    }
+
+    .hero,
+    .outro,
+    .about {
+      position: relative;
+      width: 100%;
+      height: 100svh;
+      display: flex;
+      padding: 2rem;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hero-img,
+    .outro-img {
+      width: 300px;
+      aspect-ratio: 5/7;
+      overflow: hidden;
+    }
+
+    .services {
+      position: relative;
+      width: 100%;
+      height: 100svh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .services-header {
+      position: relative;
+      width: 100%;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .services-header img {
+      /* width: auto; */
+      height: auto;
+      /* max-width: 100%; */
+      object-fit: contain;
+      filter: invert(1);
+    }
+
+
+    .services-header:nth-child(1),
+    .services-header:nth-child(3) {
+      transform: translateX(100%) translateY(0%);
+    }
+
+
+
+
+    .services-header:nth-child(2) {
+      transform: translateX(-100%) translateY(0%);
+      z-index: 2;
+    }
+
+
+
+    .services-copy {
+      position: relative;
+      height: 100%;
+      margin-top: 155svh;
+      width: 100%;
+      text-align: center;
+      padding: 2rem 2rem 25svh 2rem;
+    }
+
+    .animate-text {
+      position: relative;
+      width: 60%;
+      margin: 0 auto;
+      color: #4f4f4f;
+      --clip-value: 100%;
+    }
   </style>
   <div class="cursor" id="cursor"></div>
 
@@ -41,44 +151,44 @@
     </ul>
     <span></span>
   </nav>
-  <h1 class="animate-text">
+  <!-- <h1 class="animate-text">
     PAGE UNDER CONSTRUCTION IN A FEW DAYS 🚧🚧🚧🚧🚧
 
-  </h1>
+  </h1> -->
   <section class="hero">
     <div class="hero-img">
-      <img src="./WhatsApp Image 2025-03-03 at 14.07.16_493ebf29 (2) (1) (1).png" alt="me">
+      <img class="img" src="./WhatsApp Image 2025-03-03 at 14.07.16_493ebf29 (2) (1) (1).png" alt="me">
     </div>
-
-
-    <section class="about">
-      <h1>
-        A space for work shaped wtih clarity and intentnion .Each poject follows a simple path from theought to
-        form,from form to function
-      </h1>
-    </section>
-
-    <section class="services">
-      <div class="services-header">
-        <img src="./whatido.svg" alt="">
-      </div>
-      <div class="services-header">
-        <img src="./whatido.svg" alt="">
-      </div>
-      <div class="services-header">
-        <img src="./whatido.svg" alt="">
-      </div>
-    </section>
-
-    <section class="services-copy">
-      <h1 class="animate-text">
-        I create website and digital experiences that value clarity above excess, Through minimal form and precise
-        detail.I aim to build work that lasts and offers a quiet sense of order
-
-      </h1>
-    </section>
-
   </section>
+
+  <section class="about">
+    <h1 class="animate-text">
+      A space for work shaped with clarity and intentnion .Each poject follows a simple path from theought to
+      form,from form to function
+    </h1>
+  </section>
+
+  <section class="services">
+    <div class="services-header">
+      <img src="./whatido.svg" alt="">
+    </div>
+    <div class="services-header">
+      <img src="./whatido.svg" alt="">
+    </div>
+    <div class="services-header">
+      <img src="./whatido.svg" alt="">
+    </div>
+  </section>
+
+  <section class="services-copy">
+    <h1 class="animate-text">
+      I create website and digital experiences that value clarity above excess, Through minimal form and precise
+      detail.I aim to build work that lasts and offers a quiet sense of order
+
+    </h1>
+  </section>
+
+
   <section class="outro">
     <div class="outro-img">
       <img src="./WhatsApp Image 2025-03-03 at 14.07.16_493ebf29 (2) (1) (1).png" alt="me">
