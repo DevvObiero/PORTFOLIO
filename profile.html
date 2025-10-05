@@ -34,6 +34,9 @@
       box-sizing: border-box;
     }
 
+    nav {
+      color: black !important;
+    }
 
     body {
       font-family: 'Manrope', sans-serif;
@@ -99,14 +102,19 @@
       align-items: center;
     }
 
+
+
+    /* Default (light mode) - invert the image */
     .services-header img {
-      /* width: auto; */
       height: auto;
-      /* max-width: 100%; */
       object-fit: contain;
       filter: invert(1);
     }
 
+    /* Dark mode - remove the invert filter */
+    body.dark-mode .services-header img {
+      filter: invert(0);
+    }
 
     .services-header:nth-child(1),
     .services-header:nth-child(3) {
@@ -147,7 +155,8 @@
       position: absolute;
       top: 0;
       left: 0;
-      color: #fff;
+      color: #000;
+      /* Black for light mode */
       width: 100%;
       height: 100%;
       clip-path: inset(0 0 var(--clip-value) 0);
@@ -155,6 +164,10 @@
       pointer-events: none;
     }
 
+    /* White text in dark mode */
+    body.dark-mode .animate-text::before {
+      color: #fff;
+    }
 
     @media (max-width: 768px) {
       .animate-text {
@@ -194,7 +207,7 @@
 
   <section class="about">
     <h1 class="animate-text">
-      A space for work shaped with clarity and intentnion .Each poject follows a simple path from theought to
+      A space for work shaped with clarity and intentnion .Each project follows a simple path from thought to
       form,from form to function
     </h1>
   </section>
@@ -213,7 +226,7 @@
 
   <section class="services-copy">
     <h1 class="animate-text">
-      I create website and digital experiences that value clarity above excess, Through minimal form and precise
+      I create websites and digital experiences that value clarity above excess, Through minimal form and precise
       detail.I aim to build work that lasts and offers a quiet sense of order
 
     </h1>
@@ -257,23 +270,6 @@
     document.addEventListener("DOMContentLoaded", () => {
       gsap.registerPlugin(ScrollTrigger);
 
-      const lenis = new Lenis({
-        duration: 1.2, // how smooth it feels (try 1.2–1.6)
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // nice ease-out
-        smoothWheel: true,
-        smoothTouch: false, // set true if you want smooth scroll on mobile too
-      });
-
-      // keep ScrollTrigger synced
-      lenis.on("scroll", ScrollTrigger.update);
-
-      // this replaces gsap.ticker
-      function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
-      }
-      requestAnimationFrame(raf);
-
       // Animate text on scroll
       document.querySelectorAll(".animate-text").forEach((textElement) => {
         textElement.setAttribute("data-text", textElement.textContent.trim());
@@ -282,12 +278,26 @@
           trigger: textElement,
           start: "top 50%",
           end: "bottom 50%",
-          scrub: 1,
+          scrub: 0.5,
           onUpdate: (self) => {
             const clipValue = Math.max(0, 100 - self.progress * 100);
             textElement.style.setProperty("--clip-value", `${clipValue}%`);
           },
         });
+      });
+
+      // Services header horizontal animation
+      ScrollTrigger.create({
+        trigger: '.services',
+        start: 'top bottom',
+        end: 'top top',
+        scrub: 1,
+        onUpdate(self) {
+          const headers = document.querySelectorAll('.services-header');
+          gsap.set(headers[0], { x: `${100 - self.progress * 100}%` });
+          gsap.set(headers[1], { x: `${-100 + self.progress * 100}%` });
+          gsap.set(headers[2], { x: `${100 - self.progress * 100}%` });
+        }
       });
     });
   </script>
