@@ -244,9 +244,8 @@ body.dark-mode .custom-svg {
 /* Light mode */
 body.light-mode .custom-svg {
   color: black; /* Change stroke color to black in light mode */
+  
 }
-
-/* svg draw  */
 
 .text {
   display: flex;
