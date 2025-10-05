@@ -299,6 +299,40 @@
           gsap.set(headers[2], { x: `${100 - self.progress * 100}%` });
         }
       });
+      ScrollTrigger.create({
+        trigger: '.services',
+        start: 'top top',
+        end: `+=${window.innerHeight * 2}`,
+        pin: true,
+        scrub: 1,
+        pinSpacing: false,
+        onUpdate: (self) => {
+          const headers = document.querySelectorAll('.services-header');
+
+          if (self.progress <= 0.5) {
+            const yProgress = self.progress / 0.5;
+            gsap.set(headers[0], { y: `${yProgress * 100}%` });
+            gsap.set(headers[2], { y: `${yProgress * -100}%` });
+          } else {
+            gsap.set(headers[0], { y: `100%` });
+            gsap.set(headers[2], { y: `-100%` });
+
+            const ScaleProgress = (self.progress - 0.5) / 0.5;
+            const minScale = window.innerWidth <= 1000 ? 0.3 : 0.1;
+            const scale = 1 - ScaleProgress * (1 - minScale);
+
+            headers.forEach((header) => {
+              gsap.set(header, { scale })
+            });
+          }
+
+
+        }
+      })
+
+
+
+
     });
   </script>
 
