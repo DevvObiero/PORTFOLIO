@@ -14,8 +14,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
+
   <title>Profile</title>
 </head>
 
@@ -70,6 +75,8 @@
       width: 300px;
       aspect-ratio: 5/7;
       overflow: hidden;
+      border-radius: 0 !important;
+      box-shadow: none !important;
     }
 
     .services {
@@ -129,8 +136,31 @@
       position: relative;
       width: 60%;
       margin: 0 auto;
+      font-weight: 800;
       color: #4f4f4f;
+      /* base text color (dimmed) */
       --clip-value: 100%;
+    }
+
+    .animate-text::before {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      color: #fff;
+      width: 100%;
+      height: 100%;
+      clip-path: inset(0 0 var(--clip-value) 0);
+      transition: clip-path 0.3s ease-out;
+      pointer-events: none;
+    }
+
+
+    @media (max-width: 768px) {
+      .animate-text {
+        width: 100%;
+        font-size: 2rem;
+      }
     }
   </style>
   <div class="cursor" id="cursor"></div>
@@ -157,7 +187,8 @@
   </h1> -->
   <section class="hero">
     <div class="hero-img">
-      <img class="img" src="./WhatsApp Image 2025-03-03 at 14.07.16_493ebf29 (2) (1) (1).png" alt="me">
+      <img class="img" src="./WhatsApp Image 2025-10-05 at 20.50.41_1d3fdcab.jpg" alt="me">
+
     </div>
   </section>
 
@@ -191,7 +222,8 @@
 
   <section class="outro">
     <div class="outro-img">
-      <img src="./WhatsApp Image 2025-03-03 at 14.07.16_493ebf29 (2) (1) (1).png" alt="me">
+      <img class="img" src="./WhatsApp Image 2025-10-05 at 21.21.10_5b3f6bbd.jpg" alt="me">
+
     </div>
   </section>
 
@@ -221,16 +253,46 @@
     </div>
   </footer>
 
-  <!-- <script>
-    document.getElementById("downloadBtn").addEventListener("click", function () {
-      const link = document.createElement("a");
-      link.href = "./Paul Obiero -  Frontend - Resume (2).pdf"; // Ensure this path is correct
-      link.download = "Paul_Obiero_CV.pdf"; // This is the name it will be saved as
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      gsap.registerPlugin(ScrollTrigger);
+
+      const lenis = new Lenis({
+        duration: 1.2, // how smooth it feels (try 1.2–1.6)
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // nice ease-out
+        smoothWheel: true,
+        smoothTouch: false, // set true if you want smooth scroll on mobile too
+      });
+
+      // keep ScrollTrigger synced
+      lenis.on("scroll", ScrollTrigger.update);
+
+      // this replaces gsap.ticker
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+      requestAnimationFrame(raf);
+
+      // Animate text on scroll
+      document.querySelectorAll(".animate-text").forEach((textElement) => {
+        textElement.setAttribute("data-text", textElement.textContent.trim());
+
+        ScrollTrigger.create({
+          trigger: textElement,
+          start: "top 50%",
+          end: "bottom 50%",
+          scrub: 1,
+          onUpdate: (self) => {
+            const clipValue = Math.max(0, 100 - self.progress * 100);
+            textElement.style.setProperty("--clip-value", `${clipValue}%`);
+          },
+        });
+      });
     });
-  </script> -->
+  </script>
+
+
   <script src="script.js"></script>
 
 </body>
