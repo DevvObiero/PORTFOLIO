@@ -999,6 +999,8 @@ font-size:  20px;
   color: #ffffff;
 }
 
+
+
 .github-btn:hover {
   background-color: #89643c;
 }
@@ -1094,7 +1096,11 @@ font-size:  20px;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    
   }
+  .lg-txt{
+  font-size: 4.0rem !important;
+}
 
   .main-image,
   .maneno {
