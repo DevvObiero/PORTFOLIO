@@ -144,13 +144,18 @@ nav span {
   border-radius: 15px;
 }
 .large-text {
-  font-size: 8rem;
+  font-size: 5.3rem;
   font-weight: bold;
   margin: 0;
+
   letter-spacing: -5px;
   position: relative;
   animation: breathe 5s ease-in-out infinite, fadeIn 3s ease-in-out;
   /* animation: fadeIn 3s ease-in-out; */
+}
+#large-textt {
+  font-size: 9.3rem !important; 
+ 
 }
 
 @keyframes fadeIn {
@@ -932,7 +937,7 @@ font-size:  20px;
   }
 
   .large-text {
-    font-size: 10rem;
+    font-size: 3rem !important;
     font-weight: bold;
     margin: 0;
     letter-spacing: -5px;
