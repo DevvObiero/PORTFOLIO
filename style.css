@@ -601,7 +601,10 @@ body.dark-mode .uji {
   .uji {
     font-size: 0.8rem !important;
   }
-
+#large-textt {
+  font-size: 4.3rem !important; 
+ 
+}
    .grid-container {
     grid-template-columns: 1fr; /* 1 column on small screens */
     padding: 20px ;
