@@ -935,8 +935,23 @@ font-size:  20px;
   }
 }
 @media (min-width: 1900px) {
-  .custom-svg {
+  /* .custom-svg {
     display: none; /* Hides the SVG on 1020px and above */
+  } */
+
+.custom-svg {
+  width: 100%; /* Adjust size to be responsive */
+  max-width: 2900px; /* Set a maximum width */
+  height: 100px; /* Maintain aspect ratio */
+
+}
+  .custom-svg .cls {
+    fill: none; /* Transparent fill */
+    stroke: currentColor; /* Use currentColor to dynamically change stroke color */
+    stroke-width: 1.5px; /* Adjust stroke thickness */
+    stroke-dasharray: 5000; /* For animation, set path length */
+    stroke-dashoffset: 5000; /* Initially hidden */
+    transition: stroke-dashoffset 2s ease-in-out; /* Animation timing */
   }
 
   .large-text {
@@ -952,7 +967,7 @@ font-size:  20px;
     position: absolute;
     animation: fadeIn 6s ease-in-out;
   }
-}
+
 /* project page  */
 
 #cont {
