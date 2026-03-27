@@ -52,6 +52,36 @@
       box-shadow: none !important;
     }
 
+    .hero-img {
+      position: relative;
+      display: inline-block;
+      cursor: none;
+      /* hide default cursor over image */
+    }
+
+    .cursor-tooltip {
+      position: fixed;
+      pointer-events: none;
+      opacity: 0;
+      transform: translate(-50%, -130%) scale(0.85);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      background: #fff;
+      color: #111;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 999px;
+      white-space: nowrap;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.13);
+      z-index: 9999;
+      letter-spacing: 0.01em;
+    }
+
+    .cursor-tooltip.visible {
+      opacity: 1;
+      transform: translate(-50%, -130%) scale(1);
+    }
+
     h1 {
       font-size: 4rem;
       font-weight: 900;
@@ -206,7 +236,7 @@
   <section class="hero">
     <div class="hero-img">
       <img class="img" src="./me.png" alt="me">
-
+      <div class="cursor-tooltip">Click me ✦</div>
     </div>
   </section>
 
@@ -290,7 +320,16 @@
           },
         });
       });
+      const img = document.querySelector('.img');
+      const tooltip = document.querySelector('.cursor-tooltip');
 
+      img.addEventListener('mouseenter', () => tooltip.classList.add('visible'));
+      img.addEventListener('mouseleave', () => tooltip.classList.remove('visible'));
+
+      document.addEventListener('mousemove', (e) => {
+        tooltip.style.left = e.clientX + 'px';
+        tooltip.style.top = e.clientY + 'px';
+      });
       // Services header horizontal animation
       ScrollTrigger.create({
         trigger: '.services',
