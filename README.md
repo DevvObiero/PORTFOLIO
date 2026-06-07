@@ -15,8 +15,6 @@ Welcome to my personal portfolio! This is a sleek, minimalist design showcasing 
 - **CSS3** – Custom styling with Flexbox, Grid, and animations
 - **JavaScript (ES6+)** – Interactive elements and dynamic behavior
 
-
-
 ## 🌐 Live Demo
 [paulobiero.netlify.app](#https://www.linkedin.com/in/paul-obiero-72155b32a) 
 
