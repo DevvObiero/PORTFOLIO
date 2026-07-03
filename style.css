@@ -279,7 +279,7 @@ body.light-mode .custom-svg {
   gap: 10px;
   padding-top: 100px;
 }
-.grid-container {
+/* .grid-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 30px;
@@ -287,14 +287,14 @@ body.light-mode .custom-svg {
   margin: 50px auto;
   align-items: center;
   padding-left: 50px;
-}
+} */
 .grid-container img {
   filter: grayscale(100%); /* Make images black & white */
   transition: filter 0.5s ease-in-out; /* Smooth transition */
 }
 
 .grid-container img:hover {
-  filter: grayscale(0%); /* Restore color on hover */
+  filter: grayscale(0%); 
 }
 
 section img {
