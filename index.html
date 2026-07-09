@@ -25,7 +25,18 @@
   <meta name="robots" content="index, follow" />
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="/favicon.ico" />
+  <link rel="stylesheet" href="style.css">
 
+  <!-- 1. The Import Map -->
+  <script type="importmap">
+        {
+            "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/+esm",
+                "gsap": "https://cdn.jsdelivr.net/npm/gsap@3.12.5/+esm",
+                "gsap/SplitText": "./SplitText.js"
+            }
+        }
+    </script>
   <!-- Styles -->
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
@@ -119,7 +130,7 @@
   <div id="projects" class="text autoShow">
     <h4>MY PROJECTS</h4>
   </div>
-  <section class="slider">
+  <div class="slider">
 
     <div class="slide-content">
       <div class="slide-title">
@@ -132,7 +143,7 @@
         </p>
       </div>
     </div>
-  </section>
+  </div>
   <!-- <section class="grid-container">
     <div class="grid-item autoShow">
       <a href="p2.html">
@@ -229,7 +240,7 @@
   </footer>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
-  <script src="script.js"></script>
+  <script type="module" src="./script.js"></script>
 </body>
 
 </html>
