@@ -33,6 +33,7 @@
             "imports": {
                 "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/+esm",
                 "gsap": "https://cdn.jsdelivr.net/npm/gsap@3.12.5/+esm",
+                "gsap/ScrollTrigger": "https://cdn.jsdelivr.net/npm/gsap@3.12.5/ScrollTrigger/+esm",
                 "gsap/SplitText": "./SplitText.js"
             }
         }
@@ -107,7 +108,6 @@
       fill="none" stroke="currentColor" stroke-width="4px" stroke-dasharray="4000" stroke-dashoffset="4000"
       transition="stroke-dashoffset 2s ease-in-out" />
   </svg>
-
   <div class="containerr" id="cont">
     <p class="autoShow uji">Front-end</p>
     <p class="autoShow uji">Software-Engineer</p>
@@ -131,75 +131,10 @@
     <h4>MY PROJECTS</h4>
   </div>
   <div class="slider">
-
-    <div class="slide-content">
-      <div class="slide-title">
-        <h1>Project 1</h1>
-      </div>
-      <div class="slide-description">
-        <p>Description for Project 1
-          THe mere description of the project goes here. It can be a brief overview of what the project is about, its
-          features, and any other relevant information that gives the viewer an idea of what to expect.
-        </p>
-      </div>
-    </div>
+    <!-- Slide content is now built entirely by script.js from slides.js,
+         so the title/description shown always match the image being
+         rendered. See buildSlideContent() in script.js. -->
   </div>
-  <!-- <section class="grid-container">
-    <div class="grid-item autoShow">
-      <a href="p2.html">
-        <img src="./266shots_so.png" loading="lazy" alt="Git mentor website" />
-      </a>
-      <p></p>
-    </div>
-    <div class="grid-item autoShow">
-      <a href="p3.html">
-        <img src="./402shots_so.png" loading="lazy" alt="wines and spirits" />
-      </a>
-      <p></p>
-    </div>
-    <div class="grid-item autoShow">
-      <a href="p8.html">
-        <img src="./463_1x_shots_so.webp" loading="lazy" alt="image 2" />
-      </a>
-      <p></p>
-    </div>
-
-    <div class="grid-item autoShow">
-    
-      <a href="p9.html">
-        <img src="./746shots_so (1).png" loading="lazy" alt="wines and spirits" />
-      </a>
-
-      <div class="overlay"></div>
-   
-      <p></p>
-    </div>
-    <div class="grid-item autoShow">
-  
-      <a href="p10.html">
-        <img src="./169shots_so (1).png" loading="lazy" alt="wines and spirits" />
-      </a>
-
-      <div class="overlay"></div>
-  
-      <p></p>
-    </div>
-
-    <div class="grid-item autoShow">
-
-      <a href="p1.html">
-        <img src="./760_1x_shots_so.webp" loading="lazy" alt="wines and spirits" />
-      </a>
-
-      <div class="overlay"></div>
-  
-      <p></p>
-    </div>
-
-
-
-
-  </section> -->
   <div class="text2 icons">
     <h5 id="autoBlur">Let's work together.</h5>
     <h5 id="autoBlur">Get in touch.</h5>

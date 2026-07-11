@@ -95,13 +95,22 @@ const texts = [
   "A TECH ENTHUSIAST"
 ];
 
-let currentIndex = 0;
+// Renamed from `currentIndex` -> `profileTextIndex`.
+// The slider code further down also declared `let currentIndex = 0;`.
+// Having two `let currentIndex` declarations in the same module scope is
+// a SyntaxError ("Identifier 'currentIndex' has already been declared"),
+// which silently killed the ENTIRE script.js on every page - nothing
+// below this point ever ran (nav indicator, dark mode toggle, custom
+// cursor, icon reveal-on-scroll, and the whole project slider/WebGL
+// setup). Renaming this one fixes that.
+let profileTextIndex = 0;
 
 function changeText() {
   const dynamicText = document.getElementById("dynamicText");
+  if (!dynamicText) return; // this element only exists on profile.html
 
-  currentIndex = (currentIndex + 1) % texts.length; // Cycle through array
-  dynamicText.textContent = texts[currentIndex];
+  profileTextIndex = (profileTextIndex + 1) % texts.length; // Cycle through array
+  dynamicText.textContent = texts[profileTextIndex];
 }
 
 setInterval(changeText, 2000);
@@ -133,24 +142,7 @@ toggleButton.addEventListener("click", () => {
   }
 });
 
-// download
-
-// document.getElementById("downloadBtn").addEventListener("click", function () {
-//   const link = document.createElement("a");
-//   link.href = "./Paul Obiero - Full Stack Web Developer - Resume.pdf";
-//   link.download = "My_CV.pdf";
-//   document.body.appendChild(link);
-//   link.click();
-//   document.body.removeChild(link);
-// });
-
 // movement of the cursor
-
-window.addEventListener("mousemove", (e) => {
-  let cursor = document.getElementById("cursor");
-  cursor.style.top = "${e.clientY}px";
-  cursor.style.left = "${e.clientX}px";
-});
 
 window.addEventListener("mousemove", (e) => {
   let cursor = document.getElementById("cursor");
@@ -203,12 +195,13 @@ icons.forEach((icon) => observer.observe(icon));
 
 
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 import * as THREE from "three";
 import { vertexShader, fragmentShader } from "./shaders.js";
 import { slides } from "./slides.js";
 
-gsap.registerPlugin(SplitText);
+gsap.registerPlugin(SplitText, ScrollTrigger);
 
 let currentIndex = 0;
 let isTransitioning = false;
@@ -321,13 +314,27 @@ const textureLoader = new THREE.TextureLoader();
 const textures = [];
 
 for (const slide of slides) {
-    const texture = await new Promise((resolve) =>
-        textureLoader.load(slide.image, resolve)
-    );
-    texture.minFilter = THREE.LinearFilter;
-    texture.magFilter = THREE.LinearFilter;
-    texture.wrapS = THREE.ClampToEdgeWrapping;
-    texture.wrapT = THREE.ClampToEdgeWrapping;
+    const texture = await new Promise((resolve) => {
+        textureLoader.load(
+            slide.image,
+            resolve,
+            undefined,
+            (err) => {
+                console.error(
+                    `Could not load project image "${slide.title}" (${slide.image}):`,
+                    err
+                );
+                resolve(null); // don't let one bad image hang the whole slider
+            }
+        );
+    });
+
+    if (texture) {
+        texture.minFilter = THREE.LinearFilter;
+        texture.magFilter = THREE.LinearFilter;
+        texture.wrapS = THREE.ClampToEdgeWrapping;
+        texture.wrapT = THREE.ClampToEdgeWrapping;
+    }
     textures.push(texture);
 }
 
@@ -388,7 +395,14 @@ function handleResize() {
 window.addEventListener("resize", handleResize);
 handleResize();
 
-const initialSlide = document.querySelector(".slide-content");
+// Build the first slide from slides.js (instead of relying on the
+// hardcoded "Project 1" placeholder that used to live in index.html) so
+// the title/description on screen always match the image actually being
+// rendered by the shader.
+const initialSlide = buildSlideContent(slides[0]);
+initialSlide.style.opacity = "1";
+slider.appendChild(initialSlide);
+
 const initialTitle = splitTitle(initialSlide);
 const initialLines = splitDescription(initialSlide);
 
@@ -404,8 +418,11 @@ gsap.fromTo(
     { y: "0%", duration: 0.8, stagger: 0.025, ease: "power2.out", delay: 0.2 }
 );
 
-function transition() {
-    if (isTransitioning) return;
+// Advances the slider to `nextIndex`, playing the same ripple / text
+// crossfade that used to run on click. Called from the ScrollTrigger
+// below instead of a click handler.
+function goToSlide(nextIndex) {
+    if (isTransitioning || nextIndex === currentIndex) return;
     isTransitioning = true;
 
     if (rippleTween) {
@@ -414,7 +431,6 @@ function transition() {
         rippleTween = null;
     }
 
-    const nextIndex = (currentIndex + 1) % slides.length;
     const currentSlide = document.querySelector(".slide-content");
 
     const exitTimeline = animateTextOut(currentSlide);
@@ -422,7 +438,7 @@ function transition() {
     uniforms.uTexCurrent.value = textures[currentIndex];
     uniforms.uTexNext.value = textures[nextIndex];
     uniforms.uProgress.value = 0.0;
-    let clickUnlocked = false;
+    let rippleUnlocked = false;
 
     rippleTween = gsap.to(uniforms.uProgress, {
         value: rippleConfig.endValue,
@@ -430,8 +446,8 @@ function transition() {
         ease: rippleConfig.ease,
         delay: 0.3,
         onUpdate() {
-            if (!clickUnlocked && uniforms.uProgress.value > 0.7) {
-                clickUnlocked = true;
+            if (!rippleUnlocked && uniforms.uProgress.value > 0.7) {
+                rippleUnlocked = true;
                 currentIndex = nextIndex;
                 isTransitioning = false;
             }
@@ -441,7 +457,7 @@ function transition() {
             uniforms.uProgress.value = 0.0;
             rippleTween = null;
 
-            if (!clickUnlocked) {
+            if (!rippleUnlocked) {
                 currentIndex = nextIndex;
                 isTransitioning = false;
             }
@@ -459,7 +475,26 @@ function transition() {
     });
 }
 
-slider.addEventListener("click", transition);
+// Pin the slider in place and step through each project as the user
+// scrolls (instead of requiring a click). The section stays pinned for
+// one viewport-height of scroll per remaining slide, then releases and
+// scrolling continues normally down to the footer.
+ScrollTrigger.create({
+    trigger: slider,
+    start: "top top",
+    end: () => `+=${window.innerHeight * (slides.length - 1)}`,
+    pin: true,
+    anticipatePin: 1,
+    onUpdate(self) {
+        const targetIndex = Math.min(
+            slides.length - 1,
+            Math.round(self.progress * (slides.length - 1))
+        );
+        if (targetIndex !== currentIndex && !isTransitioning) {
+            goToSlide(targetIndex);
+        }
+    },
+});
 
 function render() {
     renderer.render(scene, camera);
