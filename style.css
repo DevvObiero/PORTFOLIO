@@ -302,13 +302,36 @@ body.light-mode .custom-svg {
     position: absolute;
     inset: 0;
     z-index: 1;
+    filter: grayscale(100%);
+    transition: filter 0.5s ease-in-out;
 }
 
+.slide-hitbox {
+    position: absolute;
+    top: 17.5%;
+    left: 25%;
+    width: 50%;
+    height: 65%;
+    z-index: 3;
+    cursor: pointer;
+}
 
+.slider:has(.slide-hitbox:hover) canvas {
+    filter: grayscale(0%);
+}
+
+@media (max-width: 1000px) {
+    .slide-hitbox {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
 .slide-content{
   position: absolute;
   top: 0;
-  left: 0;
+  left: 10px;
   width: 100%;
   height: 100%;
   mix-blend-mode: difference;
@@ -322,7 +345,7 @@ body.light-mode .custom-svg {
   left:3rem;
   transform: translate(0%,-50%);
   width: max-content;
-  color: aqua;
+  color: rgb(233, 236, 236);
 }
 
 
