@@ -312,6 +312,11 @@ slider.prepend(renderer.domElement);
 
 const textureLoader = new THREE.TextureLoader();
 const textures = [];
+// Each image's own real width/height, in the same order as `textures`.
+// Fixes the shader assuming every photo was 1920x1280 (which caused
+// stretching for any image that wasn't actually that exact size).
+const textureSizes = [];
+const FALLBACK_SIZE = { width: 1920, height: 1280 };
 
 for (const slide of slides) {
     const texture = await new Promise((resolve) => {
@@ -334,6 +339,12 @@ for (const slide of slides) {
         texture.magFilter = THREE.LinearFilter;
         texture.wrapS = THREE.ClampToEdgeWrapping;
         texture.wrapT = THREE.ClampToEdgeWrapping;
+        textureSizes.push({
+            width: texture.image.width,
+            height: texture.image.height,
+        });
+    } else {
+        textureSizes.push(FALLBACK_SIZE);
     }
     textures.push(texture);
 }
@@ -355,7 +366,12 @@ const uniforms = {
     uTexNext: { value: textures[1] },
     uProgress: { value: 0.0 },
     uResolution: { value: new THREE.Vector2() },
-    uImageRes: { value: new THREE.Vector2(1920, 1280) },
+    uImageResCurrent: {
+        value: new THREE.Vector2(textureSizes[0].width, textureSizes[0].height),
+    },
+    uImageResNext: {
+        value: new THREE.Vector2(textureSizes[1].width, textureSizes[1].height),
+    },
     uWaveFreq: { value: rippleConfig.waveFreq },
     uWavePow: { value: rippleConfig.wavePow },
     uWaveWidth: { value: rippleConfig.waveWidth },
@@ -437,6 +453,14 @@ function goToSlide(nextIndex) {
 
     uniforms.uTexCurrent.value = textures[currentIndex];
     uniforms.uTexNext.value = textures[nextIndex];
+    uniforms.uImageResCurrent.value.set(
+        textureSizes[currentIndex].width,
+        textureSizes[currentIndex].height
+    );
+    uniforms.uImageResNext.value.set(
+        textureSizes[nextIndex].width,
+        textureSizes[nextIndex].height
+    );
     uniforms.uProgress.value = 0.0;
     let rippleUnlocked = false;
 
@@ -454,6 +478,10 @@ function goToSlide(nextIndex) {
         },
         onComplete() {
             uniforms.uTexCurrent.value = textures[currentIndex];
+            uniforms.uImageResCurrent.value.set(
+                textureSizes[currentIndex].width,
+                textureSizes[currentIndex].height
+            );
             uniforms.uProgress.value = 0.0;
             rippleTween = null;
 

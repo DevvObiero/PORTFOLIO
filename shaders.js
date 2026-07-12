@@ -12,7 +12,8 @@ uniform sampler2D uTexCurrent;
 uniform sampler2D uTexNext;
 uniform float uProgress;
 uniform vec2 uResolution;
-uniform vec2 uImageRes;
+uniform vec2 uImageResCurrent;
+uniform vec2 uImageResNext;
 uniform float uWaveFreq;
 uniform float uWavePow;
 uniform float uWaveWidth;
@@ -78,10 +79,14 @@ void main() {
     }
 
     vec2 finalUv = vec2(displaced.x, displaced.y / aspectRatio);
-    vec2 imageUv = getImageUv(finalUv, uResolution, uImageRes, boxMin, boxMax);
-    
-    vec4 currentColor = texture2D(uTexCurrent, imageUv);
-    vec4 nextColor = texture2D(uTexNext, imageUv);
+
+    // Each texture gets cropped/covered using ITS OWN real resolution,
+    // instead of both sharing one hardcoded (and usually wrong) size.
+    vec2 imageUvCurrent = getImageUv(finalUv, uResolution, uImageResCurrent, boxMin, boxMax);
+    vec2 imageUvNext = getImageUv(finalUv, uResolution, uImageResNext, boxMin, boxMax);
+
+    vec4 currentColor = texture2D(uTexCurrent, imageUvCurrent);
+    vec4 nextColor = texture2D(uTexNext, imageUvNext);
 
     vec4 color = mix(currentColor, nextColor, blend);
     color.rgb += color.rgb * brightness;

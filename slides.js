@@ -2,7 +2,7 @@ export const slides = [
   {
     title: "Blackwater '91",
     description: "Flickering lanterns and twisted masks welcome unwanted visitors into a strange celebration beyond the forest trail.",
-    image: "https://images.pexels.com/photos/4252667/pexels-photo-4252667.jpeg",
+    image: "./project1.png",
   },
   {
     title: "Crimson Theory",
