@@ -345,11 +345,17 @@ body.light-mode .custom-svg {
   left:3rem;
   transform: translate(0%,-50%);
   width: max-content;
-  color: rgb(233, 236, 236);
+  color: rgb(97, 99, 99);
 }
 
 
+.slide-description p {
+  color: #0e0d0d !important;
+}
 
+body.dark-mode .slide-description p {
+  color: #f0f0f0 !important;
+}
 
 
 .slide-description {
