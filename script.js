@@ -22,29 +22,46 @@ navItems.forEach((item, index) => {
   });
 });
 
-// Initialize the indicator position on page load
+// Initialize the indicator position on page load.
+// Instead of trusting a localStorage index written at click-time on a
+// PREVIOUS page (which can go stale, and is measured before custom
+// fonts finish loading), figure out the active tab straight from the
+// current URL every time. Self-correcting regardless of how the page
+// was reached (click, back/forward, typed URL, bookmark, etc).
 function initializeNav() {
-  const savedIndex = localStorage.getItem("activeNavIndex");
-  let initialIndex = savedIndex !== null ? parseInt(savedIndex) : 0; // Default to Home
+  const currentFile =
+    window.location.pathname.split("/").filter(Boolean).pop() || "index.html";
 
-  // Ensure the Home tab (index 0) is selected on first visit
-  if (
-    window.location.pathname === "/" ||
-    window.location.pathname.includes("index.html")
-  ) {
-    initialIndex = 0; // Set Home as default
-  }
+  let initialIndex = 0;
+  navItems.forEach((item, index) => {
+    const link = item.querySelector("a");
+    if (!link) return;
+    const linkFile = link.getAttribute("href").split("/").filter(Boolean).pop();
+    if (linkFile === currentFile) {
+      initialIndex = index;
+    }
+  });
 
   const initialItem = navItems[initialIndex];
 
-  // Set the indicator and active class based on saved state
   setIndicatorPosition(initialItem);
   navItems.forEach((li) => li.classList.remove("active"));
   initialItem.classList.add("active");
+  localStorage.setItem("activeNavIndex", initialIndex);
 }
 
 // Run the initialization function on page load
 initializeNav();
+
+// Custom fonts (Pangram) can still be swapping in when initializeNav()
+// first runs, which shifts tab widths after the indicator's position was
+// already calculated. Recheck once fonts are fully ready.
+if (document.fonts && document.fonts.ready) {
+  document.fonts.ready.then(() => {
+    const activeIndex = parseInt(localStorage.getItem("activeNavIndex") || "0", 10);
+    setIndicatorPosition(navItems[activeIndex]);
+  });
+}
 
 // nav scroll
 document.addEventListener("scroll", () => {
@@ -301,232 +318,234 @@ function animateTextIn(container) {
         );
 }
 
-const scene = new THREE.Scene();
-const camera = new THREE.OrthographicCamera(-0.5, 0.5, 0.5, -0.5, 0.01, 10);
-camera.position.z = 1;
+if (slider) {
+    const scene = new THREE.Scene();
+    const camera = new THREE.OrthographicCamera(-0.5, 0.5, 0.5, -0.5, 0.01, 10);
+    camera.position.z = 1;
 
-const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-renderer.setClearColor(0x000000, 0);
-slider.prepend(renderer.domElement);
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setClearColor(0x000000, 0);
+    slider.prepend(renderer.domElement);
 
-const textureLoader = new THREE.TextureLoader();
-const textures = [];
-// Each image's own real width/height, in the same order as `textures`.
-// Fixes the shader assuming every photo was 1920x1280 (which caused
-// stretching for any image that wasn't actually that exact size).
-const textureSizes = [];
-const FALLBACK_SIZE = { width: 1920, height: 1280 };
+    const textureLoader = new THREE.TextureLoader();
+    const textures = [];
+    // Each image's own real width/height, in the same order as `textures`.
+    // Fixes the shader assuming every photo was 1920x1280 (which caused
+    // stretching for any image that wasn't actually that exact size).
+    const textureSizes = [];
+    const FALLBACK_SIZE = { width: 1920, height: 1280 };
 
-for (const slide of slides) {
-    const texture = await new Promise((resolve) => {
-        textureLoader.load(
-            slide.image,
-            resolve,
-            undefined,
-            (err) => {
-                console.error(
-                    `Could not load project image "${slide.title}" (${slide.image}):`,
-                    err
-                );
-                resolve(null); // don't let one bad image hang the whole slider
-            }
-        );
+    for (const slide of slides) {
+        const texture = await new Promise((resolve) => {
+            textureLoader.load(
+                slide.image,
+                resolve,
+                undefined,
+                (err) => {
+                    console.error(
+                        `Could not load project image "${slide.title}" (${slide.image}):`,
+                        err
+                    );
+                    resolve(null); // don't let one bad image hang the whole slider
+                }
+            );
+        });
+
+        if (texture) {
+            texture.minFilter = THREE.LinearFilter;
+            texture.magFilter = THREE.LinearFilter;
+            texture.wrapS = THREE.ClampToEdgeWrapping;
+            texture.wrapT = THREE.ClampToEdgeWrapping;
+            textureSizes.push({
+                width: texture.image.width,
+                height: texture.image.height,
+            });
+        } else {
+            textureSizes.push(FALLBACK_SIZE);
+        }
+        textures.push(texture);
+    }
+
+    const rippleConfig = {
+        waveFreq: 25.0,
+        wavePow: 0.035,
+        waveWidth: 0.5,
+        falloff: 10.0,
+        boostStrength: 0.5,
+        crossfadeWidth: 0.05,
+        duration: 3.0,
+        endValue: 1.0,
+        ease: "power2.out",
+    };
+
+    const uniforms = {
+        uTexCurrent: { value: textures[0] },
+        uTexNext: { value: textures[1] },
+        uProgress: { value: 0.0 },
+        uResolution: { value: new THREE.Vector2() },
+        uImageResCurrent: {
+            value: new THREE.Vector2(textureSizes[0].width, textureSizes[0].height),
+        },
+        uImageResNext: {
+            value: new THREE.Vector2(textureSizes[1].width, textureSizes[1].height),
+        },
+        uWaveFreq: { value: rippleConfig.waveFreq },
+        uWavePow: { value: rippleConfig.wavePow },
+        uWaveWidth: { value: rippleConfig.waveWidth },
+        uFalloff: { value: rippleConfig.falloff },
+        uBoostStrength: { value: rippleConfig.boostStrength },
+        uCrossfadeWidth: { value: rippleConfig.crossfadeWidth },
+        uMobile: { value: window.innerWidth <= 1000 ? 1.0 : 0.0 },
+    };
+
+    const material = new THREE.ShaderMaterial({
+        vertexShader,
+        fragmentShader,
+        uniforms,
+        transparent: true,
     });
 
-    if (texture) {
-        texture.minFilter = THREE.LinearFilter;
-        texture.magFilter = THREE.LinearFilter;
-        texture.wrapS = THREE.ClampToEdgeWrapping;
-        texture.wrapT = THREE.ClampToEdgeWrapping;
-        textureSizes.push({
-            width: texture.image.width,
-            height: texture.image.height,
-        });
-    } else {
-        textureSizes.push(FALLBACK_SIZE);
-    }
-    textures.push(texture);
-}
+    const plane = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), material);
+    scene.add(plane);
 
-const rippleConfig = {
-    waveFreq: 25.0,
-    wavePow: 0.035,
-    waveWidth: 0.5,
-    falloff: 10.0,
-    boostStrength: 0.5,
-    crossfadeWidth: 0.05,
-    duration: 3.0,
-    endValue: 1.0,
-    ease: "power2.out",
-};
-
-const uniforms = {
-    uTexCurrent: { value: textures[0] },
-    uTexNext: { value: textures[1] },
-    uProgress: { value: 0.0 },
-    uResolution: { value: new THREE.Vector2() },
-    uImageResCurrent: {
-        value: new THREE.Vector2(textureSizes[0].width, textureSizes[0].height),
-    },
-    uImageResNext: {
-        value: new THREE.Vector2(textureSizes[1].width, textureSizes[1].height),
-    },
-    uWaveFreq: { value: rippleConfig.waveFreq },
-    uWavePow: { value: rippleConfig.wavePow },
-    uWaveWidth: { value: rippleConfig.waveWidth },
-    uFalloff: { value: rippleConfig.falloff },
-    uBoostStrength: { value: rippleConfig.boostStrength },
-    uCrossfadeWidth: { value: rippleConfig.crossfadeWidth },
-    uMobile: { value: window.innerWidth <= 1000 ? 1.0 : 0.0 },
-};
-
-const material = new THREE.ShaderMaterial({
-    vertexShader,
-    fragmentShader,
-    uniforms,
-    transparent: true,
-});
-
-const plane = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), material);
-scene.add(plane);
-
-function getMaxCornerDist() {
-    const ratio = window.innerHeight / window.innerWidth;
-    const cx = 0.5;
-    const cy = 0.5 * ratio;
-    return Math.sqrt(cx * cx + cy * cy);
-}
-
-function handleResize() {
-    const width = slider.clientWidth;
-    const height = slider.clientHeight;
-    renderer.setSize(width, height);
-    uniforms.uResolution.value.set(width, height);
-    uniforms.uMobile.value = window.innerWidth <= 1000 ? 1.0 : 0.0;
-    rippleConfig.endValue = getMaxCornerDist() + rippleConfig.waveWidth;
-    rippleConfig.duration = window.innerWidth <= 1000 ? 1.5 : 3.0;
-}
-
-window.addEventListener("resize", handleResize);
-handleResize();
-
-// Build the first slide from slides.js (instead of relying on the
-// hardcoded "Project 1" placeholder that used to live in index.html) so
-// the title/description on screen always match the image actually being
-// rendered by the shader.
-const initialSlide = buildSlideContent(slides[0]);
-initialSlide.style.opacity = "1";
-slider.appendChild(initialSlide);
-
-const initialTitle = splitTitle(initialSlide);
-const initialLines = splitDescription(initialSlide);
-
-gsap.fromTo(
-    initialTitle.chars,
-    { y: "100%" },
-    { y: "0%", duration: 0.8, stagger: 0.025, ease: "power2.out" }
-);
-
-gsap.fromTo(
-    initialLines,
-    { y: "100%" },
-    { y: "0%", duration: 0.8, stagger: 0.025, ease: "power2.out", delay: 0.2 }
-);
-
-// Advances the slider to `nextIndex`, playing the same ripple / text
-// crossfade that used to run on click. Called from the ScrollTrigger
-// below instead of a click handler.
-function goToSlide(nextIndex) {
-    if (isTransitioning || nextIndex === currentIndex) return;
-    isTransitioning = true;
-
-    if (rippleTween) {
-        rippleTween.kill();
-        uniforms.uProgress.value = 0.0;
-        rippleTween = null;
+    function getMaxCornerDist() {
+        const ratio = window.innerHeight / window.innerWidth;
+        const cx = 0.5;
+        const cy = 0.5 * ratio;
+        return Math.sqrt(cx * cx + cy * cy);
     }
 
-    const currentSlide = document.querySelector(".slide-content");
+    function handleResize() {
+        const width = slider.clientWidth;
+        const height = slider.clientHeight;
+        renderer.setSize(width, height);
+        uniforms.uResolution.value.set(width, height);
+        uniforms.uMobile.value = window.innerWidth <= 1000 ? 1.0 : 0.0;
+        rippleConfig.endValue = getMaxCornerDist() + rippleConfig.waveWidth;
+        rippleConfig.duration = window.innerWidth <= 1000 ? 1.5 : 3.0;
+    }
 
-    const exitTimeline = animateTextOut(currentSlide);
+    window.addEventListener("resize", handleResize);
+    handleResize();
 
-    uniforms.uTexCurrent.value = textures[currentIndex];
-    uniforms.uTexNext.value = textures[nextIndex];
-    uniforms.uImageResCurrent.value.set(
-        textureSizes[currentIndex].width,
-        textureSizes[currentIndex].height
+    // Build the first slide from slides.js (instead of relying on the
+    // hardcoded "Project 1" placeholder that used to live in index.html) so
+    // the title/description on screen always match the image actually being
+    // rendered by the shader.
+    const initialSlide = buildSlideContent(slides[0]);
+    initialSlide.style.opacity = "1";
+    slider.appendChild(initialSlide);
+
+    const initialTitle = splitTitle(initialSlide);
+    const initialLines = splitDescription(initialSlide);
+
+    gsap.fromTo(
+        initialTitle.chars,
+        { y: "100%" },
+        { y: "0%", duration: 0.8, stagger: 0.025, ease: "power2.out" }
     );
-    uniforms.uImageResNext.value.set(
-        textureSizes[nextIndex].width,
-        textureSizes[nextIndex].height
-    );
-    uniforms.uProgress.value = 0.0;
-    let rippleUnlocked = false;
 
-    rippleTween = gsap.to(uniforms.uProgress, {
-        value: rippleConfig.endValue,
-        duration: rippleConfig.duration,
-        ease: rippleConfig.ease,
-        delay: 0.3,
-        onUpdate() {
-            if (!rippleUnlocked && uniforms.uProgress.value > 0.7) {
-                rippleUnlocked = true;
-                currentIndex = nextIndex;
-                isTransitioning = false;
-            }
-        },
-        onComplete() {
-            uniforms.uTexCurrent.value = textures[currentIndex];
-            uniforms.uImageResCurrent.value.set(
-                textureSizes[currentIndex].width,
-                textureSizes[currentIndex].height
-            );
+    gsap.fromTo(
+        initialLines,
+        { y: "100%" },
+        { y: "0%", duration: 0.8, stagger: 0.025, ease: "power2.out", delay: 0.2 }
+    );
+
+    // Advances the slider to `nextIndex`, playing the same ripple / text
+    // crossfade that used to run on click. Called from the ScrollTrigger
+    // below instead of a click handler.
+    function goToSlide(nextIndex) {
+        if (isTransitioning || nextIndex === currentIndex) return;
+        isTransitioning = true;
+
+        if (rippleTween) {
+            rippleTween.kill();
             uniforms.uProgress.value = 0.0;
             rippleTween = null;
-
-            if (!rippleUnlocked) {
-                currentIndex = nextIndex;
-                isTransitioning = false;
-            }
         }
-    });
 
-    exitTimeline.then(() => {
-        currentSlide.remove();
-        const nextSlide = buildSlideContent(slides[nextIndex]);
-        slider.appendChild(nextSlide);
+        const currentSlide = document.querySelector(".slide-content");
 
-        requestAnimationFrame(() => {
-            animateTextIn(nextSlide);
-        });
-    });
-}
+        const exitTimeline = animateTextOut(currentSlide);
 
-// Pin the slider in place and step through each project as the user
-// scrolls (instead of requiring a click). The section stays pinned for
-// one viewport-height of scroll per remaining slide, then releases and
-// scrolling continues normally down to the footer.
-ScrollTrigger.create({
-    trigger: slider,
-    start: "top top",
-    end: () => `+=${window.innerHeight * (slides.length - 1)}`,
-    pin: true,
-    anticipatePin: 1,
-    onUpdate(self) {
-        const targetIndex = Math.min(
-            slides.length - 1,
-            Math.round(self.progress * (slides.length - 1))
+        uniforms.uTexCurrent.value = textures[currentIndex];
+        uniforms.uTexNext.value = textures[nextIndex];
+        uniforms.uImageResCurrent.value.set(
+            textureSizes[currentIndex].width,
+            textureSizes[currentIndex].height
         );
-        if (targetIndex !== currentIndex && !isTransitioning) {
-            goToSlide(targetIndex);
-        }
-    },
-});
+        uniforms.uImageResNext.value.set(
+            textureSizes[nextIndex].width,
+            textureSizes[nextIndex].height
+        );
+        uniforms.uProgress.value = 0.0;
+        let rippleUnlocked = false;
 
-function render() {
-    renderer.render(scene, camera);
-    requestAnimationFrame(render);
+        rippleTween = gsap.to(uniforms.uProgress, {
+            value: rippleConfig.endValue,
+            duration: rippleConfig.duration,
+            ease: rippleConfig.ease,
+            delay: 0.3,
+            onUpdate() {
+                if (!rippleUnlocked && uniforms.uProgress.value > 0.7) {
+                    rippleUnlocked = true;
+                    currentIndex = nextIndex;
+                    isTransitioning = false;
+                }
+            },
+            onComplete() {
+                uniforms.uTexCurrent.value = textures[currentIndex];
+                uniforms.uImageResCurrent.value.set(
+                    textureSizes[currentIndex].width,
+                    textureSizes[currentIndex].height
+                );
+                uniforms.uProgress.value = 0.0;
+                rippleTween = null;
+
+                if (!rippleUnlocked) {
+                    currentIndex = nextIndex;
+                    isTransitioning = false;
+                }
+            }
+        });
+
+        exitTimeline.then(() => {
+            currentSlide.remove();
+            const nextSlide = buildSlideContent(slides[nextIndex]);
+            slider.appendChild(nextSlide);
+
+            requestAnimationFrame(() => {
+                animateTextIn(nextSlide);
+            });
+        });
+    }
+
+    // Pin the slider in place and step through each project as the user
+    // scrolls (instead of requiring a click). The section stays pinned for
+    // one viewport-height of scroll per remaining slide, then releases and
+    // scrolling continues normally down to the footer.
+    ScrollTrigger.create({
+        trigger: slider,
+        start: "top top",
+        end: () => `+=${window.innerHeight * (slides.length - 1)}`,
+        pin: true,
+        anticipatePin: 1,
+        onUpdate(self) {
+            const targetIndex = Math.min(
+                slides.length - 1,
+                Math.round(self.progress * (slides.length - 1))
+            );
+            if (targetIndex !== currentIndex && !isTransitioning) {
+                goToSlide(targetIndex);
+            }
+        },
+    });
+
+    function render() {
+        renderer.render(scene, camera);
+        requestAnimationFrame(render);
+    }
+
+    render();
 }
-
-render();

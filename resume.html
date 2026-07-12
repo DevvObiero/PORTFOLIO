@@ -14,7 +14,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
-
+  <script type="importmap">
+{
+    "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/+esm",
+        "gsap": "https://cdn.jsdelivr.net/npm/gsap@3.13.0/+esm",
+        "gsap/ScrollTrigger": "https://cdn.jsdelivr.net/npm/gsap@3.13.0/ScrollTrigger/+esm",
+        "gsap/SplitText": "https://cdn.jsdelivr.net/npm/gsap@3.13.0/SplitText/+esm"
+    }
+}
+</script>
   <script src="https://kit.fontawesome.com/YOUR_FONT_AWESOME_KIT.js" crossorigin="anonymous"></script>
   <style>
     .button {
@@ -117,7 +126,7 @@
       document.body.removeChild(link);
     });
   </script>
-  <script src="script.js"></script>
+  <script type="module" src="./script.js"></script>
 </body>
 
 </html>
