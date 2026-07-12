@@ -291,11 +291,11 @@ body.light-mode .custom-svg {
   padding-left: 50px;
 } */
 
-
 .slider{
   position: relative;
   width: 100%;
-  height:100svh;
+  height: 100vh;   /* fallback */
+  height: 100svh;
   overflow: hidden;
 }
 .slider canvas {
