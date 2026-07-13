@@ -347,7 +347,15 @@ body.light-mode .custom-svg {
   width: max-content;
   color: rgb(97, 99, 99);
 }
+::selection {
+  background: #f5e6c8;
+  color: #1f2937;
+}
 
+::-moz-selection {
+  background: #f5e6c8;
+  color: #1f2937;
+}
 
 .slide-description p {
   color: #0e0d0d !important;
