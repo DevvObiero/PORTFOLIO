@@ -4,12 +4,16 @@
 <head>
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-M0P5HQZ6VP"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag("js", new Date());
-    gtag("config", "G-M0P5HQZ6VP");
-  </script>
+  <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/+esm",
+            "gsap": "https://cdn.jsdelivr.net/npm/gsap@3.13.0/+esm",
+            "gsap/ScrollTrigger": "https://cdn.jsdelivr.net/npm/gsap@3.13.0/ScrollTrigger/+esm",
+            "gsap/SplitText": "https://cdn.jsdelivr.net/npm/gsap@3.13.0/SplitText/+esm"
+        }
+    }
+</script>
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -29,15 +33,15 @@
 
   <!-- 1. The Import Map -->
   <script type="importmap">
-    {
-        "imports": {
-            "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/+esm",
-            "gsap": "https://cdn.jsdelivr.net/npm/gsap@3.13.0/+esm",
-            "gsap/ScrollTrigger": "https://cdn.jsdelivr.net/npm/gsap@3.13.0/ScrollTrigger/+esm",
-            "gsap/SplitText": "https://cdn.jsdelivr.net/npm/gsap@3.13.0/SplitText/+esm"
+        {
+            "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/+esm",
+                "gsap": "https://cdn.jsdelivr.net/npm/gsap@3.12.5/+esm",
+                "gsap/ScrollTrigger": "https://cdn.jsdelivr.net/npm/gsap@3.12.5/ScrollTrigger/+esm",
+                "gsap/SplitText": "./SplitText.js"
+            }
         }
-    }
-</script>
+    </script>
   <!-- Styles -->
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
@@ -134,7 +138,9 @@
     <!-- Slide content is now built entirely by script.js from slides.js,
          so the title/description shown always match the image being
          rendered. See buildSlideContent() in script.js. -->
-    <div class="slide-hitbox"></div>
+    <!-- href is just a fallback; script.js keeps it updated to match
+         whichever project is currently showing. -->
+    <a class="slide-hitbox" href="p2.html" aria-label="View project"></a>
   </div>
   <div class="text2 icons">
     <h5 id="autoBlur">Let's work together.</h5>
@@ -174,7 +180,7 @@
       </ul>
     </div>
   </footer>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
   <script type="module" src="./script.js"></script>
 </body>

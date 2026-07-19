@@ -306,6 +306,14 @@ body.light-mode .custom-svg {
     transition: filter 0.5s ease-in-out;
 }
 
+.slider canvas {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    filter: grayscale(100%);
+    transition: filter 0.5s ease-in-out;
+}
+
 .slide-hitbox {
     position: absolute;
     top: 17.5%;
@@ -314,6 +322,7 @@ body.light-mode .custom-svg {
     height: 65%;
     z-index: 3;
     cursor: pointer;
+    display: block;
 }
 
 .slider:has(.slide-hitbox:hover) canvas {
@@ -351,6 +360,7 @@ body.light-mode .custom-svg {
   background: #f5e6c8;
   color: #1f2937;
 }
+
 
 ::-moz-selection {
   background: #f5e6c8;

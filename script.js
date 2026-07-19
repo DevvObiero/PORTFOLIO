@@ -328,6 +328,15 @@ if (slider) {
     renderer.setClearColor(0x000000, 0);
     slider.prepend(renderer.domElement);
 
+    // Keeps the invisible clickable box over the photo pointed at
+    // whichever project is currently showing.
+    const hitbox = document.querySelector(".slide-hitbox");
+    function updateHitboxLink(index) {
+        if (hitbox && slides[index] && slides[index].link) {
+            hitbox.href = slides[index].link;
+        }
+    }
+
     const textureLoader = new THREE.TextureLoader();
     const textures = [];
     // Each image's own real width/height, in the same order as `textures`.
@@ -436,6 +445,7 @@ if (slider) {
     const initialSlide = buildSlideContent(slides[0]);
     initialSlide.style.opacity = "1";
     slider.appendChild(initialSlide);
+    updateHitboxLink(0);
 
     const initialTitle = splitTitle(initialSlide);
     const initialLines = splitDescription(initialSlide);
@@ -458,6 +468,7 @@ if (slider) {
     function goToSlide(nextIndex) {
         if (isTransitioning || nextIndex === currentIndex) return;
         isTransitioning = true;
+        updateHitboxLink(nextIndex);
 
         if (rippleTween) {
             rippleTween.kill();
