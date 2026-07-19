@@ -1081,13 +1081,13 @@ font-size:  20px;
     transition: stroke-dashoffset 2s ease-in-out; /* Animation timing */
   }
 
-  .large-text {
+  /* .large-text {
     font-size: 3rem !important;
     font-weight: bold;
     margin: 0;
     letter-spacing: -5px;
     position: relative;
-  }
+  } */
   .small-text {
     font-size: 0.9rem;
     font-weight: bold;
