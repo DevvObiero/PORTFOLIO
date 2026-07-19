@@ -306,6 +306,14 @@ body.light-mode .custom-svg {
     transition: filter 0.5s ease-in-out;
 }
 
+.slider canvas {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    filter: grayscale(100%);
+    transition: filter 0.5s ease-in-out;
+}
+
 .slide-hitbox {
     position: absolute;
     top: 17.5%;
@@ -314,6 +322,7 @@ body.light-mode .custom-svg {
     height: 65%;
     z-index: 3;
     cursor: pointer;
+    display: block;
 }
 
 .slider:has(.slide-hitbox:hover) canvas {
@@ -347,7 +356,16 @@ body.light-mode .custom-svg {
   width: max-content;
   color: rgb(97, 99, 99);
 }
+::selection {
+  background: #f5e6c8;
+  color: #1f2937;
+}
 
+
+::-moz-selection {
+  background: #f5e6c8;
+  color: #1f2937;
+}
 
 .slide-description p {
   color: #0e0d0d !important;
@@ -1063,13 +1081,13 @@ font-size:  20px;
     transition: stroke-dashoffset 2s ease-in-out; /* Animation timing */
   }
 
-  .large-text {
+  /* .large-text {
     font-size: 3rem !important;
     font-weight: bold;
     margin: 0;
     letter-spacing: -5px;
     position: relative;
-  }
+  } */
   .small-text {
     font-size: 0.9rem;
     font-weight: bold;

@@ -1,27 +1,32 @@
 export const slides = [
   {
-    title: "Blackwater '91",
-    description: "Flickering lanterns and twisted masks welcome unwanted visitors into a strange celebration beyond the forest trail.",
+    title: "GitMentor",
+    description: "A retro-themed GitHub profile analyzer that breaks down your commits, PRs, and stars, then gives smart, easy suggestions to level up your presence.",
     image: "./project1.png",
+    link: "p2.html",
   },
   {
-    title: "Crimson Theory",
-    description: "A mysterious performer slowly loses reality beneath violent lights and unsettling mirrored reflections inside an empty theater.",
+    title: "Central Computers Kenya",
+    description: "A full-stack company site for an IT solutions provider, with a product catalog, service pages, and contact forms built on a Node/Express backend.",
     image: "./project2.png",
+    link: "p3.html",
   },
   {
-    title: "Tape Delay Archives",
-    description: "Stacks of dusty videotapes and glowing static fill the room during another endless night without a single moment of sleep.",
- image: "./project3.png",
+    title: "Kalamata Restaurant & Bar",
+    description: "An elegant, fully responsive site for a Nairobi fine-dining restaurant, showcasing the menu and letting guests reserve a table online.",
+    image: "./project3.png",
+    link: "p9.html",
   },
   {
-    title: "Exit 14 Westbound",
-    description: "A lone traveler walks the empty highway at night, guided only by the flickering lights of passing cars and the distant glow of a city skyline.",
- image: "./project4.png",
+    title: "PinPoint",
+    description: "A Chrome extension for visually pinning notes and reminders anywhere on a webpage, using customizable, draggable 3D-style markers.",
+    image: "./project4.png",
+    link: "p8.html",
   },
-    {
-    title: "Exit 14 Westbound",
-    description: "A lone traveler walks the empty highway at night, guided only by the flickering lights of passing cars and the distant glow of a city skyline.",
- image: "./project5.png",
+  {
+    title: "New Frontier BPO",
+    description: "A hackathon project for a Kenyan talent-outsourcing company, blending an AI-driven theme with Kenyan cultural design and a custom chatbot UI.",
+    image: "./project5.png",
+    link: "p10.html",
   },
 ];
