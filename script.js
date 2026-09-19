@@ -317,48 +317,32 @@ function animateTextIn(container) {
             0.1
         );
 }
+// ---------- Project slider: desktop only ----------
+// Must match the CSS breakpoint that hides .slider (max-width: 1024px).
+const desktopQuery = window.matchMedia("(min-width: 1025px)");
 
-if (slider) {
-    const scene = new THREE.Scene();
-    const camera = new THREE.OrthographicCamera(-0.5, 0.5, 0.5, -0.5, 0.01, 10);
-    camera.position.z = 1;
+let sliderCleanup = null; // set while the slider is running
+let sliderToken = 0; // lets stopSlider() cancel a start that's still loading images
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.setClearColor(0x000000, 0);
-    slider.prepend(renderer.domElement);
+async function startSlider() {
+    if (!slider || sliderCleanup) return;
+    const token = ++sliderToken;
 
-    // Keeps the invisible clickable box over the photo pointed at
-    // whichever project is currently showing.
-    const hitbox = document.querySelector(".slide-hitbox");
-    function updateHitboxLink(index) {
-        if (hitbox && slides[index] && slides[index].link) {
-            hitbox.href = slides[index].link;
-        }
-    }
-
+    // ---- 1. Load textures (the only async step) ----
     const textureLoader = new THREE.TextureLoader();
     const textures = [];
-    // Each image's own real width/height, in the same order as `textures`.
-    // Fixes the shader assuming every photo was 1920x1280 (which caused
-    // stretching for any image that wasn't actually that exact size).
     const textureSizes = [];
     const FALLBACK_SIZE = { width: 1920, height: 1280 };
 
     for (const slide of slides) {
         const texture = await new Promise((resolve) => {
-            textureLoader.load(
-                slide.image,
-                resolve,
-                undefined,
-                (err) => {
-                    console.error(
-                        `Could not load project image "${slide.title}" (${slide.image}):`,
-                        err
-                    );
-                    resolve(null); // don't let one bad image hang the whole slider
-                }
-            );
+            textureLoader.load(slide.image, resolve, undefined, (err) => {
+                console.error(
+                    `Could not load project image "${slide.title}" (${slide.image}):`,
+                    err
+                );
+                resolve(null);
+            });
         });
 
         if (texture) {
@@ -374,6 +358,34 @@ if (slider) {
             textureSizes.push(FALLBACK_SIZE);
         }
         textures.push(texture);
+    }
+
+    // The screen may have shrunk while images were loading
+    if (token !== sliderToken) {
+        textures.forEach((t) => t && t.dispose());
+        return;
+    }
+
+    // ---- 2. Everything below is synchronous, so setup is never half-done ----
+    let destroyed = false;
+    currentIndex = 0;
+    isTransitioning = false;
+    rippleTween = null;
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.OrthographicCamera(-0.5, 0.5, 0.5, -0.5, 0.01, 10);
+    camera.position.z = 1;
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setClearColor(0x000000, 0);
+    slider.prepend(renderer.domElement);
+
+    const hitbox = document.querySelector(".slide-hitbox");
+    function updateHitboxLink(index) {
+        if (hitbox && slides[index] && slides[index].link) {
+            hitbox.href = slides[index].link;
+        }
     }
 
     const rippleConfig = {
@@ -428,6 +440,7 @@ if (slider) {
     function handleResize() {
         const width = slider.clientWidth;
         const height = slider.clientHeight;
+        if (!width || !height) return; // slider is hidden
         renderer.setSize(width, height);
         uniforms.uResolution.value.set(width, height);
         uniforms.uMobile.value = window.innerWidth <= 1000 ? 1.0 : 0.0;
@@ -438,10 +451,7 @@ if (slider) {
     window.addEventListener("resize", handleResize);
     handleResize();
 
-    // Build the first slide from slides.js (instead of relying on the
-    // hardcoded "Project 1" placeholder that used to live in index.html) so
-    // the title/description on screen always match the image actually being
-    // rendered by the shader.
+    // First slide's text
     const initialSlide = buildSlideContent(slides[0]);
     initialSlide.style.opacity = "1";
     slider.appendChild(initialSlide);
@@ -455,16 +465,12 @@ if (slider) {
         { y: "100%" },
         { y: "0%", duration: 0.8, stagger: 0.025, ease: "power2.out" }
     );
-
     gsap.fromTo(
         initialLines,
         { y: "100%" },
         { y: "0%", duration: 0.8, stagger: 0.025, ease: "power2.out", delay: 0.2 }
     );
 
-    // Advances the slider to `nextIndex`, playing the same ripple / text
-    // crossfade that used to run on click. Called from the ScrollTrigger
-    // below instead of a click handler.
     function goToSlide(nextIndex) {
         if (isTransitioning || nextIndex === currentIndex) return;
         isTransitioning = true;
@@ -477,7 +483,6 @@ if (slider) {
         }
 
         const currentSlide = document.querySelector(".slide-content");
-
         const exitTimeline = animateTextOut(currentSlide);
 
         uniforms.uTexCurrent.value = textures[currentIndex];
@@ -518,25 +523,23 @@ if (slider) {
                     currentIndex = nextIndex;
                     isTransitioning = false;
                 }
-            }
+            },
         });
 
         exitTimeline.then(() => {
+            if (destroyed) return;
             currentSlide.remove();
             const nextSlide = buildSlideContent(slides[nextIndex]);
             slider.appendChild(nextSlide);
 
             requestAnimationFrame(() => {
+                if (destroyed) return;
                 animateTextIn(nextSlide);
             });
         });
     }
 
-    // Pin the slider in place and step through each project as the user
-    // scrolls (instead of requiring a click). The section stays pinned for
-    // one viewport-height of scroll per remaining slide, then releases and
-    // scrolling continues normally down to the footer.
-    ScrollTrigger.create({
+    const scrollTrigger = ScrollTrigger.create({
         trigger: slider,
         start: "top top",
         end: () => `+=${window.innerHeight * (slides.length - 1)}`,
@@ -553,10 +556,49 @@ if (slider) {
         },
     });
 
+    // The layout just changed (grid hidden, slider shown), so re-measure
+    ScrollTrigger.refresh();
+
+    let frameId;
     function render() {
         renderer.render(scene, camera);
-        requestAnimationFrame(render);
+        frameId = requestAnimationFrame(render);
     }
-
     render();
+
+    // ---- 3. Teardown, used when the screen drops below the breakpoint ----
+    sliderCleanup = () => {
+        destroyed = true;
+        cancelAnimationFrame(frameId);
+        window.removeEventListener("resize", handleResize);
+
+        scrollTrigger.kill(true); // true = also remove the pin spacer
+        if (rippleTween) rippleTween.kill();
+        gsap.killTweensOf(uniforms.uProgress);
+
+        slider.querySelectorAll(".slide-content").forEach((el) => el.remove());
+        renderer.domElement.remove();
+        renderer.dispose();
+        material.dispose();
+        plane.geometry.dispose();
+        textures.forEach((t) => t && t.dispose());
+
+        currentIndex = 0;
+        isTransitioning = false;
+        rippleTween = null;
+        sliderCleanup = null;
+    };
 }
+
+function stopSlider() {
+    sliderToken++; // cancels a start() that is still loading images
+    if (sliderCleanup) sliderCleanup();
+}
+
+function syncSlider() {
+    if (desktopQuery.matches) startSlider();
+    else stopSlider();
+}
+
+syncSlider();
+desktopQuery.addEventListener("change", syncSlider);

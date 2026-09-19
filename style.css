@@ -374,7 +374,87 @@ body.light-mode .custom-svg {
 body.dark-mode .slide-description p {
   color: #f0f0f0 !important;
 }
+/* ---------- Projects: slider on laptop+, grid on tablet/mobile ---------- */
+.project-grid {
+  display: none;
+}
 
+@media (max-width: 1024px) {
+  .slider {
+    display: none;
+  }
+
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    width: min(100% - 40px, 900px);
+    margin: 0 auto 80px;
+  }
+}
+
+@media (max-width: 640px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  background: #f3f2f1;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+}
+
+.project-card__media {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+
+.project-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+/* keep the grayscale-to-color hover feel, but only where hover exists */
+@media (hover: hover) {
+  .project-card__media img { filter: grayscale(100%); }
+  .project-card:hover .project-card__media img {
+    filter: grayscale(0%);
+    transform: scale(1.04);
+  }
+}
+
+.project-card__body {
+  padding: 18px 20px 22px;
+}
+
+.project-card__body h3 {
+  font-size: 1.25rem;
+  margin-bottom: 8px;
+}
+
+.project-card__body p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+body.dark-mode .project-card {
+  background: #1e1e1e;
+}
 
 .slide-description {
 position: absolute;
