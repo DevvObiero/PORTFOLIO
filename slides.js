@@ -8,15 +8,15 @@ export const slides = [
   {
     title: "Central Computers Kenya",
     description: "A full-stack company site for an IT solutions provider, with a product catalog, service pages, and contact forms built on a Node/Express backend.",
-    image: "./project2.png",
+    image: "./project3.png",
     link: "p3.html",
   },
-  {
-    title: "Kalamata Restaurant & Bar",
-    description: "An elegant, fully responsive site for a Nairobi fine-dining restaurant, showcasing the menu and letting guests reserve a table online.",
-    image: "./project3.png",
-    link: "p9.html",
-  },
+  // {
+  //   title: "Kalamata Restaurant & Bar",
+  //   description: "An elegant, fully responsive site for a Nairobi fine-dining restaurant, showcasing the menu and letting guests reserve a table online.",
+  //   image: "./project2.png",
+  //   link: "p9.html",
+  // },
   {
     title: "PinPoint",
     description: "A Chrome extension for visually pinning notes and reminders anywhere on a webpage, using customizable, draggable 3D-style markers.",
@@ -26,7 +26,7 @@ export const slides = [
   {
     title: "New Frontier BPO",
     description: "A hackathon project for a Kenyan talent-outsourcing company, blending an AI-driven theme with Kenyan cultural design and a custom chatbot UI.",
-    image: "./project5.png",
+    image: "./project2.png",
     link: "p10.html",
   },
 ];
