@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M0P5HQZ6VP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "G-M0P5HQZ6VP");
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Post details ===== -->
+  <title>Vanilla JavaScript Is Still Enough: Building a Blog Without a Framework | Paul Obiero</title>
+  <meta name="description" content="How this blog works: one posts.js file, cards rendered with plain JavaScript, a tag filter, and static pages that share properly." />
+  <meta name="author" content="Paul Obiero" />
+  <link rel="canonical" href="https://paulobiero.me/blog/posts/vanilla-javascript-blog-without-a-framework.html" />
+
+  <!-- Share preview: LinkedIn, Facebook, WhatsApp -->
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Paul Obiero" />
+  <meta property="og:title" content="Vanilla JavaScript Is Still Enough: Building a Blog Without a Framework" />
+  <meta property="og:description" content="How this blog works: one posts.js file, cards rendered with plain JavaScript, a tag filter, and static pages that share properly." />
+  <meta property="og:url" content="https://paulobiero.me/blog/posts/vanilla-javascript-blog-without-a-framework.html" />
+  <meta property="og:image" content="https://paulobiero.me/me.png" />
+  <meta property="og:image:alt" content="Paul Obiero speaking into a microphone at a presentation" />
+  <meta property="article:published_time" content="2026-10-16" />
+  <meta property="article:author" content="https://paulobiero.me/" />
+  <meta property="article:tag" content="JavaScript" />
+  <meta property="article:tag" content="Frontend" />
+
+  <!-- Share preview: X (Twitter) -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Vanilla JavaScript Is Still Enough: Building a Blog Without a Framework" />
+  <meta name="twitter:description" content="How this blog works: one posts.js file, cards rendered with plain JavaScript, a tag filter, and static pages that share properly." />
+  <meta name="twitter:image" content="https://paulobiero.me/me.png" />
+  <meta name="twitter:image:alt" content="Paul Obiero speaking into a microphone at a presentation" />
+
+  <!-- Structured data for search engines -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Vanilla JavaScript Is Still Enough: Building a Blog Without a Framework",
+    "description": "How this blog works: one posts.js file, cards rendered with plain JavaScript, a tag filter, and static pages that share properly.",
+    "datePublished": "2026-10-16",
+    "dateModified": "2026-10-16",
+    "image": "https://paulobiero.me/me.png",
+    "url": "https://paulobiero.me/blog/posts/vanilla-javascript-blog-without-a-framework.html",
+    "mainEntityOfPage": "https://paulobiero.me/blog/posts/vanilla-javascript-blog-without-a-framework.html",
+    "keywords": "JavaScript, Frontend",
+    "author": {
+      "@type": "Person",
+      "name": "Paul Obiero",
+      "url": "https://paulobiero.me/",
+      "sameAs": [
+        "https://www.linkedin.com/in/paul-obiero-72155b32a",
+        "https://github.com/DevvObiero"
+      ]
+    }
+  }
+  </script>
+  <!-- ===== End of post details ===== -->
+
+  <link rel="icon" type="image/png" href="/favicon.ico" />
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/blog/blog.css" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script type="module" src="/blog/blog.js"></script>
+</head>
+
+<body>
+  <script>
+    // Apply the saved theme before the page paints, so dark mode doesn't flash
+    try {
+      if (localStorage.getItem("theme") === "dark") document.body.classList.add("dark-mode");
+    } catch (error) {}
+  </script>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="cursor" id="cursor"></div>
+
+  <nav aria-label="Main">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/profile.html">Profile</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/resume.html">Resume</a></li>
+      <li>
+        <button id="toggle-theme" type="button" aria-label="Dark mode">
+          <i class="bx bx-sun" id="sun-icon" aria-hidden="true"></i>
+          <i class="bx bxs-moon" id="moon-icon" aria-hidden="true"></i>
+        </button>
+      </li>
+    </ul>
+    <span aria-hidden="true"></span>
+  </nav>
+
+  <main id="main" class="post">
+    <article>
+      <header class="post-header">
+        <a class="back-link" href="/blog/"><i class="bx bx-left-arrow-alt" aria-hidden="true"></i> Back to blog</a>
+        <ul class="post-tags" aria-label="Tags">
+          <li><a href="/blog/?tag=JavaScript">JavaScript</a></li>
+          <li><a href="/blog/?tag=Frontend">Frontend</a></li>
+        </ul>
+        <h1 class="post-title">Vanilla JavaScript Is Still Enough: Building a Blog Without a Framework</h1>
+        <p class="post-lede">How this blog works: one posts.js file, cards rendered with plain JavaScript, a tag filter, and static pages that share properly.</p>
+        <div class="post-meta">
+          <time datetime="2026-10-16">16 October 2026</time>
+          <span aria-hidden="true">·</span>
+          <span>6 min read</span>
+        </div>
+      </header>
+
+      <div class="post-line" aria-hidden="true">
+        <svg viewBox="0 0 1399.32 163.87" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+          <path class="draw-line" pathLength="1"
+            d="m1399.17,37.1c-87.27-27.1-183.66,2.85-259.54,53.78-11.17,7.5-22.38,15.81-29.01,27.52-6.63,11.71-7.49,27.69,1.37,37.81,8.86,10.12,28.35,9.53,33.81-2.77,5.16-11.62-4.8-25.42-16.94-29.21s-25.23-.58-37.58,2.44c-94.45,23.14-191.55,35.45-288.78,36.62-128.29,1.54-261.08-17.89-369.59-86.35-25.31-15.97-49.13-34.5-76.03-47.61-34.22-16.69-72.32-24.05-110.26-27.21C211.9-.77,176.62-.24,142.65,7.51c-37.08,8.46-71.69,25.29-105.05,43.54C18.9,61.28-2.25,77.19.79,98.28" />
+        </svg>
+      </div>
+
+      <div class="post-body">
+        <p>
+          When I decided to add a blog to my portfolio, the obvious move was to reach for a framework: Next.js, a
+          headless CMS, maybe a Markdown pipeline. I've built with React and I like it. But my portfolio is plain
+          HTML, CSS and JavaScript on Netlify, with no build step, and I wanted to keep it that way.
+        </p>
+        <p>
+          So the blog you're reading is vanilla JavaScript. There's no framework, no database and no build. This post
+          walks through how it works, with the real code, and is honest about what I gave up to keep it this simple.
+        </p>
+
+        <h2>What I actually needed</h2>
+        <p>
+          Before choosing tools, I wrote down what the blog had to do:
+        </p>
+        <ul>
+          <li>A home page listing every post, newest first, with a filter by tag.</li>
+          <li>One page per post, with its own title and description, so links shared on LinkedIn and X show a
+            proper preview card.</li>
+          <li>Previous and next links between posts.</li>
+          <li>Adding a post should take two steps: write the page, add it to a list.</li>
+        </ul>
+        <p>
+          The second point decided most of the design. Link previews are built by crawlers that read the raw HTML
+          and don't run your JavaScript. If the title and Open Graph tags are injected by a script, LinkedIn never
+          sees them. So every post has to be a real HTML file with its metadata written into the
+          <code>&lt;head&gt;</code>. Once you accept that, everything else can be small.
+        </p>
+
+        <h2>One file lists every post</h2>
+        <p>
+          All the information the home page needs lives in <code>blog/posts.js</code>, a plain ES module that
+          exports an array:
+        </p>
+        <pre><code class="language-js">export const posts = [
+  {
+    title: &quot;Vanilla JavaScript Is Still Enough: Building a Blog Without a Framework&quot;,
+    slug: &quot;vanilla-javascript-blog-without-a-framework&quot;,
+    date: &quot;2026-10-16&quot;,
+    description: &quot;How this blog works: one posts.js file, cards rendered with plain JavaScript...&quot;,
+    tags: [&quot;JavaScript&quot;, &quot;Frontend&quot;],
+    readingTime: 7,
+    cover: &quot;&quot;,
+  },
+  // ...one object per post
+];</code></pre>
+        <p>
+          The slug is the file name, so <code>slug</code> doubles as the link to the post. Dates are plain
+          <code>YYYY-MM-DD</code> strings, which has a nice side effect: they sort correctly as text, so "newest
+          first" is one line:
+        </p>
+        <pre><code class="language-js">import { posts } from &quot;./posts.js&quot;;
+
+const newestFirst = [...posts].sort((a, b) =&gt; b.date.localeCompare(a.date));</code></pre>
+        <p>
+          I copy the array before sorting because <code>sort()</code> sorts in place, and I'd rather not change an
+          imported module's data under the feet of anything else that uses it.
+        </p>
+
+        <h2>Rendering the cards</h2>
+        <p>
+          Each card is a template literal. I reused the card styles from my project grid, so the blog looks like the
+          rest of the site without a single new layout rule:
+        </p>
+        <pre><code class="language-js">function postCard(post, index) {
+  // ...cover image or line-drawing artwork goes in `media`
+
+  return `
+    &lt;a class=&quot;project-card post-card&quot; href=&quot;posts/${encodeURIComponent(post.slug)}.html&quot;&gt;
+      &lt;div class=&quot;project-card__media&quot;&gt;${media}&lt;/div&gt;
+      &lt;div class=&quot;project-card__body&quot;&gt;
+        &lt;h3&gt;${escapeHTML(post.title)}&lt;/h3&gt;
+        &lt;div class=&quot;post-card__meta&quot;&gt;
+          &lt;time datetime=&quot;${post.date}&quot;&gt;${formatDate(post.date)}&lt;/time&gt;
+          &lt;span&gt;${post.readingTime} min read&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;p&gt;${escapeHTML(post.description)}&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/a&gt;`;
+}</code></pre>
+        <p>
+          Two small functions carry more weight than they look. The first is <code>escapeHTML</code>. I'm the only
+          person writing <code>posts.js</code>, but the day I type a title with an ampersand or a
+          <code>&lt;</code> in it, I want it to show up as text, not break the page. Escaping anything that goes
+          into <code>innerHTML</code> is a habit worth keeping even when you trust the data:
+        </p>
+        <pre><code class="language-js">function escapeHTML(value) {
+  const entities = { &quot;&amp;&quot;: &quot;&amp;amp;&quot;, &quot;&lt;&quot;: &quot;&amp;lt;&quot;, &quot;&gt;&quot;: &quot;&amp;gt;&quot;, '&quot;': &quot;&amp;quot;&quot;, &quot;'&quot;: &quot;&amp;#39;&quot; };
+  return String(value).replace(/[&amp;&lt;&gt;&quot;']/g, (char) =&gt; entities[char]);
+}</code></pre>
+        <p>
+          The second is <code>formatDate</code>, which hides a classic JavaScript trap.
+          <code>new Date("2026-10-16")</code> is parsed as midnight <strong>UTC</strong>, so for anyone west of
+          London it displays as the 15th. Building the date from its parts creates it in the reader's own time zone
+          instead:
+        </p>
+        <pre><code class="language-js">const dateFormat = new Intl.DateTimeFormat(&quot;en-GB&quot;, { day: &quot;numeric&quot;, month: &quot;long&quot;, year: &quot;numeric&quot; });
+
+function formatDate(isoDate) {
+  const [year, month, day] = isoDate.split(&quot;-&quot;).map(Number);
+  return dateFormat.format(new Date(year, month - 1, day));
+}</code></pre>
+
+        <h2>The tag filter</h2>
+        <p>
+          The filter buttons are built from the tags in the posts, so a new tag appears as soon as a post uses it.
+          A <code>Set</code> removes the duplicates:
+        </p>
+        <pre><code class="language-js">const tags = [...new Set(newestFirst.flatMap((post) =&gt; post.tags))].sort();</code></pre>
+        <p>
+          Clicking a button re-renders the grid with the matching posts. There's one click listener on the
+          container rather than one per button, and each button carries <code>aria-pressed</code> so screen readers
+          know which filter is on:
+        </p>
+        <pre><code class="language-js">function show(tag) {
+  const visible = tag === &quot;All&quot; ? newestFirst : newestFirst.filter((post) =&gt; post.tags.includes(tag));
+  grid.innerHTML = visible.map(postCard).join(&quot;&quot;);
+
+  filter.querySelectorAll(&quot;.chip&quot;).forEach((chip) =&gt; {
+    chip.setAttribute(&quot;aria-pressed&quot;, String(chip.dataset.tag === tag));
+  });
+
+  // Keep the filter in the address bar so a filtered view can be shared
+  const url = new URL(window.location.href);
+  if (tag === &quot;All&quot;) url.searchParams.delete(&quot;tag&quot;);
+  else url.searchParams.set(&quot;tag&quot;, tag);
+  history.replaceState(null, &quot;&quot;, url);
+}
+
+filter.addEventListener(&quot;click&quot;, (event) =&gt; {
+  const chip = event.target.closest(&quot;.chip&quot;);
+  if (chip) show(chip.dataset.tag);
+});</code></pre>
+        <p>
+          Putting the tag in the URL (<code>/blog/?tag=Frontend</code>) costs three lines and means a filtered view
+          can be shared or bookmarked. It also means the tags on each post page are ordinary links back to the
+          filtered list. A hidden <code>aria-live</code> message announces how many posts are showing after each
+          click.
+        </p>
+
+        <h2>Previous and next, without editing old posts</h2>
+        <p>
+          If previous/next links were written into each HTML file, publishing a post would mean editing the one
+          before it, which is exactly the kind of step I'd forget. Instead, each post page finds itself in
+          <code>posts.js</code> and builds the links:
+        </p>
+        <pre><code class="language-js">function setUpPager(pager) {
+  // The canonical URL is always the real address, even when testing locally
+  const canonical = document.querySelector('link[rel=&quot;canonical&quot;]')?.href ?? window.location.href;
+  const slug = new URL(canonical).pathname.split(&quot;/&quot;).pop().replace(/\.html$/, &quot;&quot;);
+  const index = newestFirst.findIndex((post) =&gt; post.slug === slug);
+
+  if (index === -1) {
+    console.warn(`blog.js: no post in posts.js has the slug &quot;${slug}&quot;.`);
+    pager.remove();
+    return;
+  }
+
+  const older = newestFirst[index + 1];
+  const newer = newestFirst[index - 1];
+  // ...render a link for each one that exists
+}</code></pre>
+        <p>
+          I read the slug from the canonical URL rather than the address bar because Netlify can serve the same
+          page with or without <code>.html</code>, and the canonical tag is already required for sharing anyway. If
+          I forget to add a post to the list, the console tells me.
+        </p>
+
+        <h2>The small things that make it feel finished</h2>
+        <ul>
+          <li><strong>Syntax highlighting</strong> comes from Prism, loaded from a CDN with <code>defer</code>, only
+            on posts that contain code. The colours are my own CSS, using the same ink-and-bronze palette as the
+            rest of the site.</li>
+          <li><strong>Copy buttons</strong> are added to each code block by JavaScript, so the HTML stays a plain
+            <code>&lt;pre&gt;&lt;code&gt;</code> that works without them.</li>
+          <li><strong>Dark mode</strong> reads the same <code>localStorage</code> key as the rest of the site, and a
+            tiny inline script applies it before the page paints, so there's no white flash.</li>
+          <li><strong>No three.js on the blog.</strong> My home page uses three.js and GSAP for the project slider.
+            The blog has its own small script, so a reader opening a post doesn't download a 3D library they'll
+            never see.</li>
+        </ul>
+
+        <h2>What I gave up</h2>
+        <p>Keeping it this simple has real costs, and I'd rather be clear about them:</p>
+        <ul>
+          <li><strong>Repeated markup.</strong> Every post contains its own copy of the nav and footer. Change the
+            nav, and you change it in every file. A static site generator would handle that with a layout.</li>
+          <li><strong>Details written twice.</strong> A post's title, date and tags live in both
+            <code>posts.js</code> and the post's <code>&lt;head&gt;</code>. They can drift apart if I'm careless.</li>
+          <li><strong>The list needs JavaScript.</strong> The cards on the blog home page are rendered in the browser.
+            Google runs JavaScript, and every post is also in the sitemap, but a crawler that doesn't run scripts
+            sees an empty list.</li>
+          <li><strong>HTML, not Markdown.</strong> I write posts in HTML. It's fine for me; it would be a barrier
+            for a non-technical writer.</li>
+        </ul>
+
+        <h2>When I'd reach for something bigger</h2>
+        <p>
+          If this blog grew to dozens of posts, had several authors, or needed an RSS feed and Markdown, I'd move it
+          to a static site generator like Eleventy or Astro. Not React, because the output would still be static
+          pages; I'd just let a build step do the repetitive parts. Sharing layouts and generating metadata are
+          exactly the problems those tools solve.
+        </p>
+        <p>
+          But for a portfolio with a handful of posts, the vanilla version has real advantages. There's nothing to
+          install, nothing to upgrade and nothing to break when a dependency changes. It loads fast because there's
+          almost nothing to load. And every line of it is code I can explain in an interview, which, for a
+          portfolio, is kind of the point.
+        </p>
+        <p>
+          Frameworks are tools, not a requirement. Sometimes the best way to show you know JavaScript is to use
+          less of everything else.
+        </p>
+      </div>
+    </article>
+
+    <!-- Previous / next links are filled in from posts.js by blog.js -->
+    <div class="post-pager" role="navigation" aria-label="More posts" data-post-pager></div>
+
+    <aside class="work-together" aria-labelledby="work-together-title">
+      <h2 id="work-together-title">Want to work together?</h2>
+      <p>
+        If you need a fast frontend, a GoHighLevel build, or an automation that takes the boring work off your
+        plate, I'd love to hear about it.
+      </p>
+      <div class="btn-container">
+        <a class="btn live-btn" href="/#contact">Get in touch</a>
+        <a class="btn github-btn" href="https://www.linkedin.com/in/paul-obiero-72155b32a" target="_blank" rel="noopener">
+          <i class="bx bxl-linkedin" aria-hidden="true"></i> Connect on LinkedIn
+        </a>
+      </div>
+    </aside>
+  </main>
+
+  <footer>
+    <div class="coolness">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20%" height="20%" viewBox="0 0 160 160" fill="none"
+        class="osmo-icon-svg" aria-hidden="true">
+        <path
+          d="M94.8284 53.8578C92.3086 56.3776 88 54.593 88 51.0294V0H72V59.9999C72 66.6273 66.6274 71.9999 60 71.9999H0V87.9999H51.0294C54.5931 87.9999 56.3777 92.3085 53.8579 94.8283L18.3431 130.343L29.6569 141.657L65.1717 106.142C67.684 103.63 71.9745 105.396 72 108.939V160L88.0001 160L88 99.9999C88 93.3725 93.3726 87.9999 100 87.9999H160V71.9999H108.939C105.407 71.9745 103.64 67.7091 106.12 65.1938L106.142 65.1716L141.657 29.6568L130.343 18.3432L94.8284 53.8578Z"
+          fill="currentColor"></path>
+      </svg>
+    </div>
+    <div class="text3">© Paul Obiero 2025</div>
+
+    <div class="text4">
+      <ul>
+        <li>
+          <a href="/blog/">Blog</a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/obinazo.dev/" target="_blank" rel="noopener">Instagram</a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/paul-obiero-72155b32a" target="_blank" rel="noopener">LinkedIn</a>
+        </li>
+        <li>
+          <a href="mailto:paulonyangoobiero@outlook.com">Mail</a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+</body>
+
+</html>

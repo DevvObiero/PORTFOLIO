@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M0P5HQZ6VP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "G-M0P5HQZ6VP");
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Post details ===== -->
+  <title>From Losing My Mom to Finding Purpose in Code: My Journey as a Self-Taught Developer | Paul Obiero</title>
+  <meta name="description" content="Learning to code alone, losing the person I was doing it for, and how frontend work gave me a reason to keep going." />
+  <meta name="author" content="Paul Obiero" />
+  <link rel="canonical" href="https://paulobiero.me/blog/posts/losing-my-mom-finding-purpose-in-code.html" />
+
+  <!-- Share preview: LinkedIn, Facebook, WhatsApp -->
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Paul Obiero" />
+  <meta property="og:title" content="From Losing My Mom to Finding Purpose in Code: My Journey as a Self-Taught Developer" />
+  <meta property="og:description" content="Learning to code alone, losing the person I was doing it for, and how frontend work gave me a reason to keep going." />
+  <meta property="og:url" content="https://paulobiero.me/blog/posts/losing-my-mom-finding-purpose-in-code.html" />
+  <meta property="og:image" content="https://paulobiero.me/me.png" />
+  <meta property="og:image:alt" content="Paul Obiero speaking into a microphone at a presentation" />
+  <meta property="article:published_time" content="2026-10-23" />
+  <meta property="article:author" content="https://paulobiero.me/" />
+  <meta property="article:tag" content="Career" />
+
+  <!-- Share preview: X (Twitter) -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="From Losing My Mom to Finding Purpose in Code: My Journey as a Self-Taught Developer" />
+  <meta name="twitter:description" content="Learning to code alone, losing the person I was doing it for, and how frontend work gave me a reason to keep going." />
+  <meta name="twitter:image" content="https://paulobiero.me/me.png" />
+  <meta name="twitter:image:alt" content="Paul Obiero speaking into a microphone at a presentation" />
+
+  <!-- Structured data for search engines -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "From Losing My Mom to Finding Purpose in Code: My Journey as a Self-Taught Developer",
+    "description": "Learning to code alone, losing the person I was doing it for, and how frontend work gave me a reason to keep going.",
+    "datePublished": "2026-10-23",
+    "dateModified": "2026-10-23",
+    "image": "https://paulobiero.me/me.png",
+    "url": "https://paulobiero.me/blog/posts/losing-my-mom-finding-purpose-in-code.html",
+    "mainEntityOfPage": "https://paulobiero.me/blog/posts/losing-my-mom-finding-purpose-in-code.html",
+    "keywords": "Career",
+    "author": {
+      "@type": "Person",
+      "name": "Paul Obiero",
+      "url": "https://paulobiero.me/",
+      "sameAs": [
+        "https://www.linkedin.com/in/paul-obiero-72155b32a",
+        "https://github.com/DevvObiero"
+      ]
+    }
+  }
+  </script>
+  <!-- ===== End of post details ===== -->
+
+  <link rel="icon" type="image/png" href="/favicon.ico" />
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/blog/blog.css" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <script type="module" src="/blog/blog.js"></script>
+</head>
+
+<body>
+  <script>
+    // Apply the saved theme before the page paints, so dark mode doesn't flash
+    try {
+      if (localStorage.getItem("theme") === "dark") document.body.classList.add("dark-mode");
+    } catch (error) {}
+  </script>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="cursor" id="cursor"></div>
+
+  <nav aria-label="Main">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/profile.html">Profile</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/resume.html">Resume</a></li>
+      <li>
+        <button id="toggle-theme" type="button" aria-label="Dark mode">
+          <i class="bx bx-sun" id="sun-icon" aria-hidden="true"></i>
+          <i class="bx bxs-moon" id="moon-icon" aria-hidden="true"></i>
+        </button>
+      </li>
+    </ul>
+    <span aria-hidden="true"></span>
+  </nav>
+
+  <main id="main" class="post">
+    <article>
+      <header class="post-header">
+        <a class="back-link" href="/blog/"><i class="bx bx-left-arrow-alt" aria-hidden="true"></i> Back to blog</a>
+        <ul class="post-tags" aria-label="Tags">
+          <li><a href="/blog/?tag=Career">Career</a></li>
+        </ul>
+        <h1 class="post-title">From Losing My Mom to Finding Purpose in Code: My Journey as a Self-Taught Developer</h1>
+        <p class="post-lede">This one is more personal than what I usually write here. It's the story behind why I code at all.</p>
+        <div class="post-meta">
+          <time datetime="2026-10-23">23 October 2026</time>
+          <span aria-hidden="true">·</span>
+          <span>5 min read</span>
+        </div>
+      </header>
+
+      <div class="post-line" aria-hidden="true">
+        <svg viewBox="0 0 1399.32 163.87" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+          <path class="draw-line" pathLength="1"
+            d="m1399.17,37.1c-87.27-27.1-183.66,2.85-259.54,53.78-11.17,7.5-22.38,15.81-29.01,27.52-6.63,11.71-7.49,27.69,1.37,37.81,8.86,10.12,28.35,9.53,33.81-2.77,5.16-11.62-4.8-25.42-16.94-29.21s-25.23-.58-37.58,2.44c-94.45,23.14-191.55,35.45-288.78,36.62-128.29,1.54-261.08-17.89-369.59-86.35-25.31-15.97-49.13-34.5-76.03-47.61-34.22-16.69-72.32-24.05-110.26-27.21C211.9-.77,176.62-.24,142.65,7.51c-37.08,8.46-71.69,25.29-105.05,43.54C18.9,61.28-2.25,77.19.79,98.28" />
+        </svg>
+      </div>
+
+      <div class="post-body">
+        <p>
+          Most of what I write here is about code: automations, landing pages, how this blog works. This one is
+          about why I code at all. I've started it a few times and deleted it, because the honest answer runs
+          through the hardest part of my life. But it's also the most important thing I could tell you about how I
+          got here, so I'm going to try.
+        </p>
+
+        <h2>Learning alone</h2>
+        <p>
+          I taught myself to code. [WHEN AND HOW YOU STARTED: THE YEAR, WHAT YOU LEARNED ON, WHAT YOUR DAYS LOOKED
+          LIKE] There was no bootcamp, no mentor, and nobody in the room to ask when I got stuck. It was me, a
+          laptop and whatever free tutorials I could find.
+        </p>
+        <p>
+          The tutorials were confusing in a very particular way. Each one made sense while I was watching it, and
+          stopped making sense the moment I closed the video and opened an empty file. I'd follow along building a
+          to-do app, feel great about it, then try to build something of my own and have no idea where to start.
+        </p>
+        <p>
+          Progress was slow. Things that look simple to me now took weeks to understand. [SOMETHING THAT TOOK YOU A
+          LONG TIME TO "GET", E.G. A CONCEPT OR A BUG YOU STILL REMEMBER] And underneath all of it was imposter
+          syndrome, constantly. It felt like everyone else online was further ahead, faster, more naturally gifted.
+          I'd compare my early attempts with other people's best work and feel like a fraud for even trying. I
+          still feel that sometimes. I've just learned it isn't a reliable narrator.
+        </p>
+
+        <h2>Why I started</h2>
+        <p>
+          The main reason I started was my mom.
+        </p>
+        <p>
+          [IN YOUR OWN WORDS: WHAT YOU WANTED FOR HER, AND WHY CODING WAS YOUR WAY OF GETTING THERE]
+        </p>
+        <p>
+          [OPTIONAL: A SPECIFIC MEMORY OF HER THAT'S CONNECTED TO THIS PART OF YOUR LIFE. ONLY IF YOU WANT TO SHARE
+          ONE.]
+        </p>
+        <p>
+          On the slow days, when nothing worked and I couldn't see the point, she was the point. She was why I
+          opened the laptop anyway.
+        </p>
+
+        <h2>Losing her</h2>
+        <p>
+          Then I lost her. [OPTIONAL: WHEN, OR ANYTHING ELSE ABOUT THIS YOU WANT TO SAY. IT'S COMPLETELY FINE TO
+          LEAVE THIS OUT.]
+        </p>
+        <p>
+          I don't want to dress this part up. For a while, it felt like I hadn't only lost her; I'd lost my purpose
+          too. So much of what I was working towards had been for her. Without her, the goal didn't make sense any
+          more, and neither did the work.
+        </p>
+        <p>
+          [IN YOUR OWN WORDS: WHAT THAT PERIOD WAS LIKE, AND HOW LONG IT LASTED]
+        </p>
+        <p>
+          I'm not going to pretend there's a neat lesson here. Grief isn't a chapter you finish. It's something you
+          learn to carry.
+        </p>
+
+        <h2>Finding purpose in code again</h2>
+        <p>
+          What I can say is that, slowly, coding became the thing that gave me purpose again. It didn't happen
+          overnight, and I didn't plan it. [WHAT BROUGHT YOU BACK TO IT: A PROJECT, A PERSON, A MOMENT]
+        </p>
+        <p>
+          Somewhere along the way, I fell in love with frontend development. I love that you can see what you're
+          building. You change a line of CSS, refresh, and the page is different. I love making something feel
+          smooth on a phone, and the small details nobody notices unless they're wrong. It's problem-solving that
+          also cares about how things feel to the person using them.
+        </p>
+        <p>
+          [WHAT YOU LOVE MOST ABOUT FRONTEND, OR THE FIRST THING YOU BUILT THAT YOU WERE REALLY PROUD OF]
+        </p>
+        <p>
+          The work also gave my days a shape when I needed one. A bug is a problem that can actually be solved, and
+          at a time when not much made sense, that mattered more than I can easily explain.
+        </p>
+
+        <h2>The door that wouldn't open</h2>
+        <p>
+          Then came the job search, which was hard in a completely different way.
+        </p>
+        <p>
+          Interviews were rare. I'm in Kenya, and so many of the roles I applied for, including remote ones, came
+          with the same line: candidates must already have the right to work in a particular country, and the
+          company won't sponsor a visa. "Remote" often turned out to mean "remote, as long as you live here". I'd
+          find a role I was a good fit for, read to the bottom of the listing, and close the tab. [OPTIONAL: ROUGHLY
+          HOW MANY APPLICATIONS, OR HOW LONG THIS LASTED]
+        </p>
+        <p>
+          At one point I was seriously considering going abroad for a master's degree. Not mainly because I wanted
+          the degree, but because it looked like the only way to get a foot in the door. [OPTIONAL: WHAT YOU WERE
+          CONSIDERING, AND HOW FAR YOU GOT WITH IT] It's a path that works for a lot of people, and I don't think it
+          would have been a wrong choice. I just wasn't sure it was mine.
+        </p>
+
+        <h2>Then GoHighLevel</h2>
+        <p>
+          Then I landed a GoHighLevel role. [HOW YOU FOUND IT, AND WHAT THE WORK WAS] Then another one. Then a third.
+        </p>
+        <p>
+          It wasn't the path I'd pictured. I'd imagined myself somewhere writing React all day. But the work used
+          everything I'd been teaching myself: building funnel pages that load fast on phones, writing custom code
+          and webhooks, and thinking through automations the way I think through the state of a user interface. I
+          wrote more about that side of it in
+          <a href="building-on-gohighlevel.html">What I've Learned Building on GoHighLevel</a>.
+        </p>
+        <p>
+          So I made a decision: instead of chasing every opening, I'd stay focused on GoHighLevel work for a while
+          and go deep rather than wide. It's been going really well. Today I'm in a role that pays [SALARY PHRASE].
+        </p>
+        <p>
+          [OPTIONAL: A LINE ABOUT YOUR MOM HERE, IF IT FEELS RIGHT TO YOU. OTHERWISE, DELETE THIS PARAGRAPH.]
+        </p>
+
+        <h2>If you're in Kenya and learning to code right now</h2>
+        <p>
+          If any part of this sounds like where you are, here's what I'd want you to hear:
+        </p>
+        <ul>
+          <li><strong>It's a long road.</strong> Longer than the videos and the success stories make it look. That's
+            normal. It isn't a sign you're not cut out for this.</li>
+          <li><strong>Keep building.</strong> Real things for real people (a relative's business, your church, a
+            friend's side hustle) will teach you more than one more tutorial, and they give you something to
+            show.</li>
+          <li><strong>Read the location line, but don't let it stop you.</strong> Some doors are closed because of
+            where you live. Plenty aren't. Look for companies and clients who hire globally.</li>
+          <li><strong>Specialised tools are doors too.</strong> Platforms like GoHighLevel have businesses that need
+            people who can build on them, and many of those businesses care about whether you can do the work, not
+            where you live.</li>
+          <li><strong>Find people.</strong> Doing it completely alone was the hardest part for me. [COMMUNITIES,
+            PEOPLE OR RESOURCES IN KENYA YOU'D RECOMMEND]</li>
+          <li><strong>Your reason is allowed to change.</strong> Mine had to. Finding a new one doesn't mean the
+            old one stopped mattering.</li>
+        </ul>
+        <p>
+          It's a long road. Keep building. The right door opens: maybe not the one you were pushing on, and
+          probably not when you expected. But it opens.
+        </p>
+        <p>
+          Thank you for reading this one.
+        </p>
+      </div>
+    </article>
+
+    <!-- Previous / next links are filled in from posts.js by blog.js -->
+    <div class="post-pager" role="navigation" aria-label="More posts" data-post-pager></div>
+
+    <aside class="work-together" aria-labelledby="work-together-title">
+      <h2 id="work-together-title">Want to work together?</h2>
+      <p>
+        If you need a fast frontend, a GoHighLevel build, or an automation that takes the boring work off your
+        plate, I'd love to hear about it.
+      </p>
+      <div class="btn-container">
+        <a class="btn live-btn" href="/#contact">Get in touch</a>
+        <a class="btn github-btn" href="https://www.linkedin.com/in/paul-obiero-72155b32a" target="_blank" rel="noopener">
+          <i class="bx bxl-linkedin" aria-hidden="true"></i> Connect on LinkedIn
+        </a>
+      </div>
+    </aside>
+  </main>
+
+  <footer>
+    <div class="coolness">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20%" height="20%" viewBox="0 0 160 160" fill="none"
+        class="osmo-icon-svg" aria-hidden="true">
+        <path
+          d="M94.8284 53.8578C92.3086 56.3776 88 54.593 88 51.0294V0H72V59.9999C72 66.6273 66.6274 71.9999 60 71.9999H0V87.9999H51.0294C54.5931 87.9999 56.3777 92.3085 53.8579 94.8283L18.3431 130.343L29.6569 141.657L65.1717 106.142C67.684 103.63 71.9745 105.396 72 108.939V160L88.0001 160L88 99.9999C88 93.3725 93.3726 87.9999 100 87.9999H160V71.9999H108.939C105.407 71.9745 103.64 67.7091 106.12 65.1938L106.142 65.1716L141.657 29.6568L130.343 18.3432L94.8284 53.8578Z"
+          fill="currentColor"></path>
+      </svg>
+    </div>
+    <div class="text3">© Paul Obiero 2025</div>
+
+    <div class="text4">
+      <ul>
+        <li>
+          <a href="/blog/">Blog</a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/obinazo.dev/" target="_blank" rel="noopener">Instagram</a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/paul-obiero-72155b32a" target="_blank" rel="noopener">LinkedIn</a>
+        </li>
+        <li>
+          <a href="mailto:paulonyangoobiero@outlook.com">Mail</a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+</body>
+
+</html>

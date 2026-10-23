@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M0P5HQZ6VP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "G-M0P5HQZ6VP");
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Post details ===== -->
+  <title>What I've Learned Building on GoHighLevel | Paul Obiero</title>
+  <meta name="description" content="What GoHighLevel is genuinely good at, a full lead-to-booking workflow, custom code and webhooks, and the mistakes I see most." />
+  <meta name="author" content="Paul Obiero" />
+  <link rel="canonical" href="https://paulobiero.me/blog/posts/building-on-gohighlevel.html" />
+
+  <!-- Share preview: LinkedIn, Facebook, WhatsApp -->
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Paul Obiero" />
+  <meta property="og:title" content="What I've Learned Building on GoHighLevel" />
+  <meta property="og:description" content="What GoHighLevel is genuinely good at, a full lead-to-booking workflow, custom code and webhooks, and the mistakes I see most." />
+  <meta property="og:url" content="https://paulobiero.me/blog/posts/building-on-gohighlevel.html" />
+  <meta property="og:image" content="https://paulobiero.me/me.png" />
+  <meta property="og:image:alt" content="Paul Obiero speaking into a microphone at a presentation" />
+  <meta property="article:published_time" content="2026-10-02" />
+  <meta property="article:author" content="https://paulobiero.me/" />
+  <meta property="article:tag" content="GoHighLevel" />
+  <meta property="article:tag" content="Automation" />
+
+  <!-- Share preview: X (Twitter) -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="What I've Learned Building on GoHighLevel" />
+  <meta name="twitter:description" content="What GoHighLevel is genuinely good at, a full lead-to-booking workflow, custom code and webhooks, and the mistakes I see most." />
+  <meta name="twitter:image" content="https://paulobiero.me/me.png" />
+  <meta name="twitter:image:alt" content="Paul Obiero speaking into a microphone at a presentation" />
+
+  <!-- Structured data for search engines -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "What I've Learned Building on GoHighLevel",
+    "description": "What GoHighLevel is genuinely good at, a full lead-to-booking workflow, custom code and webhooks, and the mistakes I see most.",
+    "datePublished": "2026-10-02",
+    "dateModified": "2026-10-02",
+    "image": "https://paulobiero.me/me.png",
+    "url": "https://paulobiero.me/blog/posts/building-on-gohighlevel.html",
+    "mainEntityOfPage": "https://paulobiero.me/blog/posts/building-on-gohighlevel.html",
+    "keywords": "GoHighLevel, Automation",
+    "author": {
+      "@type": "Person",
+      "name": "Paul Obiero",
+      "url": "https://paulobiero.me/",
+      "sameAs": [
+        "https://www.linkedin.com/in/paul-obiero-72155b32a",
+        "https://github.com/DevvObiero"
+      ]
+    }
+  }
+  </script>
+  <!-- ===== End of post details ===== -->
+
+  <link rel="icon" type="image/png" href="/favicon.ico" />
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/blog/blog.css" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+  <script type="module" src="/blog/blog.js"></script>
+</head>
+
+<body>
+  <script>
+    // Apply the saved theme before the page paints, so dark mode doesn't flash
+    try {
+      if (localStorage.getItem("theme") === "dark") document.body.classList.add("dark-mode");
+    } catch (error) {}
+  </script>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="cursor" id="cursor"></div>
+
+  <nav aria-label="Main">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/profile.html">Profile</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/resume.html">Resume</a></li>
+      <li>
+        <button id="toggle-theme" type="button" aria-label="Dark mode">
+          <i class="bx bx-sun" id="sun-icon" aria-hidden="true"></i>
+          <i class="bx bxs-moon" id="moon-icon" aria-hidden="true"></i>
+        </button>
+      </li>
+    </ul>
+    <span aria-hidden="true"></span>
+  </nav>
+
+  <main id="main" class="post">
+    <article>
+      <header class="post-header">
+        <a class="back-link" href="/blog/"><i class="bx bx-left-arrow-alt" aria-hidden="true"></i> Back to blog</a>
+        <ul class="post-tags" aria-label="Tags">
+          <li><a href="/blog/?tag=GoHighLevel">GoHighLevel</a></li>
+          <li><a href="/blog/?tag=Automation">Automation</a></li>
+        </ul>
+        <h1 class="post-title">What I've Learned Building on GoHighLevel</h1>
+        <p class="post-lede">What GoHighLevel is genuinely good at, a full lead-to-booking workflow, custom code and webhooks, and the mistakes I see most.</p>
+        <div class="post-meta">
+          <time datetime="2026-10-02">2 October 2026</time>
+          <span aria-hidden="true">·</span>
+          <span>6 min read</span>
+        </div>
+      </header>
+
+      <div class="post-line" aria-hidden="true">
+        <svg viewBox="0 0 1399.32 163.87" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+          <path class="draw-line" pathLength="1"
+            d="m1399.17,37.1c-87.27-27.1-183.66,2.85-259.54,53.78-11.17,7.5-22.38,15.81-29.01,27.52-6.63,11.71-7.49,27.69,1.37,37.81,8.86,10.12,28.35,9.53,33.81-2.77,5.16-11.62-4.8-25.42-16.94-29.21s-25.23-.58-37.58,2.44c-94.45,23.14-191.55,35.45-288.78,36.62-128.29,1.54-261.08-17.89-369.59-86.35-25.31-15.97-49.13-34.5-76.03-47.61-34.22-16.69-72.32-24.05-110.26-27.21C211.9-.77,176.62-.24,142.65,7.51c-37.08,8.46-71.69,25.29-105.05,43.54C18.9,61.28-2.25,77.19.79,98.28" />
+        </svg>
+      </div>
+
+      <div class="post-body">
+        <p>
+          I came to GoHighLevel as a frontend developer, and I'll be honest: I was a bit snobby about it. An
+          all-in-one marketing platform with a drag-and-drop page builder didn't sound like "real" development.
+          [HOW AND WHEN YOU FIRST STARTED WORKING WITH GHL]
+        </p>
+        <p>
+          [NUMBER] accounts later, I've changed my mind, not about drag-and-drop, but about what GoHighLevel is
+          for. It isn't trying to replace developers. It's trying to replace the five or six separate tools a small
+          business glues together to get from "someone filled in a form" to "someone booked a call". This post is
+          what I've learned building on it: where it shines, a workflow I build all the time, how code fits in, and
+          the mistakes I keep seeing.
+        </p>
+
+        <h2>What GoHighLevel is genuinely good at</h2>
+        <p>
+          The headline feature is that everything lives in one place and shares one contact record. That sounds
+          small until you've debugged a lead that went missing somewhere between a form tool, a CRM, an email
+          platform and a calendar app.
+        </p>
+        <ul>
+          <li><strong>Funnels and websites.</strong> Pages, forms and surveys that write straight into the CRM, with
+            no integration in between.</li>
+          <li><strong>CRM and pipelines.</strong> Contacts, plus opportunities that move through stages you define
+            (New lead, Contacted, Booked, Won). Those stages become triggers for automation.</li>
+          <li><strong>Workflows.</strong> The automation builder: triggers, actions, waits, if/else branches and
+            goals. Most of my time in GHL is spent here.</li>
+          <li><strong>Calendars.</strong> Booking pages, round-robin assignment across a team, and sync with Google
+            or Outlook calendars.</li>
+          <li><strong>Conversations.</strong> One inbox for SMS, email, WhatsApp and social messages, so the team
+            replies from one place.</li>
+          <li><strong>Snapshots.</strong> You can package a whole account setup (funnels, workflows, pipelines) and
+            load it into another account. For agencies, that's huge.</li>
+        </ul>
+
+        <h2>A workflow I build all the time</h2>
+        <p>
+          Here's the shape of a lead-to-booking system. The most important design decision is that it's
+          <strong>several small workflows, one per event</strong>, not one giant workflow that tries to do
+          everything.
+        </p>
+        <pre><code class="language-plain">Workflow 1: New lead
+  Trigger:  Form submitted (the landing page form)
+  Action:   Create opportunity in &quot;Sales&quot; pipeline, stage &quot;New lead&quot;
+  Action:   Notify the assigned team member
+  Action:   SMS / WhatsApp: &quot;Thanks {{contact.first_name}}, here's a link to book a call&quot;
+  Wait:     1 day
+  Action:   Email with the booking link and an answer to the most common question
+  Wait:     2 days
+  Action:   Final SMS follow-up
+  Goal:     Appointment booked  -&gt; leave this workflow immediately
+
+Workflow 2: Appointment booked
+  Trigger:  Customer booked appointment
+  Action:   Move opportunity to &quot;Booked&quot;
+  Action:   Confirmation email + SMS
+  Wait:     Until 1 day before the appointment -&gt; reminder
+  Wait:     Until 1 hour before the appointment -&gt; reminder with the meeting link
+
+Workflow 3: No-show
+  Trigger:  Appointment status changed to &quot;No show&quot;
+  Action:   Move opportunity to &quot;No show&quot;
+  Action:   SMS with a link to rebook</code></pre>
+        <p>
+          A few details make this work in real life. The <strong>goal</strong> in Workflow 1 means a lead who books
+          on day one never gets the day-three "just checking in" message. I also turn on
+          <strong>stop on response</strong> in the workflow settings, so anyone who replies is handled by a human
+          instead of a script. And the reminders use waits relative to the appointment time, not fixed delays, so
+          they still land correctly when someone books three weeks out.
+        </p>
+        <p>
+          Splitting it up like this means that when something goes wrong, the execution logs point to one small
+          workflow, and changing the reminder timing can't accidentally break lead capture.
+        </p>
+
+        <h2>Custom code and webhooks inside GHL</h2>
+        <p>
+          This is where being a developer really pays off. GHL gives you several ways out of the box, and each one
+          solves a different problem:
+        </p>
+        <ul>
+          <li><strong>Webhook actions</strong> send contact and event data out of GHL to any URL, for example to
+            create an invoice in an accounting tool or log to a spreadsheet.</li>
+          <li><strong>Custom webhooks</strong> (a premium action) let you set the method, headers, authentication and
+            body yourself, so you can call almost any API directly from a workflow.</li>
+          <li><strong>Inbound webhook triggers</strong> (also premium) let an outside system start a workflow, such
+            as a payment provider confirming a payment, or a custom app creating a lead.</li>
+          <li><strong>Custom code</strong> actions run JavaScript inside a workflow. Its outputs become values the
+            next steps can use.</li>
+        </ul>
+        <p>
+          The custom code action is great for the little jobs the built-in actions don't quite cover, like splitting
+          a "full name" field that a form collected as one box:
+        </p>
+        <pre><code class="language-js">// GHL &quot;Custom code&quot; action. Map the contact's full name into the action's inputs first.
+// The editor shows the exact input variable name your account uses; inputData is the common one.
+const fullName = (inputData.full_name || &quot;&quot;).trim().replace(/\s+/g, &quot; &quot;);
+const [firstName = &quot;&quot;, ...rest] = fullName.split(&quot; &quot;);
+
+return { first_name: firstName, last_name: rest.join(&quot; &quot;) };</code></pre>
+        <p>
+          For bigger jobs, I point a custom webhook at a small serverless function I control. The one thing I always
+          add is a shared secret in a header, so random traffic can't trigger it:
+        </p>
+        <pre><code class="language-js">// netlify/functions/ghl-webhook.js: receives a GHL custom webhook
+export default async (request) =&gt; {
+  if (request.headers.get(&quot;x-webhook-secret&quot;) !== process.env.GHL_WEBHOOK_SECRET) {
+    return new Response(&quot;Unauthorized&quot;, { status: 401 });
+  }
+
+  // The body is whatever you mapped in the webhook action, e.g. contact_id and email
+  const payload = await request.json();
+  await createInvoice(payload); // your own function
+
+  return Response.json({ ok: true });
+};</code></pre>
+        <p>
+          Inbound webhooks work the other way. You send GHL a sample payload once, map its fields to contact fields,
+          and from then on any system that can make an HTTP request can start a workflow:
+        </p>
+        <pre><code class="language-json">{
+  &quot;email&quot;: &quot;jane@example.com&quot;,
+  &quot;phone&quot;: &quot;+254712345678&quot;,
+  &quot;source&quot;: &quot;partner-referral&quot;,
+  &quot;utm_campaign&quot;: &quot;october-launch&quot;
+}</code></pre>
+        <p>
+          [IF YOU'VE BUILT A SPECIFIC CUSTOM INTEGRATION FOR A CLIENT, DESCRIBE IT HERE: WHAT IT CONNECTED AND WHAT
+          PROBLEM IT SOLVED]
+        </p>
+
+        <h2>Mistakes I see clients make</h2>
+        <p>
+          Most of the GHL accounts I'm asked to fix have the same handful of problems. None of them is exotic.
+        </p>
+        <ul>
+          <li><strong>One giant workflow.</strong> Two hundred steps, a dozen branches, impossible to debug. Split
+            by event.</li>
+          <li><strong>Re-entry set the wrong way.</strong> Whether a contact can enter a workflow twice decides
+            whether a returning lead gets the welcome sequence again or never hears from you. Choose on purpose.</li>
+          <li><strong>No stop conditions.</strong> A lead replies "Yes, I'm interested!" and still gets "Just checking
+            in!" three days later. Goals and stop-on-response fix this.</li>
+          <li><strong>Duplicate contacts.</strong> Usually caused by phone numbers in mixed formats. Keep duplicate
+            contacts turned off and send numbers in international format (+254...).</li>
+          <li><strong>Tags as a junk drawer.</strong> Hundreds of tags nobody understands. Use pipeline stages and
+            custom fields for where someone is, tags for groups, and agree on a naming convention.</li>
+          <li><strong>Never testing on a real phone.</strong> SMS links that break, messages that split into three,
+            and reminders sent at 3 a.m. because the account and calendar time zones don't match.</li>
+          <li><strong>Ignoring consent.</strong> Opt-outs and DND settings matter, and WhatsApp messages you start
+            need approved templates.</li>
+        </ul>
+        <p>[A MISTAKE YOU MADE YOURSELF ON GHL, AND WHAT IT TAUGHT YOU]</p>
+
+        <h2>How developer skills make GHL work better</h2>
+        <p>
+          You can get a long way in GoHighLevel without writing a line of code. But the accounts that run smoothly
+          tend to have someone who thinks like a developer behind them.
+        </p>
+        <ul>
+          <li><strong>Thinking in states.</strong> I design pipelines the way I design UI state: every stage has a
+            clear way in and a clear way out, and nothing can sit in two states at once.</li>
+          <li><strong>Clean data.</strong> Normalising phone numbers and emails at the point of capture prevents most
+            duplicate and delivery problems before they start.</li>
+          <li><strong>Extending the edges.</strong> Webhooks plus a small function cover what GHL doesn't do
+            natively, like a local payment confirmation that should mark an opportunity as won.</li>
+          <li><strong>Frontend craft on funnels.</strong> Custom CSS and code on funnel pages, compressed images,
+            and form inputs that don't zoom on iPhones. Fast pages convert better, in GHL or anywhere else.</li>
+          <li><strong>Debugging like it's code.</strong> Reading execution logs, testing webhooks with sample
+            payloads, changing one thing at a time, and writing down what each workflow is for.</li>
+        </ul>
+        <p>
+          GoHighLevel handles the parts every business needs. A developer makes it fit the parts that make that
+          business different. That combination is the work I enjoy most right now.
+        </p>
+      </div>
+    </article>
+
+    <!-- Previous / next links are filled in from posts.js by blog.js -->
+    <div class="post-pager" role="navigation" aria-label="More posts" data-post-pager></div>
+
+    <aside class="work-together" aria-labelledby="work-together-title">
+      <h2 id="work-together-title">Want to work together?</h2>
+      <p>
+        If you need a fast frontend, a GoHighLevel build, or an automation that takes the boring work off your
+        plate, I'd love to hear about it.
+      </p>
+      <div class="btn-container">
+        <a class="btn live-btn" href="/#contact">Get in touch</a>
+        <a class="btn github-btn" href="https://www.linkedin.com/in/paul-obiero-72155b32a" target="_blank" rel="noopener">
+          <i class="bx bxl-linkedin" aria-hidden="true"></i> Connect on LinkedIn
+        </a>
+      </div>
+    </aside>
+  </main>
+
+  <footer>
+    <div class="coolness">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20%" height="20%" viewBox="0 0 160 160" fill="none"
+        class="osmo-icon-svg" aria-hidden="true">
+        <path
+          d="M94.8284 53.8578C92.3086 56.3776 88 54.593 88 51.0294V0H72V59.9999C72 66.6273 66.6274 71.9999 60 71.9999H0V87.9999H51.0294C54.5931 87.9999 56.3777 92.3085 53.8579 94.8283L18.3431 130.343L29.6569 141.657L65.1717 106.142C67.684 103.63 71.9745 105.396 72 108.939V160L88.0001 160L88 99.9999C88 93.3725 93.3726 87.9999 100 87.9999H160V71.9999H108.939C105.407 71.9745 103.64 67.7091 106.12 65.1938L106.142 65.1716L141.657 29.6568L130.343 18.3432L94.8284 53.8578Z"
+          fill="currentColor"></path>
+      </svg>
+    </div>
+    <div class="text3">© Paul Obiero 2025</div>
+
+    <div class="text4">
+      <ul>
+        <li>
+          <a href="/blog/">Blog</a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/obinazo.dev/" target="_blank" rel="noopener">Instagram</a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/paul-obiero-72155b32a" target="_blank" rel="noopener">LinkedIn</a>
+        </li>
+        <li>
+          <a href="mailto:paulonyangoobiero@outlook.com">Mail</a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+</body>
+
+</html>

@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M0P5HQZ6VP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "G-M0P5HQZ6VP");
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Post details ===== -->
+  <title>Building Fast, Conversion-Focused Landing Pages | Paul Obiero</title>
+  <meta name="description" content="Mobile-first layout, sticky CTAs, forms that don't fight people, Core Web Vitals and conversion tracking, with the code I actually use." />
+  <meta name="author" content="Paul Obiero" />
+  <link rel="canonical" href="https://paulobiero.me/blog/posts/fast-conversion-landing-pages.html" />
+
+  <!-- Share preview: LinkedIn, Facebook, WhatsApp -->
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Paul Obiero" />
+  <meta property="og:title" content="Building Fast, Conversion-Focused Landing Pages" />
+  <meta property="og:description" content="Mobile-first layout, sticky CTAs, forms that don't fight people, Core Web Vitals and conversion tracking, with the code I actually use." />
+  <meta property="og:url" content="https://paulobiero.me/blog/posts/fast-conversion-landing-pages.html" />
+  <meta property="og:image" content="https://paulobiero.me/me.png" />
+  <meta property="og:image:alt" content="Paul Obiero speaking into a microphone at a presentation" />
+  <meta property="article:published_time" content="2026-10-09" />
+  <meta property="article:author" content="https://paulobiero.me/" />
+  <meta property="article:tag" content="Frontend" />
+  <meta property="article:tag" content="Performance" />
+
+  <!-- Share preview: X (Twitter) -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Building Fast, Conversion-Focused Landing Pages" />
+  <meta name="twitter:description" content="Mobile-first layout, sticky CTAs, forms that don't fight people, Core Web Vitals and conversion tracking, with the code I actually use." />
+  <meta name="twitter:image" content="https://paulobiero.me/me.png" />
+  <meta name="twitter:image:alt" content="Paul Obiero speaking into a microphone at a presentation" />
+
+  <!-- Structured data for search engines -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Building Fast, Conversion-Focused Landing Pages",
+    "description": "Mobile-first layout, sticky CTAs, forms that don't fight people, Core Web Vitals and conversion tracking, with the code I actually use.",
+    "datePublished": "2026-10-09",
+    "dateModified": "2026-10-09",
+    "image": "https://paulobiero.me/me.png",
+    "url": "https://paulobiero.me/blog/posts/fast-conversion-landing-pages.html",
+    "mainEntityOfPage": "https://paulobiero.me/blog/posts/fast-conversion-landing-pages.html",
+    "keywords": "Frontend, Performance",
+    "author": {
+      "@type": "Person",
+      "name": "Paul Obiero",
+      "url": "https://paulobiero.me/",
+      "sameAs": [
+        "https://www.linkedin.com/in/paul-obiero-72155b32a",
+        "https://github.com/DevvObiero"
+      ]
+    }
+  }
+  </script>
+  <!-- ===== End of post details ===== -->
+
+  <link rel="icon" type="image/png" href="/favicon.ico" />
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/blog/blog.css" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script type="module" src="/blog/blog.js"></script>
+</head>
+
+<body>
+  <script>
+    // Apply the saved theme before the page paints, so dark mode doesn't flash
+    try {
+      if (localStorage.getItem("theme") === "dark") document.body.classList.add("dark-mode");
+    } catch (error) {}
+  </script>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="cursor" id="cursor"></div>
+
+  <nav aria-label="Main">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/profile.html">Profile</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/resume.html">Resume</a></li>
+      <li>
+        <button id="toggle-theme" type="button" aria-label="Dark mode">
+          <i class="bx bx-sun" id="sun-icon" aria-hidden="true"></i>
+          <i class="bx bxs-moon" id="moon-icon" aria-hidden="true"></i>
+        </button>
+      </li>
+    </ul>
+    <span aria-hidden="true"></span>
+  </nav>
+
+  <main id="main" class="post">
+    <article>
+      <header class="post-header">
+        <a class="back-link" href="/blog/"><i class="bx bx-left-arrow-alt" aria-hidden="true"></i> Back to blog</a>
+        <ul class="post-tags" aria-label="Tags">
+          <li><a href="/blog/?tag=Frontend">Frontend</a></li>
+          <li><a href="/blog/?tag=Performance">Performance</a></li>
+        </ul>
+        <h1 class="post-title">Building Fast, Conversion-Focused Landing Pages</h1>
+        <p class="post-lede">Mobile-first layout, sticky CTAs, forms that don't fight people, Core Web Vitals and conversion tracking, with the code I actually use.</p>
+        <div class="post-meta">
+          <time datetime="2026-10-09">9 October 2026</time>
+          <span aria-hidden="true">·</span>
+          <span>6 min read</span>
+        </div>
+      </header>
+
+      <div class="post-line" aria-hidden="true">
+        <svg viewBox="0 0 1399.32 163.87" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+          <path class="draw-line" pathLength="1"
+            d="m1399.17,37.1c-87.27-27.1-183.66,2.85-259.54,53.78-11.17,7.5-22.38,15.81-29.01,27.52-6.63,11.71-7.49,27.69,1.37,37.81,8.86,10.12,28.35,9.53,33.81-2.77,5.16-11.62-4.8-25.42-16.94-29.21s-25.23-.58-37.58,2.44c-94.45,23.14-191.55,35.45-288.78,36.62-128.29,1.54-261.08-17.89-369.59-86.35-25.31-15.97-49.13-34.5-76.03-47.61-34.22-16.69-72.32-24.05-110.26-27.21C211.9-.77,176.62-.24,142.65,7.51c-37.08,8.46-71.69,25.29-105.05,43.54C18.9,61.28-2.25,77.19.79,98.28" />
+        </svg>
+      </div>
+
+      <div class="post-body">
+        <p>
+          A landing page has one job: get the right person to take one action. Everything on it either helps with
+          that or gets in the way. I build a lot of these, for clients' ad campaigns and inside funnel builders like
+          GoHighLevel, and over time I've ended up with a checklist I go through every time.
+        </p>
+        <p>
+          This is that checklist, with the code I actually use. None of it is clever. It's the boring details that
+          decide whether someone on a mid-range phone on mobile data fills in your form or gives up.
+        </p>
+
+        <h2>Start with the phone</h2>
+        <p>
+          On most landing pages I've worked on, the majority of visitors are on a phone. [ADD A REAL FIGURE FROM ONE
+          OF YOUR PROJECTS' ANALYTICS, E.G. "ON [PROJECT], 8 IN 10 VISITORS WERE ON MOBILE"] So I design and write
+          CSS for the small screen first, then add to it for larger screens:
+        </p>
+        <pre><code class="language-css">.hero {
+  display: grid;
+  gap: 1.5rem;
+  padding: 2rem 1.25rem;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 8vw, 3.5rem);
+  line-height: 1.05;
+}
+
+@media (min-width: 900px) {
+  .hero {
+    grid-template-columns: 1.1fr 1fr;
+    align-items: center;
+    padding: 5rem 2rem;
+  }
+}</code></pre>
+        <p>
+          Writing it this way round means the phone layout is the default rather than an afterthought patched in
+          with overrides. A few rules I hold myself to:
+        </p>
+        <ul>
+          <li>On a 390px-wide screen, the headline, a one-line benefit and the call to action are visible without
+            scrolling.</li>
+          <li>Buttons and links are at least 44px tall. Thumbs are not mouse pointers.</li>
+          <li>Nothing important hides in a carousel. Almost nobody swipes to slide four.</li>
+        </ul>
+
+        <h2>Sticky CTAs that know when to step aside</h2>
+        <p>
+          A sticky button at the bottom of the screen is one of the most reliable conversion tools on mobile,
+          because the next step is always one tap away. But it should get out of the way when the form itself is on
+          screen. Two buttons for the same action just look broken.
+        </p>
+        <pre><code class="language-html">&lt;a class=&quot;sticky-cta&quot; href=&quot;#get-quote&quot;&gt;Get a free quote&lt;/a&gt;</code></pre>
+        <pre><code class="language-css">.sticky-cta {
+  position: fixed;
+  inset: auto 1rem calc(1rem + env(safe-area-inset-bottom)) 1rem;
+  padding: 1rem;
+  text-align: center;
+  font-weight: 700;
+  color: #fff;
+  background: #111;
+  border-radius: 999px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.sticky-cta[inert] {
+  transform: translateY(150%);
+  opacity: 0;
+}
+
+@media (min-width: 900px) {
+  .sticky-cta { display: none; }
+}</code></pre>
+        <pre><code class="language-js">const cta = document.querySelector(&quot;.sticky-cta&quot;);
+const form = document.querySelector(&quot;#get-quote&quot;);
+
+// Hide the sticky button while the form is visible
+new IntersectionObserver(([entry]) =&gt; {
+  cta.inert = entry.isIntersecting;
+}).observe(form);</code></pre>
+        <p>
+          Using <code>inert</code> instead of only hiding the button visually means keyboard and screen reader users
+          can't land on an invisible button either. The <code>env(safe-area-inset-bottom)</code> keeps the button
+          clear of the iPhone home bar; it only works if your viewport meta tag includes
+          <code>viewport-fit=cover</code>.
+        </p>
+
+        <h2>Forms: where conversions are won or lost</h2>
+        <p>
+          Every extra field is a reason to leave. Before I build a form, I ask the client what they'll actually do
+          with each answer. If the answer is "nothing yet", the field goes. [IF YOU'VE MEASURED THE EFFECT OF
+          REMOVING FIELDS ON A REAL PROJECT, ADD THE BEFORE/AFTER HERE]
+        </p>
+        <p>Then I sweat the details:</p>
+        <ul>
+          <li><strong>16px inputs.</strong> iOS Safari zooms in on any input with text smaller than 16px when you tap
+            it, and the page stays zoomed. It's jarring, and the fix is one line of CSS.</li>
+          <li><strong>The right keyboard.</strong> <code>type="email"</code>, <code>type="tel"</code> and
+            <code>inputmode</code> bring up the right keyboard; <code>autocomplete</code> lets the phone fill in
+            the details for them.</li>
+          <li><strong>Real labels.</strong> Placeholder text disappears the moment you start typing. Labels
+            don't.</li>
+          <li><strong>Errors at the right moment.</strong> Check a field when the person leaves it, and on submit.
+            Not on every keystroke: nobody likes being told their email is invalid while they're still typing
+            it.</li>
+          <li><strong>Errors that say how to fix it.</strong> "Invalid input" is useless. "That doesn't look like a
+            phone number. Try 0712 345 678" is helpful.</li>
+        </ul>
+        <pre><code class="language-html">&lt;form id=&quot;get-quote&quot; novalidate&gt;
+  &lt;label for=&quot;phone&quot;&gt;Phone number&lt;/label&gt;
+  &lt;input id=&quot;phone&quot; name=&quot;phone&quot; type=&quot;tel&quot; inputmode=&quot;tel&quot; autocomplete=&quot;tel&quot;
+         pattern=&quot;[0-9+ ]{9,15}&quot; required aria-describedby=&quot;phone-error&quot;&gt;
+  &lt;p id=&quot;phone-error&quot; class=&quot;field-error&quot; hidden&gt;&lt;/p&gt;
+
+  &lt;button type=&quot;submit&quot;&gt;Get my quote&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+        <pre><code class="language-css">input, select, textarea {
+  font-size: 16px; /* anything smaller and iOS Safari zooms in on focus */
+}
+
+input[aria-invalid=&quot;true&quot;] { border-color: #b42318; }
+.field-error { color: #b42318; font-size: 0.875rem; margin-top: 0.25rem; }</code></pre>
+        <pre><code class="language-js">const form = document.querySelector(&quot;#get-quote&quot;);
+
+const messages = {
+  valueMissing: &quot;Please add your phone number so we can call you back.&quot;,
+  patternMismatch: &quot;That doesn't look like a phone number. Try 0712 345 678.&quot;,
+};
+
+function check(input) {
+  const error = document.getElementById(`${input.id}-error`);
+  const problem = Object.keys(messages).find((key) =&gt; input.validity[key]);
+
+  input.setAttribute(&quot;aria-invalid&quot;, String(Boolean(problem)));
+  error.textContent = problem ? messages[problem] : &quot;&quot;;
+  error.hidden = !problem;
+  return !problem;
+}
+
+form.addEventListener(&quot;focusout&quot;, (event) =&gt; {
+  if (event.target.matches(&quot;input&quot;)) check(event.target);
+});
+
+form.addEventListener(&quot;submit&quot;, (event) =&gt; {
+  const inputs = [...form.querySelectorAll(&quot;input&quot;)];
+  const results = inputs.map(check); // check every field, so every error shows
+  const firstInvalid = inputs[results.indexOf(false)];
+
+  if (firstInvalid) {
+    event.preventDefault();
+    firstInvalid.focus();
+  }
+});</code></pre>
+        <p>
+          <code>novalidate</code> turns off the browser's own error bubbles (which look different in every
+          browser) but keeps the validity checks, so the JavaScript only decides how errors are shown, not what
+          counts as valid. <code>aria-describedby</code> ties each message to its field, so screen readers read the
+          error out when the field is focused. In a real form, each field gets its own messages.
+        </p>
+        <p>
+          And once someone submits, tell them clearly what happens next: "Thanks, we'll call you within one working
+          day" beats a generic "Success!".
+        </p>
+
+        <h2>Speed is a conversion feature</h2>
+        <p>
+          Google's Core Web Vitals are a useful scorecard. A page is "good" when, for at least 75% of visits, the
+          largest piece of content appears within 2.5 seconds (<strong>LCP</strong>), the page responds to taps
+          within 200 milliseconds (<strong>INP</strong>), and the layout doesn't jump around (<strong>CLS</strong>
+          under 0.1).
+        </p>
+        <p>On landing pages, images are usually the biggest win:</p>
+        <pre><code class="language-html">&lt;!-- The hero image is usually the LCP element: load it early, never lazily --&gt;
+&lt;img src=&quot;/img/hero-800.webp&quot;
+     srcset=&quot;/img/hero-480.webp 480w, /img/hero-800.webp 800w, /img/hero-1200.webp 1200w&quot;
+     sizes=&quot;(min-width: 900px) 50vw, 100vw&quot;
+     width=&quot;1200&quot; height=&quot;800&quot;
+     alt=&quot;Technician installing solar panels on a roof&quot;
+     fetchpriority=&quot;high&quot;&gt;
+
+&lt;!-- Everything below the fold can wait until it's needed --&gt;
+&lt;img src=&quot;/img/testimonial.webp&quot; width=&quot;600&quot; height=&quot;400&quot;
+     alt=&quot;Shop owner standing at the counter&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot;&gt;</code></pre>
+        <ul>
+          <li><strong>Sized for the screen.</strong> <code>srcset</code> and <code>sizes</code> let a phone download
+            a 480px image instead of a 2,000px one.</li>
+          <li><strong>Modern formats.</strong> WebP or AVIF are usually far smaller than JPEG at the same
+            quality.</li>
+          <li><strong>Width and height set.</strong> The browser reserves space before the image loads, so text
+            doesn't jump. That's most of CLS solved.</li>
+          <li><strong>Lazy loading, but not for the hero.</strong> <code>loading="lazy"</code> on the LCP image is
+            one of the most common performance mistakes I see.</li>
+        </ul>
+        <p>
+          The other big one is third-party scripts. Chat widgets, heatmaps and several tracking pixels can easily
+          weigh more than the page itself, and they're the usual reason a page feels slow to respond to taps. I
+          audit them on every project and load anything non-essential after the page is interactive.
+        </p>
+        <p>
+          Then I measure with PageSpeed Insights, which shows real-user data when a site has enough traffic, and on a
+          real mid-range Android phone on mobile data, because that's how a lot of people in Kenya will actually
+          see the page. [YOUR BEFORE/AFTER LIGHTHOUSE OR LCP NUMBERS FROM A REAL PROJECT]
+        </p>
+
+        <h2>Track the conversion, not the click</h2>
+        <p>
+          None of this matters if you can't tell whether it worked. The conversion is a <strong>successful form
+          submission</strong>, not a click on the submit button, so I send the event only after the server says
+          yes:
+        </p>
+        <pre><code class="language-js">async function submitLead(form) {
+  const response = await fetch(form.action, { method: &quot;POST&quot;, body: new FormData(form) });
+  if (!response.ok) throw new Error(`Lead form failed: ${response.status}`);
+
+  // GA4's recommended event for leads. Mark it as a key event in GA4.
+  gtag(&quot;event&quot;, &quot;generate_lead&quot;, { form_id: form.id });
+}</code></pre>
+        <p>
+          I also copy the UTM parameters from the URL into hidden form fields, so the CRM knows which ad or campaign
+          each lead came from, long after analytics has moved on:
+        </p>
+        <pre><code class="language-js">const params = new URLSearchParams(window.location.search);
+
+for (const key of [&quot;utm_source&quot;, &quot;utm_medium&quot;, &quot;utm_campaign&quot;]) {
+  const field = form.querySelector(`input[name=&quot;${key}&quot;]`);
+  if (field &amp;&amp; params.has(key)) field.value = params.get(key);
+}</code></pre>
+        <p>
+          With that in place, you can look at the real funnel: page views, people who started the form, people who
+          finished it. A big drop between "started" and "finished" points straight at the form, and that's usually
+          where the next improvement is.
+        </p>
+
+        <h2>The checklist</h2>
+        <ol>
+          <li>Phone layout first; headline, benefit and CTA visible without scrolling.</li>
+          <li>A sticky CTA on mobile that hides when the form is on screen.</li>
+          <li>Fewer fields, 16px inputs, real labels, helpful errors at the right time.</li>
+          <li>Right-sized, modern images with width and height; lazy-load everything except the hero.</li>
+          <li>Audit third-party scripts.</li>
+          <li>Track successful submissions and keep the UTM parameters.</li>
+        </ol>
+        <p>
+          It isn't glamorous work. But a page that loads fast and is easy to fill in on a cheap phone will beat a
+          beautiful slow one almost every time.
+        </p>
+      </div>
+    </article>
+
+    <!-- Previous / next links are filled in from posts.js by blog.js -->
+    <div class="post-pager" role="navigation" aria-label="More posts" data-post-pager></div>
+
+    <aside class="work-together" aria-labelledby="work-together-title">
+      <h2 id="work-together-title">Want to work together?</h2>
+      <p>
+        If you need a fast frontend, a GoHighLevel build, or an automation that takes the boring work off your
+        plate, I'd love to hear about it.
+      </p>
+      <div class="btn-container">
+        <a class="btn live-btn" href="/#contact">Get in touch</a>
+        <a class="btn github-btn" href="https://www.linkedin.com/in/paul-obiero-72155b32a" target="_blank" rel="noopener">
+          <i class="bx bxl-linkedin" aria-hidden="true"></i> Connect on LinkedIn
+        </a>
+      </div>
+    </aside>
+  </main>
+
+  <footer>
+    <div class="coolness">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20%" height="20%" viewBox="0 0 160 160" fill="none"
+        class="osmo-icon-svg" aria-hidden="true">
+        <path
+          d="M94.8284 53.8578C92.3086 56.3776 88 54.593 88 51.0294V0H72V59.9999C72 66.6273 66.6274 71.9999 60 71.9999H0V87.9999H51.0294C54.5931 87.9999 56.3777 92.3085 53.8579 94.8283L18.3431 130.343L29.6569 141.657L65.1717 106.142C67.684 103.63 71.9745 105.396 72 108.939V160L88.0001 160L88 99.9999C88 93.3725 93.3726 87.9999 100 87.9999H160V71.9999H108.939C105.407 71.9745 103.64 67.7091 106.12 65.1938L106.142 65.1716L141.657 29.6568L130.343 18.3432L94.8284 53.8578Z"
+          fill="currentColor"></path>
+      </svg>
+    </div>
+    <div class="text3">© Paul Obiero 2025</div>
+
+    <div class="text4">
+      <ul>
+        <li>
+          <a href="/blog/">Blog</a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/obinazo.dev/" target="_blank" rel="noopener">Instagram</a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/paul-obiero-72155b32a" target="_blank" rel="noopener">LinkedIn</a>
+        </li>
+        <li>
+          <a href="mailto:paulonyangoobiero@outlook.com">Mail</a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+</body>
+
+</html>

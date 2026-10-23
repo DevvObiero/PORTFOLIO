@@ -614,7 +614,7 @@ section img:hover {
   margin: 0;
   padding: 0;
   display: flex;
-  gap: 200px;
+  gap: clamp(20px, 10vw, 200px); /* shrinks on tablets so four links fit */
   margin-bottom: 40px;
 }
 
@@ -1160,15 +1160,19 @@ font-size:  20px;
 }
 @media (min-width: 1900px) {
   /* .custom-svg {
-    display: none; /* Hides the SVG on 1020px and above */
+    display: none;  (hides the SVG on 1020px and above)
   } */
 
-.custom-svg {
-  width: 100%; /* Adjust size to be responsive */
-  max-width: 2900px; /* Set a maximum width */
-  height: 100px; /* Maintain aspect ratio */
+  /* Turned off: a stray comment marker used to make the browser skip this
+     rule. Switched on, it squeezes both hand-drawn hero lines to 100px tall
+     on 1900px+ screens, so it stays off to keep the hero as it has always
+     looked.
+  .custom-svg {
+    width: 100%;
+    max-width: 2900px;
+    height: 100px;
+  } */
 
-}
   .custom-svg .cls {
     fill: none; /* Transparent fill */
     stroke: currentColor; /* Use currentColor to dynamically change stroke color */
@@ -1191,6 +1195,7 @@ font-size:  20px;
     position: absolute;
     animation: fadeIn 6s ease-in-out;
   }
+}
 
 /* project page  */
 

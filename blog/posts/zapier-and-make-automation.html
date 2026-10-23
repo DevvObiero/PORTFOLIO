@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M0P5HQZ6VP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "G-M0P5HQZ6VP");
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== Post details ===== -->
+  <title>Automating the Boring Stuff with Zapier and Make | Paul Obiero</title>
+  <meta name="description" content="When I pick Zapier, when I pick Make, how I handle errors and duplicates, what it costs as volume grows, and when I write code instead." />
+  <meta name="author" content="Paul Obiero" />
+  <link rel="canonical" href="https://paulobiero.me/blog/posts/zapier-and-make-automation.html" />
+
+  <!-- Share preview: LinkedIn, Facebook, WhatsApp -->
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Paul Obiero" />
+  <meta property="og:title" content="Automating the Boring Stuff with Zapier and Make" />
+  <meta property="og:description" content="When I pick Zapier, when I pick Make, how I handle errors and duplicates, what it costs as volume grows, and when I write code instead." />
+  <meta property="og:url" content="https://paulobiero.me/blog/posts/zapier-and-make-automation.html" />
+  <meta property="og:image" content="https://paulobiero.me/me.png" />
+  <meta property="og:image:alt" content="Paul Obiero speaking into a microphone at a presentation" />
+  <meta property="article:published_time" content="2026-09-25" />
+  <meta property="article:author" content="https://paulobiero.me/" />
+  <meta property="article:tag" content="Automation" />
+  <meta property="article:tag" content="Zapier" />
+  <meta property="article:tag" content="Make" />
+
+  <!-- Share preview: X (Twitter) -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Automating the Boring Stuff with Zapier and Make" />
+  <meta name="twitter:description" content="When I pick Zapier, when I pick Make, how I handle errors and duplicates, what it costs as volume grows, and when I write code instead." />
+  <meta name="twitter:image" content="https://paulobiero.me/me.png" />
+  <meta name="twitter:image:alt" content="Paul Obiero speaking into a microphone at a presentation" />
+
+  <!-- Structured data for search engines -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Automating the Boring Stuff with Zapier and Make",
+    "description": "When I pick Zapier, when I pick Make, how I handle errors and duplicates, what it costs as volume grows, and when I write code instead.",
+    "datePublished": "2026-09-25",
+    "dateModified": "2026-09-25",
+    "image": "https://paulobiero.me/me.png",
+    "url": "https://paulobiero.me/blog/posts/zapier-and-make-automation.html",
+    "mainEntityOfPage": "https://paulobiero.me/blog/posts/zapier-and-make-automation.html",
+    "keywords": "Automation, Zapier, Make",
+    "author": {
+      "@type": "Person",
+      "name": "Paul Obiero",
+      "url": "https://paulobiero.me/",
+      "sameAs": [
+        "https://www.linkedin.com/in/paul-obiero-72155b32a",
+        "https://github.com/DevvObiero"
+      ]
+    }
+  }
+  </script>
+  <!-- ===== End of post details ===== -->
+
+  <link rel="icon" type="image/png" href="/favicon.ico" />
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/blog/blog.css" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script type="module" src="/blog/blog.js"></script>
+</head>
+
+<body>
+  <script>
+    // Apply the saved theme before the page paints, so dark mode doesn't flash
+    try {
+      if (localStorage.getItem("theme") === "dark") document.body.classList.add("dark-mode");
+    } catch (error) {}
+  </script>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="cursor" id="cursor"></div>
+
+  <nav aria-label="Main">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/profile.html">Profile</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/resume.html">Resume</a></li>
+      <li>
+        <button id="toggle-theme" type="button" aria-label="Dark mode">
+          <i class="bx bx-sun" id="sun-icon" aria-hidden="true"></i>
+          <i class="bx bxs-moon" id="moon-icon" aria-hidden="true"></i>
+        </button>
+      </li>
+    </ul>
+    <span aria-hidden="true"></span>
+  </nav>
+
+  <main id="main" class="post">
+    <article>
+      <header class="post-header">
+        <a class="back-link" href="/blog/"><i class="bx bx-left-arrow-alt" aria-hidden="true"></i> Back to blog</a>
+        <ul class="post-tags" aria-label="Tags">
+          <li><a href="/blog/?tag=Automation">Automation</a></li>
+          <li><a href="/blog/?tag=Zapier">Zapier</a></li>
+          <li><a href="/blog/?tag=Make">Make</a></li>
+        </ul>
+        <h1 class="post-title">Automating the Boring Stuff with Zapier and Make</h1>
+        <p class="post-lede">When I pick Zapier, when I pick Make, how I handle errors and duplicates, what it costs as volume grows, and when I write code instead.</p>
+        <div class="post-meta">
+          <time datetime="2026-09-25">25 September 2026</time>
+          <span aria-hidden="true">·</span>
+          <span>7 min read</span>
+        </div>
+      </header>
+
+      <div class="post-line" aria-hidden="true">
+        <svg viewBox="0 0 1399.32 163.87" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+          <path class="draw-line" pathLength="1"
+            d="m1399.17,37.1c-87.27-27.1-183.66,2.85-259.54,53.78-11.17,7.5-22.38,15.81-29.01,27.52-6.63,11.71-7.49,27.69,1.37,37.81,8.86,10.12,28.35,9.53,33.81-2.77,5.16-11.62-4.8-25.42-16.94-29.21s-25.23-.58-37.58,2.44c-94.45,23.14-191.55,35.45-288.78,36.62-128.29,1.54-261.08-17.89-369.59-86.35-25.31-15.97-49.13-34.5-76.03-47.61-34.22-16.69-72.32-24.05-110.26-27.21C211.9-.77,176.62-.24,142.65,7.51c-37.08,8.46-71.69,25.29-105.05,43.54C18.9,61.28-2.25,77.19.79,98.28" />
+        </svg>
+      </div>
+
+      <div class="post-body">
+        <p>
+          A lot of my automation work starts the same way. Someone tells me about a task they do every day and
+          quietly hate: copying leads from a form into a spreadsheet, pasting the same welcome email, checking an
+          inbox to see if anything new came in. [ONE REAL EXAMPLE OF A TASK A CLIENT ASKED YOU TO AUTOMATE]
+        </p>
+        <p>
+          None of these jobs is hard. They're just boring, and boring work is where mistakes creep in, like the lead
+          that never got a reply because it came in on a Friday evening. This post is how I think about automating
+          that kind of work with Zapier and Make: which tool I reach for, what a real workflow looks like, how I stop
+          it from breaking quietly, what it costs as it grows, and the point where I put the no-code tools down and
+          write code instead.
+        </p>
+
+        <h2>Zapier or Make?</h2>
+        <p>
+          Both tools do the same basic thing: when something happens in one app, do something in another. The
+          difference is the shape of the thing you build.
+        </p>
+        <p>
+          <strong>Zapier is a list.</strong> A trigger at the top, then steps that run one after another. You can
+          branch with Paths and stop early with Filters, but a Zap reads top to bottom like a recipe. Its app
+          directory is enormous, and a non-technical person can open a Zap and understand it. That matters more than
+          developers like to admit. If I hand a client a Zap, the person who looks after it next year probably isn't
+          a developer.
+        </p>
+        <p>
+          <strong>Make is a canvas.</strong> You connect modules on a visual board, split the flow with routers, loop
+          over lists with iterators and gather results back with aggregators. The feature I love most is that every
+          run is inspectable: click any module and you see exactly what went in and what came out. When the logic is
+          genuinely branchy, or you're handling lists (an order with twelve line items, say), Make is far more
+          comfortable.
+        </p>
+        <p>My rough rule:</p>
+        <ul>
+          <li><strong>Zapier</strong> when the flow is mostly a straight line, the client will maintain it, and the
+            apps involved have solid Zapier integrations.</li>
+          <li><strong>Make</strong> when there's real branching, looping over lists, a lot of reshaping data, or
+            enough volume that per-step pricing starts to hurt.</li>
+          <li><strong>Neither</strong> when the automation has quietly turned into software. More on that at the
+            end.</li>
+        </ul>
+
+        <h2>A real-world workflow: lead form to follow-up</h2>
+        <p>
+          The workflow I've built most often, in different forms for different businesses, looks like this:
+        </p>
+        <ol>
+          <li>Someone fills in a form on a landing page.</li>
+          <li>They're created (or updated) as a contact in the CRM.</li>
+          <li>The sales team gets a notification in Slack or, very often here in Kenya, on WhatsApp, because that's
+            where sales teams actually live.</li>
+          <li>The lead gets a follow-up email straight away, so they hear back while they're still interested.</li>
+        </ol>
+        <p>
+          In Zapier, that's a trigger, a clean-up step, a "find or create" step in the CRM, a notification step and
+          an email step. In Make it's a webhook, a CRM search, a router that creates or updates the contact, then
+          the notifications.
+        </p>
+        <p>
+          The cleaning step is the one people skip, and it's the one that saves you later. Phone numbers are the
+          classic problem. Kenyan numbers arrive as <code>0712 345 678</code>, <code>254712345678</code>,
+          <code>+254 712 345678</code> or just <code>712345678</code>, and to a CRM those are four different people.
+          I normalise them with a small Code by Zapier step (the same logic works in Make's tools or a custom
+          function):
+        </p>
+        <pre><code class="language-js">// Code by Zapier (JavaScript). Map the form's phone field to inputData.phone.
+const raw = (inputData.phone || &quot;&quot;).replace(/[^\d+]/g, &quot;&quot;);
+
+let phone = raw;
+if (/^0[17]\d{8}$/.test(raw)) phone = &quot;+254&quot; + raw.slice(1); // 0712345678
+else if (/^254[17]\d{8}$/.test(raw)) phone = &quot;+&quot; + raw; // 254712345678
+else if (/^[17]\d{8}$/.test(raw)) phone = &quot;+254&quot; + raw; // 712345678
+
+return {
+  phone,
+  valid: /^\+254[17]\d{8}$/.test(phone),
+  email: (inputData.email || &quot;&quot;).trim().toLowerCase(),
+};</code></pre>
+        <p>
+          Two things to know about WhatsApp before you promise it to a client. Sending messages from a business
+          number goes through the WhatsApp Business Platform (directly through Meta, or a provider like Twilio), and
+          messages you start, rather than replies within 24 hours of the person messaging you, have to use a
+          pre-approved template. Get the template approved before launch day, not on it.
+        </p>
+        <p>
+          For the follow-up itself, I keep it to one immediate email in the automation. It's tempting to build a
+          whole sequence with Zapier's Delay steps, but a delayed Zap doesn't know the lead replied yesterday. Email
+          sequences belong in the CRM or email tool, which can stop the sequence the moment someone answers.
+        </p>
+
+        <h2>Errors and duplicates: the part nobody demos</h2>
+        <p>
+          An automation that fails loudly is fine. The one that fails quietly is the one that costs money, because
+          nobody notices until a customer asks why no one called them back.
+        </p>
+        <h3>Errors</h3>
+        <p>
+          In Zapier, I turn on Autoreplay where the plan allows it, so steps that fail because an app was briefly
+          down get retried automatically. Then I make sure errors go somewhere a human actually looks. Email alerts
+          get ignored, so I usually send them to a dedicated Slack channel.
+        </p>
+        <p>
+          In Make, every module can have an error handler, and choosing the right one is most of the work. For calls
+          to APIs that sometimes time out or rate-limit, I use <strong>Break</strong> with incomplete executions
+          turned on, so the run is saved and retried rather than lost. For optional steps (adding a tag, say) I use
+          <strong>Ignore</strong> or <strong>Resume</strong> with a fallback value, so one small failure doesn't stop
+          the lead from reaching sales.
+        </p>
+        <p>
+          The useful mental split: <strong>temporary failures</strong> (an API is down) should retry on their own;
+          <strong>bad data</strong> (no email, a nonsense phone number) should stop and tell a person, because
+          retrying won't fix it.
+        </p>
+        <h3>Duplicates</h3>
+        <p>
+          Duplicates come from everywhere. People double-click submit buttons. Many webhook senders retry if you
+          don't respond quickly, so the same event arrives twice. A lead fills in the form, gets distracted, and
+          fills it in again next week.
+        </p>
+        <ul>
+          <li><strong>Find before you create.</strong> Always search the CRM by email or phone first and update the
+            existing contact if there is one. This is exactly why the cleaning step matters: you can only match
+            people reliably once their details are in a single format.</li>
+          <li><strong>Use an idempotency key</strong> for events that don't have a natural ID. Combine the email, the
+            form and the date into a key, store it (Storage by Zapier or a Make data store), and skip the run if
+            you've seen that key before.</li>
+          <li><strong>Deduplicate before notifying.</strong> A duplicate CRM record is untidy. Two salespeople
+            calling the same lead ten minutes apart is embarrassing.</li>
+        </ul>
+
+        <h2>What it costs as volume grows</h2>
+        <p>
+          Prices change often, so check the current pricing pages, but the way the two tools count usage is worth
+          understanding because it decides how a workflow should be built.
+        </p>
+        <p>
+          <strong>Zapier counts tasks</strong>: every action step that runs successfully. The trigger doesn't count,
+          and neither do Filter and Paths steps. <strong>Make counts operations</strong>: every module that runs,
+          including the trigger. A scheduled trigger that checks for new data can use operations even when there's
+          nothing new, so I prefer instant webhook triggers wherever the app supports them.
+        </p>
+        <p>
+          The back-of-the-envelope maths is simple. Forty leads a day is about 1,200 runs a month. If each run has
+          five billable steps, that's 6,000 tasks or operations a month, before any retries. [IF YOU HAVE REAL
+          NUMBERS FROM A CLIENT PROJECT, ADD THEM HERE]
+        </p>
+        <p>A few habits keep that number down:</p>
+        <ul>
+          <li>Put filters as early as possible, so runs you don't care about stop before the paid steps.</li>
+          <li>Combine several small formatting steps into one code step.</li>
+          <li>Batch things that don't need to be instant. One hourly summary in Slack is cheaper, and frankly more
+            readable, than a message per event. (New leads are the exception: those should be instant.)</li>
+        </ul>
+
+        <h2>When I switch to code</h2>
+        <p>
+          No-code tools are brilliant until the automation has quietly become software. The signs I look for:
+        </p>
+        <ul>
+          <li>The Zap has more code steps than app steps.</li>
+          <li>The monthly bill is more than a small server or serverless function would cost to run the same
+            logic.</li>
+          <li>The workflow is now business-critical and needs version control, tests and code review.</li>
+          <li>The branching has become so tangled that nobody can follow the canvas any more.</li>
+          <li>You need tight control over retries, rate limits or response times.</li>
+        </ul>
+        <p>
+          When that happens, I usually don't throw everything away. I move the complicated part into a small
+          function and let the no-code tool keep doing the simple glue. A serverless function on Netlify, for
+          example, can receive the form submission directly:
+        </p>
+        <pre><code class="language-js">// netlify/functions/lead.js
+export default async (request) =&gt; {
+  const lead = await request.json();
+  const email = String(lead.email || &quot;&quot;).trim().toLowerCase();
+  if (!email) return new Response(&quot;Missing email&quot;, { status: 400 });
+
+  // upsertContact, notifySales and normalisePhone are your own small functions
+  // (normalisePhone is the same logic as the Zapier step above)
+  const contact = await upsertContact({ email, phone: normalisePhone(lead.phone) });
+  if (contact.created) await notifySales(contact);
+
+  return new Response(&quot;ok&quot;);
+};</code></pre>
+        <p>
+          It's more work to set up and maintain than a Zap, which is why I don't start there. But it lives in Git,
+          it can be tested, and its cost barely moves as volume grows.
+        </p>
+
+        <h2>The short version</h2>
+        <p>
+          Start with the tool the client can maintain. Clean your data before you do anything with it. Decide in
+          advance what happens when a step fails, and make sure a duplicate can never cause a second phone call.
+          Watch the usage numbers as the business grows, and when the automation starts behaving like software, give
+          it the respect software gets.
+        </p>
+        <p>
+          If you have a boring, repetitive task that eats your week, that's usually the best place to start.
+        </p>
+      </div>
+    </article>
+
+    <!-- Previous / next links are filled in from posts.js by blog.js -->
+    <div class="post-pager" role="navigation" aria-label="More posts" data-post-pager></div>
+
+    <aside class="work-together" aria-labelledby="work-together-title">
+      <h2 id="work-together-title">Want to work together?</h2>
+      <p>
+        If you need a fast frontend, a GoHighLevel build, or an automation that takes the boring work off your
+        plate, I'd love to hear about it.
+      </p>
+      <div class="btn-container">
+        <a class="btn live-btn" href="/#contact">Get in touch</a>
+        <a class="btn github-btn" href="https://www.linkedin.com/in/paul-obiero-72155b32a" target="_blank" rel="noopener">
+          <i class="bx bxl-linkedin" aria-hidden="true"></i> Connect on LinkedIn
+        </a>
+      </div>
+    </aside>
+  </main>
+
+  <footer>
+    <div class="coolness">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20%" height="20%" viewBox="0 0 160 160" fill="none"
+        class="osmo-icon-svg" aria-hidden="true">
+        <path
+          d="M94.8284 53.8578C92.3086 56.3776 88 54.593 88 51.0294V0H72V59.9999C72 66.6273 66.6274 71.9999 60 71.9999H0V87.9999H51.0294C54.5931 87.9999 56.3777 92.3085 53.8579 94.8283L18.3431 130.343L29.6569 141.657L65.1717 106.142C67.684 103.63 71.9745 105.396 72 108.939V160L88.0001 160L88 99.9999C88 93.3725 93.3726 87.9999 100 87.9999H160V71.9999H108.939C105.407 71.9745 103.64 67.7091 106.12 65.1938L106.142 65.1716L141.657 29.6568L130.343 18.3432L94.8284 53.8578Z"
+          fill="currentColor"></path>
+      </svg>
+    </div>
+    <div class="text3">© Paul Obiero 2025</div>
+
+    <div class="text4">
+      <ul>
+        <li>
+          <a href="/blog/">Blog</a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/obinazo.dev/" target="_blank" rel="noopener">Instagram</a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/paul-obiero-72155b32a" target="_blank" rel="noopener">LinkedIn</a>
+        </li>
+        <li>
+          <a href="mailto:paulonyangoobiero@outlook.com">Mail</a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+</body>
+
+</html>

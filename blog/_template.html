@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<!--
+  ===================================================================
+  BLOG POST TEMPLATE
+
+  1. Copy this file into blog/posts/ and rename it after your post,
+     e.g. blog/posts/my-new-post.html  (lowercase, hyphens, no spaces).
+     That file name without ".html" is the post's "slug".
+  2. Change everything marked CHANGE below. Search the file for
+     "CHANGE" to find them all.
+  3. Write the post inside <div class="post-body"> near the bottom.
+  4. Add one entry for the post to blog/posts.js, using the same
+     slug, title, date, description and tags.
+
+  That's it. The blog home page and the previous/next links update
+  themselves from posts.js.
+  ===================================================================
+-->
+<html lang="en">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M0P5HQZ6VP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "G-M0P5HQZ6VP");
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- DELETE this line in your copy. It stops search engines listing the template itself. -->
+  <meta name="robots" content="noindex" />
+
+  <!-- ===== Post details ===== -->
+  <!-- CHANGE: the post title (here, og:title, twitter:title, and headline in the structured data) -->
+  <title>Your Post Title | Paul Obiero</title>
+  <!-- CHANGE: one or two sentences, about 150 characters (here, og:description, twitter:description, and description in the structured data) -->
+  <meta name="description" content="One or two sentences that sum up the post. Shown in search results, share cards and the blog home page." />
+  <meta name="author" content="Paul Obiero" />
+  <!-- CHANGE: replace your-post-slug with this file's name (in all four URLs in this block) -->
+  <link rel="canonical" href="https://paulobiero.me/blog/posts/your-post-slug.html" />
+
+  <!-- Share preview: LinkedIn, Facebook, WhatsApp -->
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Paul Obiero" />
+  <meta property="og:title" content="Your Post Title" />
+  <meta property="og:description" content="One or two sentences that sum up the post. Shown in search results, share cards and the blog home page." />
+  <meta property="og:url" content="https://paulobiero.me/blog/posts/your-post-slug.html" />
+  <!-- CHANGE (optional): a full https:// link to a 1200x630 share image, e.g. https://paulobiero.me/blog/images/my-post.webp.
+       Until you have one, me.png is used. If you add a 1200x630 image, also change twitter:card to summary_large_image. -->
+  <meta property="og:image" content="https://paulobiero.me/me.png" />
+  <meta property="og:image:alt" content="Paul Obiero speaking into a microphone at a presentation" />
+  <!-- CHANGE: publish date as YYYY-MM-DD, and one article:tag line per tag -->
+  <meta property="article:published_time" content="2026-01-31" />
+  <meta property="article:author" content="https://paulobiero.me/" />
+  <meta property="article:tag" content="Frontend" />
+
+  <!-- Share preview: X (Twitter) -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Your Post Title" />
+  <meta name="twitter:description" content="One or two sentences that sum up the post. Shown in search results, share cards and the blog home page." />
+  <meta name="twitter:image" content="https://paulobiero.me/me.png" />
+  <meta name="twitter:image:alt" content="Paul Obiero speaking into a microphone at a presentation" />
+
+  <!-- Structured data for search engines. CHANGE: headline, description, both dates, image, both URLs, keywords -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Your Post Title",
+    "description": "One or two sentences that sum up the post. Shown in search results, share cards and the blog home page.",
+    "datePublished": "2026-01-31",
+    "dateModified": "2026-01-31",
+    "image": "https://paulobiero.me/me.png",
+    "url": "https://paulobiero.me/blog/posts/your-post-slug.html",
+    "mainEntityOfPage": "https://paulobiero.me/blog/posts/your-post-slug.html",
+    "keywords": "Frontend",
+    "author": {
+      "@type": "Person",
+      "name": "Paul Obiero",
+      "url": "https://paulobiero.me/",
+      "sameAs": [
+        "https://www.linkedin.com/in/paul-obiero-72155b32a",
+        "https://github.com/DevvObiero"
+      ]
+    }
+  }
+  </script>
+  <!-- ===== End of post details ===== -->
+
+  <link rel="icon" type="image/png" href="/favicon.ico" />
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/blog/blog.css" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <!-- Syntax highlighting. Only needed if the post has code blocks: DELETE these lines if it doesn't. -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script type="module" src="/blog/blog.js"></script>
+</head>
+
+<body>
+  <script>
+    // Apply the saved theme before the page paints, so dark mode doesn't flash
+    try {
+      if (localStorage.getItem("theme") === "dark") document.body.classList.add("dark-mode");
+    } catch (error) {}
+  </script>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="cursor" id="cursor"></div>
+
+  <nav aria-label="Main">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/profile.html">Profile</a></li>
+      <li><a href="/blog/">Blog</a></li>
+      <li><a href="/resume.html">Resume</a></li>
+      <li>
+        <button id="toggle-theme" type="button" aria-label="Dark mode">
+          <i class="bx bx-sun" id="sun-icon" aria-hidden="true"></i>
+          <i class="bx bxs-moon" id="moon-icon" aria-hidden="true"></i>
+        </button>
+      </li>
+    </ul>
+    <span aria-hidden="true"></span>
+  </nav>
+
+  <main id="main" class="post">
+    <article>
+      <header class="post-header">
+        <a class="back-link" href="/blog/"><i class="bx bx-left-arrow-alt" aria-hidden="true"></i> Back to blog</a>
+        <!-- CHANGE: one <li> per tag. Spell them exactly as in posts.js so the links filter correctly. -->
+        <ul class="post-tags" aria-label="Tags">
+          <li><a href="/blog/?tag=Frontend">Frontend</a></li>
+        </ul>
+        <!-- CHANGE: title, lede (usually the same as the description), date and reading time -->
+        <h1 class="post-title">Your Post Title</h1>
+        <p class="post-lede">One or two sentences that sum up the post. Shown in search results, share cards and the blog home page.</p>
+        <div class="post-meta">
+          <time datetime="2026-01-31">31 January 2026</time>
+          <span aria-hidden="true">·</span>
+          <span>5 min read</span>
+        </div>
+      </header>
+
+      <div class="post-line" aria-hidden="true">
+        <svg viewBox="0 0 1399.32 163.87" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+          <path class="draw-line" pathLength="1"
+            d="m1399.17,37.1c-87.27-27.1-183.66,2.85-259.54,53.78-11.17,7.5-22.38,15.81-29.01,27.52-6.63,11.71-7.49,27.69,1.37,37.81,8.86,10.12,28.35,9.53,33.81-2.77,5.16-11.62-4.8-25.42-16.94-29.21s-25.23-.58-37.58,2.44c-94.45,23.14-191.55,35.45-288.78,36.62-128.29,1.54-261.08-17.89-369.59-86.35-25.31-15.97-49.13-34.5-76.03-47.61-34.22-16.69-72.32-24.05-110.26-27.21C211.9-.77,176.62-.24,142.65,7.51c-37.08,8.46-71.69,25.29-105.05,43.54C18.9,61.28-2.25,77.19.79,98.28" />
+        </svg>
+      </div>
+
+      <!-- OPTIONAL cover image. Delete this whole <figure> if the post has no cover.
+           Use the same image as og:image above and "cover" in posts.js. -->
+      <figure class="post-cover">
+        <img src="/blog/images/YOUR-COVER.webp" alt="DESCRIBE WHAT THE IMAGE SHOWS" fetchpriority="high" />
+      </figure>
+
+      <!-- CHANGE: write your post in here. Use <h2> for sections and <h3> inside them. Never <h1>; the title above is the only one. -->
+      <div class="post-body">
+        <!-- Everything inside post-body is an example of each style. Replace it with your post. -->
+
+        <p>
+          Start with a short intro paragraph that tells the reader what the post is about and why it matters.
+          Paragraphs are ordinary &lt;p&gt; tags. Links look <a href="/blog/">like this</a>, and
+          <strong>bold text</strong> uses &lt;strong&gt;.
+        </p>
+
+        <h2>A section heading</h2>
+        <p>Use &lt;h2&gt; for each main section of the post.</p>
+
+        <h3>A smaller heading inside a section</h3>
+        <p>Use &lt;h3&gt; under an &lt;h2&gt;. Don't skip levels (no &lt;h3&gt; straight after the title).</p>
+
+        <ul>
+          <li>A bullet list uses &lt;ul&gt; and &lt;li&gt;.</li>
+          <li>Each item gets a thin dash instead of a dot.</li>
+        </ul>
+
+        <ol>
+          <li>A numbered list uses &lt;ol&gt;.</li>
+          <li>Numbers show as 01, 02, 03, like the cards.</li>
+        </ol>
+
+        <blockquote>
+          <p>A quote goes inside &lt;blockquote&gt;.</p>
+        </blockquote>
+
+        <p>Inline code like <code>posts.js</code> uses &lt;code&gt;. Code blocks look like this:</p>
+
+        <!-- Code block: put the code inside <pre><code class="language-js">. Other options:
+             language-html, language-css, language-json. Inside the code, write < as &lt; and & as &amp;. -->
+        <pre><code class="language-js">const greeting = &quot;Hello from the template&quot;;
+console.log(greeting);</code></pre>
+
+        <!-- Image: put the file in blog/images/. Always describe the image in alt="" for people who can't see it.
+             width and height are the image's real size in pixels; they stop the page jumping while it loads. -->
+        <figure>
+          <img src="/blog/images/YOUR-IMAGE.webp" alt="DESCRIBE WHAT THE IMAGE SHOWS" width="1200" height="675"
+            loading="lazy" decoding="async" />
+          <figcaption>An optional caption under the image.</figcaption>
+        </figure>
+
+        <h2>Wrapping up</h2>
+        <p>End with what you'd like the reader to take away. The "Want to work together?" box is added below
+          automatically.</p>
+      </div>
+    </article>
+
+    <!-- Previous / next links are filled in from posts.js by blog.js -->
+    <div class="post-pager" role="navigation" aria-label="More posts" data-post-pager></div>
+
+    <aside class="work-together" aria-labelledby="work-together-title">
+      <h2 id="work-together-title">Want to work together?</h2>
+      <p>
+        If you need a fast frontend, a GoHighLevel build, or an automation that takes the boring work off your
+        plate, I'd love to hear about it.
+      </p>
+      <div class="btn-container">
+        <a class="btn live-btn" href="/#contact">Get in touch</a>
+        <a class="btn github-btn" href="https://www.linkedin.com/in/paul-obiero-72155b32a" target="_blank" rel="noopener">
+          <i class="bx bxl-linkedin" aria-hidden="true"></i> Connect on LinkedIn
+        </a>
+      </div>
+    </aside>
+  </main>
+
+  <footer>
+    <div class="coolness">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20%" height="20%" viewBox="0 0 160 160" fill="none"
+        class="osmo-icon-svg" aria-hidden="true">
+        <path
+          d="M94.8284 53.8578C92.3086 56.3776 88 54.593 88 51.0294V0H72V59.9999C72 66.6273 66.6274 71.9999 60 71.9999H0V87.9999H51.0294C54.5931 87.9999 56.3777 92.3085 53.8579 94.8283L18.3431 130.343L29.6569 141.657L65.1717 106.142C67.684 103.63 71.9745 105.396 72 108.939V160L88.0001 160L88 99.9999C88 93.3725 93.3726 87.9999 100 87.9999H160V71.9999H108.939C105.407 71.9745 103.64 67.7091 106.12 65.1938L106.142 65.1716L141.657 29.6568L130.343 18.3432L94.8284 53.8578Z"
+          fill="currentColor"></path>
+      </svg>
+    </div>
+    <div class="text3">© Paul Obiero 2025</div>
+
+    <div class="text4">
+      <ul>
+        <li>
+          <a href="/blog/">Blog</a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/obinazo.dev/" target="_blank" rel="noopener">Instagram</a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/paul-obiero-72155b32a" target="_blank" rel="noopener">LinkedIn</a>
+        </li>
+        <li>
+          <a href="mailto:paulonyangoobiero@outlook.com">Mail</a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+</body>
+
+</html>
