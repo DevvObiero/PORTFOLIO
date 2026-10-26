@@ -12,6 +12,9 @@ import { slides } from "./slides.js";
 
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
+// Keep the pinned slider in step with Lenis smooth scrolling (smooth-scroll.js)
+window.lenis?.on("scroll", ScrollTrigger.update);
+
 let currentIndex = 0;
 let isTransitioning = false;
 let rippleTween = null;

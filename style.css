@@ -29,6 +29,25 @@ html{
       overflow-x: hidden;
 }
 
+/* Lenis smooth scroll (smooth-scroll.js) — it does its own easing, so
+   the native smooth behaviour above must be off while it runs */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
 
 * {
   margin: 0;
