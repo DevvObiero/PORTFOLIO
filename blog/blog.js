@@ -177,7 +177,7 @@ function enhanceCodeBlock(pre) {
 function setUpNav() {
   const nav = document.querySelector("nav");
   const indicator = nav?.querySelector("span");
-  const blogLink = nav?.querySelector('a[href="/blog/"]');
+  const blogLink = nav?.querySelector('a[href$="blog/index.html"]');
   if (!indicator || !blogLink) return;
 
   const item = blogLink.closest("li");
