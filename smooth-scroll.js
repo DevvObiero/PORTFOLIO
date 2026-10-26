@@ -9,7 +9,7 @@
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
   const lenis = new Lenis({
-    lerp: 0.07, // lower = heavier, longer glide
+    lerp: 0.05, // lower = heavier, longer glide
     wheelMultiplier: 0.9,
     smoothWheel: true,
   });
