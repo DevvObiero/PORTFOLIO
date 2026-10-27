@@ -303,6 +303,7 @@ async function startSlider() {
                     rippleUnlocked = true;
                     currentIndex = nextIndex;
                     isTransitioning = false;
+                    catchUpToScroll();
                 }
             },
             onComplete() {
@@ -317,6 +318,7 @@ async function startSlider() {
                 if (!rippleUnlocked) {
                     currentIndex = nextIndex;
                     isTransitioning = false;
+                    catchUpToScroll();
                 }
             },
         });
@@ -334,6 +336,10 @@ async function startSlider() {
         });
     }
 
+    // Wheel-snap state (see "One project per scroll gesture" below)
+    let snapIndex = 0;
+    let snapping = false;
+
     const scrollTrigger = ScrollTrigger.create({
         trigger: slider,
         start: "top top",
@@ -341,15 +347,87 @@ async function startSlider() {
         pin: true,
         anticipatePin: 1,
         onUpdate(self) {
-            const targetIndex = Math.min(
-                slides.length - 1,
-                Math.round(self.progress * (slides.length - 1))
-            );
+            const targetIndex = indexAtScroll(self.progress);
+            if (!snapping) snapIndex = targetIndex;
             if (targetIndex !== currentIndex && !isTransitioning) {
                 goToSlide(targetIndex);
             }
         },
     });
+
+    function indexAtScroll(progress) {
+        return Math.min(slides.length - 1, Math.round(progress * (slides.length - 1)));
+    }
+
+    // A slide change that was blocked mid-transition would otherwise be lost
+    // once scrolling stops, leaving the wrong project on screen
+    function catchUpToScroll() {
+        if (destroyed) return;
+        const targetIndex = indexAtScroll(scrollTrigger.progress);
+        if (targetIndex !== currentIndex) goToSlide(targetIndex);
+    }
+
+    // ---- One project per scroll gesture ----
+    // Lenis keeps gliding after the wheel stops, which can carry the page
+    // past a whole slide. While the slider is pinned we take over the wheel:
+    // each gesture moves exactly one slide, then glides to its exact spot.
+    const lenis = window.lenis;
+    const GESTURE_GAP = 180; // ms of wheel silence that ends a gesture
+    let lastWheel = 0;
+    let lastScroll = window.scrollY;
+
+    const slideScroll = (index) =>
+        scrollTrigger.start + index * window.innerHeight;
+
+    function snapTo(index, duration = 1.2) {
+        snapIndex = index;
+        snapping = true;
+        lenis.scrollTo(slideScroll(index), {
+            duration,
+            lock: true,
+            force: true,
+            easing: (t) => 1 - Math.pow(1 - t, 4),
+            onComplete: () => (snapping = false),
+        });
+    }
+
+    function onWheel(e) {
+        const y = window.scrollY;
+        const dir = Math.sign(e.deltaY);
+        const { start, end } = scrollTrigger;
+        if (!dir || y < start - 2 || y > end + 2) return;
+
+        // At the first/last slide, let the page carry on scrolling normally
+        const last = slides.length - 1;
+        if ((dir < 0 && snapIndex === 0 && y <= start + 2) ||
+            (dir > 0 && snapIndex === last && y >= end - 2)) return;
+
+        e.preventDefault();
+        e.stopPropagation(); // keep the event from Lenis
+
+        const now = performance.now();
+        const newGesture = now - lastWheel > GESTURE_GAP;
+        lastWheel = now;
+        if (snapping || !newGesture) return;
+
+        snapTo(Math.max(0, Math.min(last, snapIndex + dir)));
+    }
+
+    // Lenis momentum from above or below can glide into the pinned range
+    // without a wheel event landing inside it; catch it at the edge slide
+    function onLenisScroll({ scroll }) {
+        const { start, end } = scrollTrigger;
+        if (!snapping) {
+            if (lastScroll < start && scroll > start) snapTo(0, 0.6);
+            else if (lastScroll > end && scroll < end) snapTo(slides.length - 1, 0.6);
+        }
+        lastScroll = scroll;
+    }
+
+    if (lenis) {
+        document.addEventListener("wheel", onWheel, { capture: true, passive: false });
+        lenis.on("scroll", onLenisScroll);
+    }
 
     // The layout just changed (grid hidden, slider shown), so re-measure
     ScrollTrigger.refresh();
@@ -366,6 +444,10 @@ async function startSlider() {
         destroyed = true;
         cancelAnimationFrame(frameId);
         window.removeEventListener("resize", handleResize);
+        if (lenis) {
+            document.removeEventListener("wheel", onWheel, { capture: true });
+            lenis.off("scroll", onLenisScroll);
+        }
 
         scrollTrigger.kill(true); // true = also remove the pin spacer
         if (rippleTween) rippleTween.kill();
