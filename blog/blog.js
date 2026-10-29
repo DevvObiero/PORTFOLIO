@@ -186,6 +186,8 @@ function setUpNav() {
   };
 
   place();
+  indicator.offsetWidth; // flush the jump to Blog before turning transitions back on
+  indicator.classList.add("is-placed");
   document.fonts?.ready.then(place); // Pangram can swap in after first paint
   window.addEventListener("resize", place);
 

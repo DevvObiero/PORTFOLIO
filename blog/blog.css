@@ -71,6 +71,14 @@ pre:focus-visible {
   border-radius: 4px;
 }
 
+/* style.css parks the indicator under Home (left: 0). Keep it hidden and
+   un-animated until blog.js has moved it under Blog, so it doesn't flash
+   on Home and slide across on every page load. */
+nav span:not(.is-placed) {
+  opacity: 0;
+  transition: none;
+}
+
 /* the theme button sits in an <li> here, so it lines up with the links */
 nav ul li:has(#toggle-theme) {
   display: flex;
